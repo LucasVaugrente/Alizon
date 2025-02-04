@@ -19,12 +19,12 @@
         <h4>Aide, SAV et Service</h4>
         <p>Besoin d'aide ?<br>
             Contactez-nous !<br>
-            Services ALIZON</p>
+            Services alizon</p>
     </div>
 </section>
 
-<!-- LOGO ALIZON EN BAS DE PAGE -->
+<!-- LOGO alizon EN BAS DE PAGE -->
 <figure>
     <img src="../img/logo_caddie.svg" alt="logo_caddie">
-    <figcaption>Alizon</figcaption>
+    <figcaption>alizon</figcaption>
 </figure>

@@ -1,11 +1,11 @@
 <?php
-    $server = 'localhost';
+    $server = 'alizon_mysql';
     $driver = 'mysql';
-    $dbname = 'Alizon';
-    $user = 'lportier';
-    $pass = '1234';
-    $port = '5432';
-    $schema = 'Alizon';
+    $dbname = 'alizon';
+    $user = 'root';
+    $pass = 'root';
+    $port = '3306';
+    $schema = 'alizon';
 ?>  
 
 

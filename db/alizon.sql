@@ -1,7 +1,7 @@
--- Active: 1666353908946@@127.0.0.1@5432@Alizon
-drop schema if exists Alizon cascade;
-Create schema Alizon;
-set schema 'Alizon';
+-- Active: 1738681031035@@127.0.0.1@3333@alizon
+drop schema if exists alizon cascade;
+Create schema alizon;
+set schema 'alizon';
 
 
 /* ################################################################################################
@@ -10,25 +10,25 @@ set schema 'Alizon';
 
 
 /* TABLE CATEGORIE */
-CREATE TABLE Alizon._Categorie (
+CREATE TABLE alizon._Categorie (
   ID_Categorie serial not null,
   Nom_Categorie varchar(50),
   constraint _Categorie_pk primary key (ID_Categorie)
 );
 
 /* TABLE SOUS CATEGORIE */
-CREATE TABLE Alizon._Sous_Categorie (
+CREATE TABLE alizon._Sous_Categorie (
   Id_Sous_Categorie serial not null,
   Id_Categorie_Sup integer not null,
   nom varchar(50) not null,
   tva float not null,
   constraint Sous_Categorie_pk primary key (Id_Sous_Categorie),
   constraint _Sous_Categorie_Categorie foreign key (Id_Categorie_Sup)
-    references Alizon._Categorie(ID_Categorie)
+    references alizon._Categorie(ID_Categorie)
 );
 
 /* TABLE PRODUIT */
-CREATE TABLE Alizon._Produit (
+CREATE TABLE alizon._Produit (
   ID_Produit serial not null,
   Nom_produit varchar(50),
   Prix_coutant decimal(5,2),
@@ -44,11 +44,11 @@ CREATE TABLE Alizon._Produit (
   ID_Vendeur int not null,
   constraint _Produit_pk primary key (ID_Produit),
   constraint _Produit_Sous_Categorie_fk foreign key (Id_Sous_Categorie)
-    references Alizon._Sous_Categorie(Id_Sous_Categorie)
+    references alizon._Sous_Categorie(Id_Sous_Categorie)
 );
 
 /* TABLE CLIENT */
-CREATE TABLE Alizon._Client (
+CREATE TABLE alizon._Client (
   ID_Client serial not null,
   nom_client varchar(50),
   prenom_client varchar(50),
@@ -60,18 +60,18 @@ CREATE TABLE Alizon._Client (
 );
 
 /* TABLE PANIER */
-CREATE TABLE Alizon._Panier (
+CREATE TABLE alizon._Panier (
   ID_Panier serial not null,
   Prix_total_HT numeric(5,2),
   Prix_total_TTC numeric(5,2),
   ID_Client integer,
   constraint _Panier_pk primary key (ID_Panier),
   constraint _Panier_Client_fk foreign key (ID_Client)
-    references Alizon._Client(ID_Client)
+    references alizon._Client(ID_Client)
 );
 
 /* TABLE COMMANDE */
-CREATE TABLE Alizon._Commande (
+CREATE TABLE alizon._Commande (
   ID_Commande serial not null,
   ID_Client integer not null,
   etat_commande varchar(50),
@@ -80,11 +80,11 @@ CREATE TABLE Alizon._Commande (
   Duree_maximale_restante int,
   constraint _Commande_pk primary key (ID_Commande),
   constraint _Commande_Client_fk foreign key (ID_Client)
-    references Alizon._Client (ID_Client)
+    references alizon._Client (ID_Client)
 );
 
 /* TABLE CONTIENT PRODUIT PANIER */
-CREATE TABLE Alizon._Contient_Produit_p (
+CREATE TABLE alizon._Contient_Produit_p (
   ID_Panier integer not null, -- Différent
   ID_Produit integer not null,
   Quantite integer,
@@ -92,13 +92,13 @@ CREATE TABLE Alizon._Contient_Produit_p (
   Prix_produit_commande_TTC float not null,
   constraint _Contient_Produit_p_pk primary key (ID_Panier,ID_Produit),
   constraint _Contient_Produit_p_Panier_fk foreign key (ID_Panier)
-    references Alizon._Panier(ID_Panier),
+    references alizon._Panier(ID_Panier),
   constraint _Contient_Produit_p_Produit_fk foreign key (ID_Produit)
-    references Alizon._Produit(ID_Produit)
+    references alizon._Produit(ID_Produit)
 );
 
 /* TABLE CONTIENT PRODUIT COMMANDE */
-CREATE TABLE Alizon._Contient_Produit_c (
+CREATE TABLE alizon._Contient_Produit_c (
   ID_Commande integer not null, -- Différent
   ID_Produit integer not null,
   Quantite integer,
@@ -106,13 +106,13 @@ CREATE TABLE Alizon._Contient_Produit_c (
   Prix_produit_commande_TTC float not null,
   constraint _Contient_Produit_c_pk primary key (ID_Commande,ID_Produit),
   constraint _Contient_Produit_c_Commande_fk foreign key (ID_Commande)
-    references Alizon._Commande(ID_Commande),
+    references alizon._Commande(ID_Commande),
   constraint _Contient_Produit_c_Produit_fk foreign key (ID_Produit)
-    references Alizon._Produit(ID_Produit)
+    references alizon._Produit(ID_Produit)
 );
 
 /* TABLE AVIS */
-CREATE TABLE Alizon._Avis (
+CREATE TABLE alizon._Avis (
   ID_Client integer not null,
   ID_Produit integer not null,
   Note_Produit integer not null,
@@ -120,13 +120,13 @@ CREATE TABLE Alizon._Avis (
   Image_Avis varchar(500),
   constraint _Avis_pk primary key (ID_Client,ID_Produit),
    constraint _Avis_Produit_fk foreign key (ID_Produit)
-    references Alizon._Produit(ID_Produit),
+    references alizon._Produit(ID_Produit),
   constraint _Avis_Client_fk foreign key (ID_Client)
-    references Alizon._Client(ID_Client)
+    references alizon._Client(ID_Client)
 );
 
 /* TABLE PAIEMENT */
-CREATE TABLE Alizon._Paiement (
+CREATE TABLE alizon._Paiement (
   ID_Commande integer not null,
   ID_Client integer not null,
   choix_type_paiement varchar(50) not null,
@@ -135,13 +135,13 @@ CREATE TABLE Alizon._Paiement (
   cryptogramme int,
   constraint _Paiement_pk primary key (ID_Commande,ID_Client),
   constraint _Paiement_Commande_fk foreign key (ID_Commande)
-    references Alizon._Commande(ID_Commande),
+    references alizon._Commande(ID_Commande),
   constraint _Paiement_Client_fk foreign key (ID_Client)
-    references Alizon._Client(ID_Client)
+    references alizon._Client(ID_Client)
 );
 
 /* TABLE VENDEUR */
-CREATE TABLE Alizon._Vendeur (
+CREATE TABLE alizon._Vendeur (
   ID_Vendeur serial not null,
   Prenom varchar(50),
   Nom varchar(50),
@@ -155,7 +155,7 @@ CREATE TABLE Alizon._Vendeur (
 #################################################################################################################*/
 
 -- Lorsque le client creer un compte, le panier est créer
-CREATE FUNCTION Alizon._Creation_Panier() returns trigger as 
+CREATE FUNCTION alizon._Creation_Panier() returns trigger as 
 $val$
   BEGIN
       INSERT INTO alizon._panier(id_client,prix_total_ht,prix_total_ttc)VALUES(new.id_client,0.00,0.00);
@@ -164,75 +164,75 @@ $val$
 $val$ language plpgsql;
 
 CREATE TRIGGER trig_CreationPanier
-after INSERT on Alizon._Client
+after INSERT on alizon._Client
 FOR EACH ROW
-execute procedure Alizon._Creation_Panier();
+execute procedure alizon._Creation_Panier();
 
 -- Lorsque le client commande, le panier est supprimé
-CREATE FUNCTION Alizon._Remplacement_Panier() returns trigger as 
+CREATE FUNCTION alizon._Remplacement_Panier() returns trigger as 
 $val$
   BEGIN
-      DELETE from Alizon._Panier where ID_Client = Alizon._Commande.ID_Client;
+      DELETE from alizon._Panier where ID_Client = alizon._Commande.ID_Client;
       RETURN NULL;
   END;
 $val$ language plpgsql;
 
 CREATE TRIGGER trig_Remplacement_Panier
-after INSERT on Alizon._Commande
+after INSERT on alizon._Commande
 FOR EACH ROW
-execute procedure Alizon._Remplacement_Panier();
+execute procedure alizon._Remplacement_Panier();
 
 -- C
-CREATE FUNCTION Alizon._Conservation_Quantite() returns trigger as $val$
+CREATE FUNCTION alizon._Conservation_Quantite() returns trigger as $val$
   BEGIN 
-     UPDATE Alizon._Contient_Produit_c SET (Quantite, Prix_produit_commande_HT, Prix_produit_commande_TTC) = (select Quantite, Prix_produit_commande_HT, Prix_produit_commande_TTC from _Contient_Produit inner join _Commande on _Contient_Produit_p.ID_Client = _Commande.ID_Client where new.ID_Client = _Contient_Produit_p.ID_Client) where
-     new.ID_Client = Alizon._Content_Produit.ID_Client;
+     UPDATE alizon._Contient_Produit_c SET (Quantite, Prix_produit_commande_HT, Prix_produit_commande_TTC) = (select Quantite, Prix_produit_commande_HT, Prix_produit_commande_TTC from _Contient_Produit inner join _Commande on _Contient_Produit_p.ID_Client = _Commande.ID_Client where new.ID_Client = _Contient_Produit_p.ID_Client) where
+     new.ID_Client = alizon._Content_Produit.ID_Client;
      RETURN NULL;
   END;
 $val$ language plpgsql;
 
 CREATE TRIGGER trig_Commande_2
-after INSERT on Alizon._Commande
+after INSERT on alizon._Commande
 FOR EACH ROW
-execute procedure Alizon._Conservation_Quantite();
+execute procedure alizon._Conservation_Quantite();
 
 -- TVA
-CREATE FUNCTION Alizon._Insert_Prix_TTC() returns trigger as $val$
+CREATE FUNCTION alizon._Insert_Prix_TTC() returns trigger as $val$
   DECLARE
     tva_n float;
   BEGIN 
-    tva_n := (SELECT tva from Alizon._Sous_Categorie inner join Alizon._Produit on Alizon._Sous_Categorie.Id_Sous_Categorie = Alizon._produit.Id_Sous_Categorie WHERE Alizon._Produit.ID_Produit = new.ID_Produit); 
-    UpDATE Alizon._Produit SET prix_vente_ttc = (tva_n*prix_vente_ht) + prix_vente_ht WHERE Alizon._Produit.ID_Produit = new.ID_Produit;  
+    tva_n := (SELECT tva from alizon._Sous_Categorie inner join alizon._Produit on alizon._Sous_Categorie.Id_Sous_Categorie = alizon._produit.Id_Sous_Categorie WHERE alizon._Produit.ID_Produit = new.ID_Produit); 
+    UpDATE alizon._Produit SET prix_vente_ttc = (tva_n*prix_vente_ht) + prix_vente_ht WHERE alizon._Produit.ID_Produit = new.ID_Produit;  
     RETURN NULL;
   END;
 $val$ language plpgsql;
 
 CREATE TRIGGER trig_TVA_Produit
-after INSERT on Alizon._Produit
+after INSERT on alizon._Produit
 FOR EACH ROW
-execute procedure Alizon._Insert_Prix_TTC();  
+execute procedure alizon._Insert_Prix_TTC();  
 
 -- Moyenne de la note du produit
-CREATE FUNCTION Alizon.Calcul_Note_Produit() returns trigger as $val$
+CREATE FUNCTION alizon.Calcul_Note_Produit() returns trigger as $val$
   DECLARE
     somme bigint;
     compte bigint;
   BEGIN 
-    somme := (select sum(Note_Produit) from Alizon._Avis);
-    compte := (select count(Note_Produit) from Alizon._Avis);
-    UpDATE Alizon._Produit SET Moyenne_Note_Produit = (somme/compte) WHERE new.ID_Produit = ID_Produit;
+    somme := (select sum(Note_Produit) from alizon._Avis);
+    compte := (select count(Note_Produit) from alizon._Avis);
+    UpDATE alizon._Produit SET Moyenne_Note_Produit = (somme/compte) WHERE new.ID_Produit = ID_Produit;
     RETURN NULL;
   END;
 $val$ language plpgsql;
 
 CREATE TRIGGER trig_Moyenne_Note_Produit
-after INSERT on Alizon._Avis
+after INSERT on alizon._Avis
 FOR EACH ROW
-execute procedure Alizon.Calcul_Note_Produit();
+execute procedure alizon.Calcul_Note_Produit();
 
 
 -- Lorsque le client ajoute un produit ou modifie un quantité d'article dans le panier, le prix total pour cet article est mis a jour
-CREATE FUNCTION Alizon._Calcul_PrixTotal_Produit() returns trigger as 
+CREATE FUNCTION alizon._Calcul_PrixTotal_Produit() returns trigger as 
 $val$
   DECLARE
     prixht FLOAT;
@@ -250,10 +250,10 @@ $val$
 $val$ language plpgsql;
 
 CREATE TRIGGER trig_Calcul_PrixTotal_Produit
-BEFORE INSERT OR UPDATE OF quantite ON Alizon._contient_produit_p
+BEFORE INSERT OR UPDATE OF quantite ON alizon._contient_produit_p
 FOR EACH ROW
 WHEN (pg_trigger_depth() = 0)
-execute procedure Alizon._Calcul_PrixTotal_Produit();
+execute procedure alizon._Calcul_PrixTotal_Produit();
 /*EXEMPLES : 
 - INSERT INTO alizon._contient_produit_p(id_panier,id_produit,quantite)VALUES(7,5,5);
 - UPDATE alizon._contient_produit_p SET quantite = 25 WHERE id_produit = 3;
@@ -261,7 +261,7 @@ execute procedure Alizon._Calcul_PrixTotal_Produit();
 
 
 -- Lorsque le client ajoute un produits au panier, le total du panier est mis a jour
-CREATE FUNCTION Alizon._Calcul_Total_Panier() returns trigger as 
+CREATE FUNCTION alizon._Calcul_Total_Panier() returns trigger as 
 $val$
   DECLARE
     Somprixht FLOAT;
@@ -275,9 +275,9 @@ $val$
 $val$ language plpgsql;
 
 CREATE TRIGGER trig_Calcul_Total_Panier
-AFTER INSERT OR UPDATE OR DELETE on Alizon._contient_produit_p
+AFTER INSERT OR UPDATE OR DELETE on alizon._contient_produit_p
 FOR EACH ROW
-execute procedure Alizon._Calcul_Total_Panier();
+execute procedure alizon._Calcul_Total_Panier();
 
 /* ###############################################################################################
 ######################################## CREATION DE VUES ########################################
@@ -285,23 +285,23 @@ execute procedure Alizon._Calcul_Total_Panier();
 
 
 /* --------------VUE---------------*/
-CREATE OR REPLACE View Alizon.panier AS
+CREATE OR REPLACE View alizon.panier AS
 --
-SELECT nom_produit,images1, images2, images3, _contient_produit_p.id_produit,nom_categorie,quantite_disponnible,quantite,prix_total_ttc, prix_produit_commande_ttc, prenom as vendeur , description_produit, _panier.id_panier, prix_vente_ttc, _Sous_Categorie.nom as nom_SouCategorie  FROM Alizon._contient_produit_p 
-INNER JOIN Alizon._produit ON Alizon._produit.id_produit = Alizon._contient_produit_p.id_produit
-INNER JOIN Alizon._Sous_Categorie ON Alizon._Sous_Categorie.Id_Sous_Categorie = Alizon._produit.id_sous_categorie
-INNER JOIN Alizon._categorie ON Alizon._categorie.id_categorie = Alizon._Sous_Categorie.Id_categorie_sup
-INNER JOIN Alizon._vendeur ON Alizon._vendeur.id_vendeur = Alizon._produit.id_vendeur
-INNER JOIN Alizon._panier ON Alizon._contient_produit_p.id_panier = Alizon._panier.id_panier;
+SELECT nom_produit,images1, images2, images3, _contient_produit_p.id_produit,nom_categorie,quantite_disponnible,quantite,prix_total_ttc, prix_produit_commande_ttc, prenom as vendeur , description_produit, _panier.id_panier, prix_vente_ttc, _Sous_Categorie.nom as nom_SouCategorie  FROM alizon._contient_produit_p 
+INNER JOIN alizon._produit ON alizon._produit.id_produit = alizon._contient_produit_p.id_produit
+INNER JOIN alizon._Sous_Categorie ON alizon._Sous_Categorie.Id_Sous_Categorie = alizon._produit.id_sous_categorie
+INNER JOIN alizon._categorie ON alizon._categorie.id_categorie = alizon._Sous_Categorie.Id_categorie_sup
+INNER JOIN alizon._vendeur ON alizon._vendeur.id_vendeur = alizon._produit.id_vendeur
+INNER JOIN alizon._panier ON alizon._contient_produit_p.id_panier = alizon._panier.id_panier;
 
 
 
 
-CREATE OR REPLACE View Alizon.catalogue AS
+CREATE OR REPLACE View alizon.catalogue AS
 --
-SELECT id_produit, nom_produit, prix_vente_ht, prix_vente_ttc, quantite_disponnible, description_produit, images1, images2, images3, nom as nom_souscategorie, nom_categorie, moyenne_note_produit FROM Alizon._produit
-INNER JOIN Alizon._Sous_Categorie ON Alizon._Sous_Categorie.Id_Sous_Categorie = Alizon._produit.id_sous_categorie
-INNER JOIN Alizon._Categorie ON Alizon._Categorie.id_categorie = Alizon._Sous_Categorie.id_categorie_sup;
+SELECT id_produit, nom_produit, prix_vente_ht, prix_vente_ttc, quantite_disponnible, description_produit, images1, images2, images3, nom as nom_souscategorie, nom_categorie, moyenne_note_produit FROM alizon._produit
+INNER JOIN alizon._Sous_Categorie ON alizon._Sous_Categorie.Id_Sous_Categorie = alizon._produit.id_sous_categorie
+INNER JOIN alizon._Categorie ON alizon._Categorie.id_categorie = alizon._Sous_Categorie.id_categorie_sup;
 
 
 /* ###################################################################################################
@@ -376,7 +376,7 @@ INSERT INTO alizon._contient_produit_p(id_panier,id_produit,quantite)VALUES(7,2,
 
 
 
-SELECT * FROM Alizon.catalogue;
+SELECT * FROM alizon.catalogue;
 
 
 

@@ -1,7 +1,7 @@
 
 <?php 
     error_reporting(0);
-    session_start();
+    // session_start();
     include("fonctions/databaseConnexion.php");
             /* CATEGORIES DYNAMIQUES */
             $sth = $dbh -> prepare("SELECT nom_categorie, nom as nom_Souscategorie FROM $schema._categorie INNER JOIN $schema._sous_categorie ON id_categorie_sup = id_categorie");
@@ -29,9 +29,9 @@
         <div class='sticky-header'>
         <div class="haut_de_page_admin">
 
-            <!-- TITRE ALIZON -->
+            <!-- TITRE alizon -->
             <a href="index.php" title="Accueil" class="logo_admin">
-                <img src="../img/logo2.0.png" alt="Logo Alizon" title="Logo Alizon" width='200' class="img_logo">
+                <img src="../img/logo2.0.png" alt="Logo alizon" title="Logo alizon" width='200' class="img_logo">
             </a>
 
             <!-- BARRE DE RECHERCHE FORMAT PC-->

@@ -30,7 +30,7 @@
 
                 <h3>Coordonnées de l'hébergeur</h3>
 
-                <p>Alizon.bzh est hébergé par IONOS dont le siège social est situé 7 Place de la gare 57200 SARREGUEMINES</p>
+                <p>alizon.bzh est hébergé par IONOS dont le siège social est situé 7 Place de la gare 57200 SARREGUEMINES</p>
                 <h3>Coordonnées du médiateur</h3>
 
                 <p>FEVAD dont le siège social est situé 75362 PARIS CEDEX 8 avec omme site internet www.mediateurfevad.fr et Email :  mediateurduecommerce@fevad.com</p>
@@ -65,7 +65,7 @@
 
                 <h3>Article 5 - Propriété Intellectuelle</h3>
 
-                <p>Le contenu du site https://Alizon.bzh est la propriété exclusive de la Cobrec et est protégé par les lois françaises et internationales relatives à 
+                <p>Le contenu du site https://alizon.bzh est la propriété exclusive de la Cobrec et est protégé par les lois françaises et internationales relatives à 
                 la propriété intellectuelle.</p>
             </div>
 

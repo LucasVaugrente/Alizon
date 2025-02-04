@@ -48,34 +48,34 @@ catalogue:541
 /*################################################################################################
 ######################################## CREATION DE LA BASE #####################################
 ##################################################################################################*/
-DROP DATABASE Alizon;
-CREATE DATABASE Alizon;
-USE Alizon;
+DROP DATABASE alizon;
+CREATE DATABASE alizon;
+USE alizon;
 
  /* ################################################################################################
 ######################################## CREATION DE TABLES ########################################
 ###################################################################################################*/
 
 /* TABLE CATEGORIE */
-CREATE TABLE Alizon._Categorie (
+CREATE TABLE alizon._Categorie (
   ID_Categorie int(11) auto_increment not null,
   Nom_Categorie varchar(50),
   constraint _Categorie_pk primary key (ID_Categorie)
 );
 
 /* TABLE SOUS CATEGORIE */
-CREATE TABLE Alizon._Sous_Categorie (
+CREATE TABLE alizon._Sous_Categorie (
   Id_Sous_Categorie int(11) auto_increment not null,
   Id_Categorie_Sup int(11) not null,
   nom varchar(50) not null,
   tva float not null,
   constraint Sous_Categorie_pk primary key (Id_Sous_Categorie),
   constraint _Sous_Categorie_Categorie foreign key (Id_Categorie_Sup)
-    references Alizon._Categorie(ID_Categorie)
+    references alizon._Categorie(ID_Categorie)
 );
 
 /* TABLE PRODUIT */
-CREATE TABLE Alizon._Produit (
+CREATE TABLE alizon._Produit (
     ID_Produit INT(11) AUTO_INCREMENT NOT NULL,
     Nom_Produit VARCHAR(50),
     Prix_coutant DECIMAL(5 , 2 ),
@@ -91,11 +91,11 @@ CREATE TABLE Alizon._Produit (
     ID_Vendeur INT NOT NULL,
     CONSTRAINT _Produit_pk PRIMARY KEY (ID_Produit),
     CONSTRAINT _Produit_Sous_Categorie_fk FOREIGN KEY (Id_Sous_Categorie)
-        REFERENCES Alizon._Sous_Categorie (Id_Sous_Categorie)
+        REFERENCES alizon._Sous_Categorie (Id_Sous_Categorie)
 );
 
 /* TABLE CLIENT */
-CREATE TABLE Alizon._Client(
+CREATE TABLE alizon._Client(
   ID_Client int(11) auto_increment not null,
   nom_Client varchar(50) not null,
   prenom_Client varchar(50) not null,
@@ -111,7 +111,7 @@ CREATE TABLE Alizon._Client(
 );
 
 /* TABLE Adresse */
-CREATE TABLE Alizon._Adresse (
+CREATE TABLE alizon._Adresse (
   ID_Adresse int(11) auto_increment not null,
   ID_Client int(11) not null,
   nom_de_rue varchar(50) not null, 
@@ -121,17 +121,17 @@ CREATE TABLE Alizon._Adresse (
 
   constraint _Adresse_pk primary key (ID_Adresse),
   constraint _Adresse_Client_fk foreign key (ID_Client)
-    references Alizon._Client(ID_Client)
+    references alizon._Client(ID_Client)
 );
 
 /* CONSTRAINT */
-ALTER TABLE Alizon._Client ADD CONSTRAINT _Adresse_Client_fk1 FOREIGN KEY (ID_Adresse_facturation)
-    REFERENCES Alizon._Adresse(ID_Adresse);
+ALTER TABLE alizon._Client ADD CONSTRAINT _Adresse_Client_fk1 FOREIGN KEY (ID_Adresse_facturation)
+    REFERENCES alizon._Adresse(ID_Adresse);
   
-ALTER TABLE Alizon._Client ADD CONSTRAINT _Adresse_Client_fk2 FOREIGN KEY (ID_Adresse_livraison)
-    REFERENCES Alizon._Adresse(ID_Adresse);
+ALTER TABLE alizon._Client ADD CONSTRAINT _Adresse_Client_fk2 FOREIGN KEY (ID_Adresse_livraison)
+    REFERENCES alizon._Adresse(ID_Adresse);
 /* TABLE PANIER */
-CREATE TABLE Alizon._Panier (
+CREATE TABLE alizon._Panier (
   ID_Panier int(11) auto_increment not null,
   Prix_total_HT numeric(5,2),
   Prix_total_TTC numeric(5,2),
@@ -139,11 +139,11 @@ CREATE TABLE Alizon._Panier (
   derniere_modif date,
   constraint _Panier_pk primary key (ID_Panier),
   constraint _Panier_Client_fk foreign key (ID_Client)
-    references Alizon._Client(ID_Client)
+    references alizon._Client(ID_Client)
 );
 
 /* TABLE COMMANDE */
-CREATE TABLE Alizon._Commande (
+CREATE TABLE alizon._Commande (
   ID_Commande int(11) auto_increment not null,
   ID_Client int(11) not null,
   etat_Commande varchar(50),
@@ -154,11 +154,11 @@ CREATE TABLE Alizon._Commande (
   prix_total numeric(5,2),
   constraint _Commande_pk primary key (ID_Commande),
   constraint _Commande_Client_fk foreign key (ID_Client)
-    references Alizon._Client (ID_Client)
+    references alizon._Client (ID_Client)
 );
 
 /* TABLE CONTIENT PRODUIT PANIER */
-CREATE TABLE Alizon._Contient_Produit_p (
+CREATE TABLE alizon._Contient_Produit_p (
   ID_Panier int(11) not null, -- Différent
   ID_Produit int(11) not null,
   Quantite int(11),
@@ -166,13 +166,13 @@ CREATE TABLE Alizon._Contient_Produit_p (
   Prix_Produit_Commande_TTC float not null,
   constraint _Contient_Produit_p_pk primary key (ID_Panier,ID_Produit),
   constraint _Contient_Produit_p_Panier_fk foreign key (ID_Panier)
-    references Alizon._Panier(ID_Panier) ON DELETE CASCADE, -- ON DELETE CASCADE delete les contitent produit d'un panier si le panier est delete
+    references alizon._Panier(ID_Panier) ON DELETE CASCADE, -- ON DELETE CASCADE delete les contitent produit d'un panier si le panier est delete
   constraint _Contient_Produit_p_Produit_fk foreign key (ID_Produit)
-    references Alizon._Produit(ID_Produit)
+    references alizon._Produit(ID_Produit)
 );
 
 /* TABLE CONTIENT PRODUIT COMMANDE */
-CREATE TABLE Alizon._Contient_Produit_c (
+CREATE TABLE alizon._Contient_Produit_c (
   ID_Commande int(11) not null, -- Différent
   ID_Produit int(11) not null,
   Quantite int(11),
@@ -180,13 +180,13 @@ CREATE TABLE Alizon._Contient_Produit_c (
   Prix_Produit_Commande_TTC float not null,
   constraint _Contient_Produit_c_pk primary key (ID_Commande,ID_Produit),
   constraint _Contient_Produit_c_Commande_fk foreign key (ID_Commande)
-    references Alizon._Commande(ID_Commande),
+    references alizon._Commande(ID_Commande),
   constraint _Contient_Produit_c_Produit_fk foreign key (ID_Produit)
-    references Alizon._Produit(ID_Produit)
+    references alizon._Produit(ID_Produit)
 );
 
 /* TABLE AVIS */
-CREATE TABLE Alizon._Avis (
+CREATE TABLE alizon._Avis (
   ID_Commentaire int(11) auto_increment not null,
   ID_Client int(11) not null,
   ID_Produit int(11) not null,
@@ -196,13 +196,13 @@ CREATE TABLE Alizon._Avis (
   signalement int default 0,
   constraint _Avis_pk primary key (ID_Commentaire),
    constraint _Avis_Produit_fk foreign key (ID_Produit)
-    references Alizon._Produit(ID_Produit),
+    references alizon._Produit(ID_Produit),
   constraint _Avis_Client_fk foreign key (ID_Client)
-    references Alizon._Client(ID_Client)
+    references alizon._Client(ID_Client)
 );
 
 /* TABLE VENDEUR */
-CREATE TABLE Alizon._Vendeur (
+CREATE TABLE alizon._Vendeur (
   ID_Vendeur int(11) auto_increment not null,
   Prenom varchar(50),
   Nom varchar(50),
@@ -211,19 +211,19 @@ CREATE TABLE Alizon._Vendeur (
   constraint _Vendeur_pk primary key (ID_Vendeur)
 );
 
-CREATE TABLE Alizon._Reponse(
+CREATE TABLE alizon._Reponse(
   ID_Commentaire int(11) not null,
   ID_Vendeur int(11),
   Commentaire varchar(500),
   constraint _Reponse_pk primary key (ID_Commentaire),
    constraint _Reponse_Avis_fk foreign key (ID_Commentaire)
-    references Alizon._Avis(ID_Commentaire),
+    references alizon._Avis(ID_Commentaire),
   constraint _Reponse_Client_fk foreign key (ID_Vendeur)
-    references Alizon._Vendeur(ID_Vendeur)
+    references alizon._Vendeur(ID_Vendeur)
 );
 
 /* TABLE PAIEMENT */
-CREATE TABLE Alizon._Paiement (
+CREATE TABLE alizon._Paiement (
   ID_Commande int(11) not null,
   ID_Client int(11) not null,
   choix_type_Paiement varchar(50) not null,
@@ -232,22 +232,22 @@ CREATE TABLE Alizon._Paiement (
   cryptogramme int,
   constraint _Paiement_pk primary key (ID_Commande,ID_Client),
   constraint _Paiement_Commande_fk foreign key (ID_Commande)
-    references Alizon._Commande(ID_Commande),
+    references alizon._Commande(ID_Commande),
   constraint _Paiement_Client_fk foreign key (ID_Client)
-    references Alizon._Client(ID_Client)
+    references alizon._Client(ID_Client)
 );
 
 
 
 /* TABLE SIGNALER*/
-CREATE TABLE Alizon._Signaler (
+CREATE TABLE alizon._Signaler (
   ID_Signaleur int(11) not null,  
   ID_Commentaire int(11) not null,
   constraint _Signaler_pk primary key (ID_Signaleur,ID_Commentaire),
   constraint _Posteur_fk foreign key (ID_Commentaire)
-    references Alizon._Avis(ID_Commentaire) ON DELETE CASCADE,
+    references alizon._Avis(ID_Commentaire) ON DELETE CASCADE,
   constraint _Signaleur_fk foreign key (ID_Signaleur)
-    references Alizon._Client(ID_Client)
+    references alizon._Client(ID_Client)
 );
 
 /* ##############################################################################################################
@@ -273,10 +273,10 @@ Deuxiement il insert dans la table _Contient_Produit_c le produit X si il existe
 
 Fin de boucle
 
-Aprés avoir insert dans _Contient_Produit_c le trigger suprime le pannier du client XAlizon
+Aprés avoir insert dans _Contient_Produit_c le trigger suprime le pannier du client Xalizon
 */
-CREATE TRIGGER Alizon.trig_Commande3
-after INSERT on Alizon._Commande
+CREATE TRIGGER alizon.trig_Commande3
+after INSERT on alizon._Commande
 FOR EACH ROW
 BEGIN
 set @i =1 ;
@@ -286,23 +286,23 @@ while @i <= (select max(id_Produit) from _Produit) do
 	set @Prix_Produit_Commande_HT = (select Prix_Produit_Commande_HT from _Contient_Produit_p where _Contient_Produit_p.ID_Panier in (select ID_Panier from _Panier where ID_Client = new.ID_Client) and _Contient_Produit_p.id_Produit =@i);
 	set @Prix_Produit_Commande_TTC = (select Prix_Produit_Commande_TTC from _Contient_Produit_p where _Contient_Produit_p.ID_Panier in (select ID_Panier from _Panier where ID_Client = new.ID_Client) and _Contient_Produit_p.id_Produit =@i);
 	if @id_Produit is not null then
-		INSERT INTO Alizon._Contient_Produit_c(ID_Commande,id_Produit,quantite,Prix_Produit_Commande_HT,Prix_Produit_Commande_TTC)VALUES(new.Id_Commande,@id_Produit,@Quantite,@Prix_Produit_Commande_HT,@Prix_Produit_Commande_TTC);
+		INSERT INTO alizon._Contient_Produit_c(ID_Commande,id_Produit,quantite,Prix_Produit_Commande_HT,Prix_Produit_Commande_TTC)VALUES(new.Id_Commande,@id_Produit,@Quantite,@Prix_Produit_Commande_HT,@Prix_Produit_Commande_TTC);
 	END IF;
 	set @i = @i+1;
 END WHILE;
-DELETE from Alizon._Panier where ID_Client = New.ID_Client;
-INSERT INTO Alizon._Panier (id_Client,prix_total_ht,prix_total_ttc)VALUES(new.id_Client,0.00,0.00);
+DELETE from alizon._Panier where ID_Client = New.ID_Client;
+INSERT INTO alizon._Panier (id_Client,prix_total_ht,prix_total_ttc)VALUES(new.id_Client,0.00,0.00);
 END;
 @@;
 
 /* -Lors de la creation d'un client 
 Lors de la creation d'un nouveau client le trigger lui assigne un nouveau pannier
 */
-CREATE TRIGGER Alizon.trig_Pannier
-after INSERT on Alizon._Client
+CREATE TRIGGER alizon.trig_Pannier
+after INSERT on alizon._Client
 FOR EACH ROW
 BEGIN
-INSERT INTO Alizon._Panier (id_Client,prix_total_ht,prix_total_ttc)VALUES(new.id_Client,0.00,0.00);
+INSERT INTO alizon._Panier (id_Client,prix_total_ht,prix_total_ttc)VALUES(new.id_Client,0.00,0.00);
 END;
 @@;
 
@@ -319,14 +319,14 @@ Si le nombre de client pour ID_Client @i = 0 alors id est libre et le set dans l
 
 Fin boucle
 */
-CREATE TRIGGER Alizon.trig_id_Client
-before INSERT on Alizon._Client
+CREATE TRIGGER alizon.trig_id_Client
+before INSERT on alizon._Client
 FOR EACH ROW
 BEGIN
 set @i =1;
 set @modif =0;
-while @i< (select max(ID_Client) from Alizon._Client) && @modif = 0 do
-	if (select count(*) from Alizon._Client where Id_Client = @i) = 0 then
+while @i< (select max(ID_Client) from alizon._Client) && @modif = 0 do
+	if (select count(*) from alizon._Client where Id_Client = @i) = 0 then
 		set New.Id_Client = @i;
 		set @modif =1;
 	end if;
@@ -348,14 +348,14 @@ Si le nombre de panier pour ID_Panier @i = 0 alors id est libre et le set dans l
 
 Fin boucle
 */
-CREATE TRIGGER Alizon.trig_id_Panier
-before INSERT on Alizon._Panier
+CREATE TRIGGER alizon.trig_id_Panier
+before INSERT on alizon._Panier
 FOR EACH ROW
 BEGIN
 set @i =1;
 set @modif =0;
-while @i< (select max(ID_Panier) from Alizon._Panier) && @modif = 0 do
-	if (select count(*) from Alizon._Panier where Id_Panier = @i) = 0 then
+while @i< (select max(ID_Panier) from alizon._Panier) && @modif = 0 do
+	if (select count(*) from alizon._Panier where Id_Panier = @i) = 0 then
 		set New.Id_Panier = @i;
 		set @modif =1;
 	end if;
@@ -372,11 +372,11 @@ variables:
 
 set Prix_vente_TTC avec le resultat de la formule de calcule de Prix TTC : (PrixHT*TVA)+PRIXHT
 */
-CREATE TRIGGER Alizon.trig_TVA_Produit
-before INSERT on Alizon._Produit
+CREATE TRIGGER alizon.trig_TVA_Produit
+before INSERT on alizon._Produit
 FOR EACH ROW
 BEGIN 
-set @tva_n := (SELECT tva from Alizon._Sous_Categorie where Alizon._Sous_Categorie.Id_Sous_Categorie = new.Id_Sous_Categorie); 
+set @tva_n := (SELECT tva from alizon._Sous_Categorie where alizon._Sous_Categorie.Id_Sous_Categorie = new.Id_Sous_Categorie); 
 set new.Prix_vente_TTC := (@tva_n*new.prix_vente_ht) + new.prix_vente_ht;
 END;
 @@;
@@ -390,13 +390,13 @@ Variables:
 
 mes a jour dans la table _Produit Moyenne_Note_Produit @somme/@compte pour le produit X
 */
-CREATE TRIGGER Alizon.trig_Moyenne_Note_Produit
-after INSERT on Alizon._Avis
+CREATE TRIGGER alizon.trig_Moyenne_Note_Produit
+after INSERT on alizon._Avis
 FOR EACH ROW
 BEGIN
-set @somme := (select sum(Note_Produit) from Alizon._Avis WHERE new.ID_Produit = ID_Produit);
-set @compte := (select count(Note_Produit) from Alizon._Avis WHERE new.ID_Produit = ID_Produit);
-UPDATE Alizon._Produit SET Moyenne_Note_Produit = (@somme/@compte) WHERE new.ID_Produit = ID_Produit;
+set @somme := (select sum(Note_Produit) from alizon._Avis WHERE new.ID_Produit = ID_Produit);
+set @compte := (select count(Note_Produit) from alizon._Avis WHERE new.ID_Produit = ID_Produit);
+UPDATE alizon._Produit SET Moyenne_Note_Produit = (@somme/@compte) WHERE new.ID_Produit = ID_Produit;
 END;
 @@;
 
@@ -409,13 +409,13 @@ Variables:
 
 mais a jour dans la table _Produit Moyenne_Note_Produit @somme/@compte pour le produit X
 */
-CREATE TRIGGER Alizon.trig_Moyenne_Note_Produit2
-after delete on Alizon._Avis
+CREATE TRIGGER alizon.trig_Moyenne_Note_Produit2
+after delete on alizon._Avis
 FOR EACH ROW
 BEGIN
-set @somme := (select sum(Note_Produit) from Alizon._Avis WHERE old.ID_Produit = ID_Produit);
-set @compte := (select count(Note_Produit) from Alizon._Avis WHERE old.ID_Produit = ID_Produit);
-UPDATE Alizon._Produit SET Moyenne_Note_Produit = (@somme/@compte) WHERE old.ID_Produit = ID_Produit;
+set @somme := (select sum(Note_Produit) from alizon._Avis WHERE old.ID_Produit = ID_Produit);
+set @compte := (select count(Note_Produit) from alizon._Avis WHERE old.ID_Produit = ID_Produit);
+UPDATE alizon._Produit SET Moyenne_Note_Produit = (@somme/@compte) WHERE old.ID_Produit = ID_Produit;
 END;
 @@;
 
@@ -428,12 +428,12 @@ Variables:
 
 set les nouveaux totaux dans _Contient_Produit_p
 */
-CREATE TRIGGER Alizon.trig_Calcul_PrixTotal_Produit1
-BEFORE INSERT ON Alizon._Contient_Produit_p
+CREATE TRIGGER alizon.trig_Calcul_PrixTotal_Produit1
+BEFORE INSERT ON alizon._Contient_Produit_p
 FOR EACH ROW
 BEGIN
-set @prixht := (SELECT prix_vente_ht FROM Alizon._Produit WHERE _Produit.id_Produit = NEW.id_Produit);
-set @prixttc := (SELECT prix_vente_ttc FROM Alizon._Produit WHERE _Produit.id_Produit = NEW.id_Produit);
+set @prixht := (SELECT prix_vente_ht FROM alizon._Produit WHERE _Produit.id_Produit = NEW.id_Produit);
+set @prixttc := (SELECT prix_vente_ttc FROM alizon._Produit WHERE _Produit.id_Produit = NEW.id_Produit);
 set new.Prix_Produit_Commande_HT := @prixht*new.quantite;
 set new.Prix_Produit_Commande_TTC := @prixttc*new.quantite;
 END;
@@ -448,12 +448,12 @@ Variables:
 
 set les nouveaux totaux dans _Contient_Produit_p
 */
-CREATE TRIGGER Alizon.trig_Calcul_PrixTotal_Produit2
-BEFORE UPDATE ON Alizon._Contient_Produit_p
+CREATE TRIGGER alizon.trig_Calcul_PrixTotal_Produit2
+BEFORE UPDATE ON alizon._Contient_Produit_p
 FOR EACH ROW
 BEGIN
-set @prixht := (SELECT prix_vente_ht FROM Alizon._Produit WHERE _Produit.id_Produit = NEW.id_Produit);
-set @prixttc := (SELECT prix_vente_ttc FROM Alizon._Produit WHERE _Produit.id_Produit = NEW.id_Produit);
+set @prixht := (SELECT prix_vente_ht FROM alizon._Produit WHERE _Produit.id_Produit = NEW.id_Produit);
+set @prixttc := (SELECT prix_vente_ttc FROM alizon._Produit WHERE _Produit.id_Produit = NEW.id_Produit);
 set new.Prix_Produit_Commande_HT := @prixht*new.quantite;
 set new.Prix_Produit_Commande_TTC := @prixttc*new.quantite;
 END;
@@ -468,13 +468,13 @@ Variables:
 
 set les nouveaux totaux dans _Panier
 */
-CREATE TRIGGER Alizon.trig_Calcul_Total_Panier1
-after INSERT on Alizon._Contient_Produit_p
+CREATE TRIGGER alizon.trig_Calcul_Total_Panier1
+after INSERT on alizon._Contient_Produit_p
 FOR EACH ROW
 BEGIN
-SET @Somprixht := (SELECT sum(prix_Produit_Commande_ht) FROM Alizon._Contient_Produit_p WHERE id_Panier = NEW.id_Panier);
-SET @Somprixttc := (SELECT sum(prix_Produit_Commande_ttc) FROM Alizon._Contient_Produit_p WHERE id_Panier = NEW.id_Panier);
-UPDATE Alizon._Panier SET prix_total_ht = @Somprixht, prix_total_ttc = @Somprixttc, derniere_modif = NOW() WHERE id_Panier = NEW.id_Panier;
+SET @Somprixht := (SELECT sum(prix_Produit_Commande_ht) FROM alizon._Contient_Produit_p WHERE id_Panier = NEW.id_Panier);
+SET @Somprixttc := (SELECT sum(prix_Produit_Commande_ttc) FROM alizon._Contient_Produit_p WHERE id_Panier = NEW.id_Panier);
+UPDATE alizon._Panier SET prix_total_ht = @Somprixht, prix_total_ttc = @Somprixttc, derniere_modif = NOW() WHERE id_Panier = NEW.id_Panier;
 END;
 @@;
 
@@ -487,13 +487,13 @@ Variables:
 
 set les nouveaux totaux dans _Panier
 */
-CREATE TRIGGER Alizon.trig_Calcul_Total_Panier2
-after update on Alizon._Contient_Produit_p
+CREATE TRIGGER alizon.trig_Calcul_Total_Panier2
+after update on alizon._Contient_Produit_p
 FOR EACH ROW
 BEGIN
-SET @Somprixht := (SELECT sum(prix_Produit_Commande_ht) FROM Alizon._Contient_Produit_p WHERE id_Panier = NEW.id_Panier);
-SET @Somprixttc := (SELECT sum(prix_Produit_Commande_ttc) FROM Alizon._Contient_Produit_p WHERE id_Panier = NEW.id_Panier);
-UPDATE Alizon._Panier SET prix_total_ht = @Somprixht, prix_total_ttc = @Somprixttc, derniere_modif = NOW() WHERE id_Panier = NEW.id_Panier;
+SET @Somprixht := (SELECT sum(prix_Produit_Commande_ht) FROM alizon._Contient_Produit_p WHERE id_Panier = NEW.id_Panier);
+SET @Somprixttc := (SELECT sum(prix_Produit_Commande_ttc) FROM alizon._Contient_Produit_p WHERE id_Panier = NEW.id_Panier);
+UPDATE alizon._Panier SET prix_total_ht = @Somprixht, prix_total_ttc = @Somprixttc, derniere_modif = NOW() WHERE id_Panier = NEW.id_Panier;
 END;
 @@;
 
@@ -506,13 +506,13 @@ Variables:
 
 set les nouveaux totaux dans _Panier
 */
-CREATE TRIGGER Alizon.trig_Calcul_Total_Panier3
-after delete on Alizon._Contient_Produit_p
+CREATE TRIGGER alizon.trig_Calcul_Total_Panier3
+after delete on alizon._Contient_Produit_p
 FOR EACH ROW
 BEGIN
-SET @Somprixht := (SELECT sum(prix_Produit_Commande_ht) FROM Alizon._Contient_Produit_p WHERE id_Panier = old.id_Panier);
-SET @Somprixttc := (SELECT sum(prix_Produit_Commande_ttc) FROM Alizon._Contient_Produit_p WHERE id_Panier = old.id_Panier);
-UPDATE Alizon._Panier SET prix_total_ht = @Somprixht, prix_total_ttc = @Somprixttc, derniere_modif = NOW() WHERE id_Panier = old.id_Panier;
+SET @Somprixht := (SELECT sum(prix_Produit_Commande_ht) FROM alizon._Contient_Produit_p WHERE id_Panier = old.id_Panier);
+SET @Somprixttc := (SELECT sum(prix_Produit_Commande_ttc) FROM alizon._Contient_Produit_p WHERE id_Panier = old.id_Panier);
+UPDATE alizon._Panier SET prix_total_ht = @Somprixht, prix_total_ttc = @Somprixttc, derniere_modif = NOW() WHERE id_Panier = old.id_Panier;
 END;
 @@;
 
@@ -524,12 +524,12 @@ Variables:
 
 set les total de signalement dans avis
 */
-CREATE trigger Alizon.trig_Calcul_Signalement
-after insert on Alizon._Signaler
+CREATE trigger alizon.trig_Calcul_Signalement
+after insert on alizon._Signaler
 FOR EACH ROW
 BEGIN
-set @nbs = (select signalement from Alizon._Avis where ID_Commentaire = new.ID_Commentaire);
-UPDATE Alizon._Avis SET signalement = @nbs+1   where ID_Commentaire = new.ID_Commentaire;
+set @nbs = (select signalement from alizon._Avis where ID_Commentaire = new.ID_Commentaire);
+UPDATE alizon._Avis SET signalement = @nbs+1   where ID_Commentaire = new.ID_Commentaire;
 END;
 @@;
 
@@ -539,8 +539,8 @@ Ce trigger automatise les date de livraison
 Variable:
 @date date courrante
 */
-CREATE trigger Alizon.trig_Commande_date
-before insert on Alizon._Commande
+CREATE trigger alizon.trig_Commande_date
+before insert on alizon._Commande
 for each row
 BEGIN
 set @date = (SELECT curdate());
@@ -565,15 +565,15 @@ Si le nombre de panier pour ID_Commentaire @i = 0 alors id est libre et le set d
 
 Fin boucle
 */
-CREATE TRIGGER Alizon.trig_id_Avis
-before INSERT on Alizon._Avis
+CREATE TRIGGER alizon.trig_id_Avis
+before INSERT on alizon._Avis
 FOR EACH ROW
 BEGIN
 set @i =1;
 set @modif =0;
-if (select count(*) from Alizon._Avis where ID_Client=new.ID_Client and ID_Produit = new.ID_Produit) = 0 then
-while @i< (select max(ID_Commentaire) from Alizon._Avis) && @modif = 0 do
-	if (select count(*) from Alizon._Avis where ID_Commentaire = @i) = 0 then
+if (select count(*) from alizon._Avis where ID_Client=new.ID_Client and ID_Produit = new.ID_Produit) = 0 then
+while @i< (select max(ID_Commentaire) from alizon._Avis) && @modif = 0 do
+	if (select count(*) from alizon._Avis where ID_Commentaire = @i) = 0 then
 		set New.ID_Commentaire = @i;
 		set @modif =1;
 	end if;
@@ -590,21 +590,21 @@ END;
 ######################################## CREATION DE VUES ########################################
 ##################################################################################################*/
 
-/*CREATE OR REPLACE View Alizon.panier AS
-SELECT nom_Produit,images1, images2, images3, Alizon._Contient_Produit_p.id_Produit,nom_Categorie,quantite_disponnible,quantite,prix_total_ttc, prix_Produit_Commande_ttc, prenom as vendeur , description_Produit, Alizon._Panier.id_Panier, prix_vente_ttc, Alizon._Sous_Categorie.nom as nom_SouCategorie  FROM Alizon._Contient_Produit_p 
-INNER JOIN Alizon._Produit ON Alizon._Produit.id_Produit = Alizon._Contient_Produit_p.id_Produit
-INNER JOIN Alizon._Sous_Categorie ON Alizon._Sous_Categorie.Id_Sous_Categorie = Alizon._Produit.id_Sous_Categorie
-INNER JOIN Alizon._Categorie ON Alizon._Categorie.id_Categorie = Alizon._Sous_Categorie.Id_Categorie_sup
-INNER JOIN Alizon._Vendeur ON Alizon._Vendeur.id_Vendeur = Alizon._Produit.id_Vendeur
-INNER JOIN Alizon._Panier ON Alizon._Contient_Produit_p.id_Panier = Alizon._Panier.id_Panier;
+/*CREATE OR REPLACE View alizon.panier AS
+SELECT nom_Produit,images1, images2, images3, alizon._Contient_Produit_p.id_Produit,nom_Categorie,quantite_disponnible,quantite,prix_total_ttc, prix_Produit_Commande_ttc, prenom as vendeur , description_Produit, alizon._Panier.id_Panier, prix_vente_ttc, alizon._Sous_Categorie.nom as nom_SouCategorie  FROM alizon._Contient_Produit_p 
+INNER JOIN alizon._Produit ON alizon._Produit.id_Produit = alizon._Contient_Produit_p.id_Produit
+INNER JOIN alizon._Sous_Categorie ON alizon._Sous_Categorie.Id_Sous_Categorie = alizon._Produit.id_Sous_Categorie
+INNER JOIN alizon._Categorie ON alizon._Categorie.id_Categorie = alizon._Sous_Categorie.Id_Categorie_sup
+INNER JOIN alizon._Vendeur ON alizon._Vendeur.id_Vendeur = alizon._Produit.id_Vendeur
+INNER JOIN alizon._Panier ON alizon._Contient_Produit_p.id_Panier = alizon._Panier.id_Panier;
 
 
 
 
-CREATE OR REPLACE View Alizon.catalogue AS
-SELECT id_Produit, nom_Produit, prix_vente_ht, prix_vente_ttc, quantite_disponnible, description_Produit, images1, images2, images3, nom as nom_souscategorie, nom_Categorie, moyenne_note_Produit FROM Alizon._Produit
-INNER JOIN Alizon._Sous_Categorie ON Alizon._Sous_Categorie.Id_Sous_Categorie = Alizon._Produit.id_Sous_Categorie
-INNER JOIN Alizon._Categorie ON Alizon._Categorie.id_Categorie = Alizon._Sous_Categorie.id_Categorie_sup;*/
+CREATE OR REPLACE View alizon.catalogue AS
+SELECT id_Produit, nom_Produit, prix_vente_ht, prix_vente_ttc, quantite_disponnible, description_Produit, images1, images2, images3, nom as nom_souscategorie, nom_Categorie, moyenne_note_Produit FROM alizon._Produit
+INNER JOIN alizon._Sous_Categorie ON alizon._Sous_Categorie.Id_Sous_Categorie = alizon._Produit.id_Sous_Categorie
+INNER JOIN alizon._Categorie ON alizon._Categorie.id_Categorie = alizon._Sous_Categorie.id_Categorie_sup;*/
 
 
 
@@ -612,67 +612,67 @@ INNER JOIN Alizon._Categorie ON Alizon._Categorie.id_Categorie = Alizon._Sous_Ca
 ######################################## INSERTION DE DONNEES ########################################
 ######################################################################################################*/
 
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Selestina', 'Darwent', 'sdarwent0@sourceforge.net', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Reinold', 'Henrichs', 'rhenrichs1@wix.com', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Cornela', 'Cordelette', 'ccordelette2@creativecommons.org', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Korry', 'Esby', 'kesby3@nih.gov', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Daloris', 'Castelletto', 'dcastelletto4@yale.edu', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Kimble', 'Nucciotti', 'knucciotti5@tmall.com', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Ophelia', 'Quinsee', 'oquinsee6@rediff.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Sophi', 'MacDonogh', 'smacdonogh7@slashdot.org', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Gunilla', 'Tunuy', 'gtunuy8@linkedin.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Ode', 'Ladell', 'oladell9@pbs.org', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Julieta', 'Feronet', 'jferoneta@senate.gov', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Don', 'Axel', 'daxelb@liveinternet.ru', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Gizela', 'Charville', 'gcharvillec@unblog.fr', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Brock', 'Dallas', 'bdallasd@dailymail.co.uk', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Eolanda', 'Quade', 'equadee@examiner.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Gianni', 'Bore', 'gboref@mediafire.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Mathilde', 'Burnett', 'mburnettg@moonfruit.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Ethelred', 'Chainey', 'echaineyh@wired.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Jodie', 'Beadel', 'jbeadeli@fema.gov', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Genovera', 'Ferrari', 'gferrarij@live.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Stanley', 'Mantha', 'smanthak@youtu.be', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Cassey', 'Connechie', 'cconnechiel@artisteer.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Lyle', 'Truckett', 'ltruckettm@ycombinator.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Dion', 'Rowlinson', 'drowlinsonn@aboutads.info', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Starla', 'Birmingham', 'sbirminghamo@unesco.org', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Michaelina', 'Flew', 'mflewp@nationalgeographic.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Marilyn', 'Bennike', 'mbennikeq@cisco.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Lane', 'Trengrouse', 'ltrengrouser@answers.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Etan', 'Othick', 'eothicks@examiner.com', 'abc');
-insert into Alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Bennie', 'Gotcliff', 'bgotclifft@jiathis.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Selestina', 'Darwent', 'sdarwent0@sourceforge.net', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Reinold', 'Henrichs', 'rhenrichs1@wix.com', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Cornela', 'Cordelette', 'ccordelette2@creativecommons.org', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Korry', 'Esby', 'kesby3@nih.gov', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Daloris', 'Castelletto', 'dcastelletto4@yale.edu', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Kimble', 'Nucciotti', 'knucciotti5@tmall.com', '701 605 384 384 117 474 384 109 321 312 277 605 268 384 312');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Ophelia', 'Quinsee', 'oquinsee6@rediff.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Sophi', 'MacDonogh', 'smacdonogh7@slashdot.org', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Gunilla', 'Tunuy', 'gtunuy8@linkedin.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Ode', 'Ladell', 'oladell9@pbs.org', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Julieta', 'Feronet', 'jferoneta@senate.gov', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Don', 'Axel', 'daxelb@liveinternet.ru', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Gizela', 'Charville', 'gcharvillec@unblog.fr', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Brock', 'Dallas', 'bdallasd@dailymail.co.uk', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Eolanda', 'Quade', 'equadee@examiner.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Gianni', 'Bore', 'gboref@mediafire.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Mathilde', 'Burnett', 'mburnettg@moonfruit.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Ethelred', 'Chainey', 'echaineyh@wired.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Jodie', 'Beadel', 'jbeadeli@fema.gov', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Genovera', 'Ferrari', 'gferrarij@live.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Stanley', 'Mantha', 'smanthak@youtu.be', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Cassey', 'Connechie', 'cconnechiel@artisteer.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Lyle', 'Truckett', 'ltruckettm@ycombinator.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Dion', 'Rowlinson', 'drowlinsonn@aboutads.info', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Starla', 'Birmingham', 'sbirminghamo@unesco.org', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Michaelina', 'Flew', 'mflewp@nationalgeographic.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Marilyn', 'Bennike', 'mbennikeq@cisco.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Lane', 'Trengrouse', 'ltrengrouser@answers.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Etan', 'Othick', 'eothicks@examiner.com', 'abc');
+insert into alizon._Vendeur (Prenom, Nom, Email,mdp) values ('Bennie', 'Gotcliff', 'bgotclifft@jiathis.com', 'abc');
 
-INSERT INTO Alizon._Client (nom_Client, prenom_Client, date_de_naissance, email, mdp, QuestionReponse) VALUES ('Portier', 'Loane', '2003-12-15', 'paprika@gmail.com', '224 605 224 321 117 19 605 407 268 442 605 117 426 23 471 474 442', 'Gardeur');
-INSERT INTO Alizon._Client (nom_Client, prenom_Client, date_de_naissance, email, mdp, QuestionReponse) VALUES ('Titouan', 'Laughren', '2002-05-24', 'TitouanRobe@gmail.com', '548 117 277 474 3 605 384 669 474 501 312 407 268 442 605 117 426 23 471 474 442', 'Rennes');
-INSERT INTO Alizon._Client (nom_Client, prenom_Client, date_de_naissance, email, mdp, QuestionReponse) VALUES ('Maincent', 'Oscar', '2003-01-05', 'OscarMaincent@gmail.com', '548 117 277 474 3 605 384 669 474 501 312 407 268 442 605 117 426 23 471 474 442', 'Saint-Martin');
-INSERT INTO Alizon._Client (nom_Client, prenom_Client, date_de_naissance, email, mdp, QuestionReponse) VALUES ('Demany', 'Theo', '2003-10-01', 'TheoDemany@gmail.com', '548 261 312 474 68 312 442 605 384 386 407 268 442 605 117 426 23 471 474 442', 'Audi');
+INSERT INTO alizon._Client (nom_Client, prenom_Client, date_de_naissance, email, mdp, QuestionReponse) VALUES ('Portier', 'Loane', '2003-12-15', 'paprika@gmail.com', '224 605 224 321 117 19 605 407 268 442 605 117 426 23 471 474 442', 'Gardeur');
+INSERT INTO alizon._Client (nom_Client, prenom_Client, date_de_naissance, email, mdp, QuestionReponse) VALUES ('Titouan', 'Laughren', '2002-05-24', 'TitouanRobe@gmail.com', '548 117 277 474 3 605 384 669 474 501 312 407 268 442 605 117 426 23 471 474 442', 'Rennes');
+INSERT INTO alizon._Client (nom_Client, prenom_Client, date_de_naissance, email, mdp, QuestionReponse) VALUES ('Maincent', 'Oscar', '2003-01-05', 'OscarMaincent@gmail.com', '548 117 277 474 3 605 384 669 474 501 312 407 268 442 605 117 426 23 471 474 442', 'Saint-Martin');
+INSERT INTO alizon._Client (nom_Client, prenom_Client, date_de_naissance, email, mdp, QuestionReponse) VALUES ('Demany', 'Theo', '2003-10-01', 'TheoDemany@gmail.com', '548 261 312 474 68 312 442 605 384 386 407 268 442 605 117 426 23 471 474 442', 'Audi');
 
-INSERT into Alizon._Adresse (ID_Client,nom_de_rue, complement, ville, code_postale) values (1,"1 Rue édouard Branly",null,"Lannion","22300");
-INSERT into Alizon._Adresse (ID_Client,nom_de_rue, complement, ville, code_postale) values (1,"11 chemin de traverse",null,"Guingamp","22200");
-INSERT into Alizon._Adresse (ID_Client,nom_de_rue, complement, ville, code_postale) values (2,"45 Avenue Fosh","11e arrondissement","Paris","75111");
-INSERT into Alizon._Adresse (ID_Client,nom_de_rue, complement, ville, code_postale) values (3,"29 rue cherbourg","3e Arrondissement","Paris","75003");
-INSERT into Alizon._Adresse (ID_Client,nom_de_rue, complement, ville, code_postale) values (4,"Résidence de la haute rive","Batiment D","Lannion","22300");
+INSERT into alizon._Adresse (ID_Client,nom_de_rue, complement, ville, code_postale) values (1,"1 Rue édouard Branly",null,"Lannion","22300");
+INSERT into alizon._Adresse (ID_Client,nom_de_rue, complement, ville, code_postale) values (1,"11 chemin de traverse",null,"Guingamp","22200");
+INSERT into alizon._Adresse (ID_Client,nom_de_rue, complement, ville, code_postale) values (2,"45 Avenue Fosh","11e arrondissement","Paris","75111");
+INSERT into alizon._Adresse (ID_Client,nom_de_rue, complement, ville, code_postale) values (3,"29 rue cherbourg","3e Arrondissement","Paris","75003");
+INSERT into alizon._Adresse (ID_Client,nom_de_rue, complement, ville, code_postale) values (4,"Résidence de la haute rive","Batiment D","Lannion","22300");
 
-INSERT into Alizon._Categorie (nom_Categorie) values ('Epicerie');
-INSERT into Alizon._Categorie (nom_Categorie) values ('Vetements');
-INSERT into Alizon._Categorie (nom_Categorie) values ('Souvenirs');
-INSERT into Alizon._Categorie (nom_Categorie) values ('Produits frais');
-
-
-INSERT INTO Alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(1,'Gateaux',0.20);
-INSERT INTO Alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(1,'Déjeuner',0.20);
-INSERT INTO Alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(2,'Pull',0.20);
-INSERT INTO Alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(2,'Pantalons',0.20);
-INSERT INTO Alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(2,'Vêtements de pluie',0.20);
-INSERT INTO Alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(3,'Poster',0.20);
-INSERT INTO Alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(3,'Cartes postales',0.20);
-INSERT INTO Alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(3,'Portes clefs',0.20);
-INSERT INTO Alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(4,'Poissons',0.20);
-INSERT INTO Alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(4,'Viande',0.20);
+INSERT into alizon._Categorie (nom_Categorie) values ('Epicerie');
+INSERT into alizon._Categorie (nom_Categorie) values ('Vetements');
+INSERT into alizon._Categorie (nom_Categorie) values ('Souvenirs');
+INSERT into alizon._Categorie (nom_Categorie) values ('Produits frais');
 
 
-INSERT INTO Alizon._Produit( `Nom_Produit`, `Prix_coutant`, `Prix_vente_HT`, `Prix_vente_TTC`, `Quantite_disponnible`, `Description_Produit`, `images1`, `images2`, `images3`, `Moyenne_Note_Produit`, `Id_Sous_Categorie`, `ID_Vendeur`) VALUES
+INSERT INTO alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(1,'Gateaux',0.20);
+INSERT INTO alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(1,'Déjeuner',0.20);
+INSERT INTO alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(2,'Pull',0.20);
+INSERT INTO alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(2,'Pantalons',0.20);
+INSERT INTO alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(2,'Vêtements de pluie',0.20);
+INSERT INTO alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(3,'Poster',0.20);
+INSERT INTO alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(3,'Cartes postales',0.20);
+INSERT INTO alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(3,'Portes clefs',0.20);
+INSERT INTO alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(4,'Poissons',0.20);
+INSERT INTO alizon._Sous_Categorie(id_Categorie_sup,nom,tva) VALUES(4,'Viande',0.20);
+
+
+INSERT INTO alizon._Produit( `Nom_Produit`, `Prix_coutant`, `Prix_vente_HT`, `Prix_vente_TTC`, `Quantite_disponnible`, `Description_Produit`, `images1`, `images2`, `images3`, `Moyenne_Note_Produit`, `Id_Sous_Categorie`, `ID_Vendeur`) VALUES
 ('kouign amann', '10.00', '19.99', '23.99', 100, 'Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque. Quisque porta volutpat erat.', 'img1.jpg', 'img2.jpg', 'img3.jpg', 5, 1, 1),
 ('COLA BIEN FRAIS', '3.00', '4.99', '5.99', 80, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum.', 'img1.jpg', 'img2.jpg', 'img3.jpg', NULL, 1, 1),
 ('Miel Breton toutes fleurs Pot 125g', '3.00', '4.99', '5.99', 48, 'Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum. Nullam varius.', 'img1.jpg', 'img2.jpg', NULL, NULL, 2, 2),
@@ -687,23 +687,23 @@ INSERT INTO Alizon._Produit( `Nom_Produit`, `Prix_coutant`, `Prix_vente_HT`, `Pr
 ('Portes clefs bien clichés', '45.00', '74.50', '89.40', 100, 'Etiam justo. Etiam pretium iaculis justo. In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.', 'img1.jpg', NULL, NULL, NULL, 8, 6);
 
 
-INSERT INTO Alizon._Panier(Prix_total_HT,Prix_total_TTC,ID_Client)VALUES(0,0,1);
-INSERT INTO Alizon._Panier(Prix_total_HT,Prix_total_TTC,ID_Client)VALUES(0,0,2);
-INSERT INTO Alizon._Panier(Prix_total_HT,Prix_total_TTC,ID_Client)VALUES(0,0,3);
-INSERT INTO Alizon._Panier(Prix_total_HT,Prix_total_TTC,ID_Client)VALUES(0,0,4);
+INSERT INTO alizon._Panier(Prix_total_HT,Prix_total_TTC,ID_Client)VALUES(0,0,1);
+INSERT INTO alizon._Panier(Prix_total_HT,Prix_total_TTC,ID_Client)VALUES(0,0,2);
+INSERT INTO alizon._Panier(Prix_total_HT,Prix_total_TTC,ID_Client)VALUES(0,0,3);
+INSERT INTO alizon._Panier(Prix_total_HT,Prix_total_TTC,ID_Client)VALUES(0,0,4);
 
 
-INSERT INTO Alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(1,1,10);
-INSERT INTO Alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(1,3,2);
-INSERT INTO Alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(2,4,5);
-INSERT INTO Alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(4,1,12);
-INSERT INTO Alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(4,2,3);
-INSERT INTO Alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(1,2,5);
-INSERT INTO Alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(2,1,7);
-INSERT INTO Alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(2,2,3);
+INSERT INTO alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(1,1,10);
+INSERT INTO alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(1,3,2);
+INSERT INTO alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(2,4,5);
+INSERT INTO alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(4,1,12);
+INSERT INTO alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(4,2,3);
+INSERT INTO alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(1,2,5);
+INSERT INTO alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(2,1,7);
+INSERT INTO alizon._Contient_Produit_p(id_Panier,id_Produit,quantite)VALUES(2,2,3);
 
 
-INSERT INTO Alizon._Commande(ID_Client, etat_Commande, adresse_livraison)VALUES(1, 'en cours', 'Résidence Lannion');
+INSERT INTO alizon._Commande(ID_Client, etat_Commande, adresse_livraison)VALUES(1, 'en cours', 'Résidence Lannion');
 
 
 INSERT INTO _Avis (ID_Client, ID_Produit, Note_Produit, Commentaire, Image_Avis) VALUES ('1', '1', '5', 'Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum', NULL);

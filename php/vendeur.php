@@ -132,9 +132,9 @@ if(isset($_GET["finalisation"])){
 </head>
 <body>
 <header class="header-vendeur">
-            <!-- TITRE ALIZON -->
+            <!-- TITRE alizon -->
             <a href="index.php" title="Accueil" class="logo">
-                <img src="../img/logo2.0.png" alt="Logo Alizon" title="Logo Alizon" width='200' class="img_logo">
+                <img src="../img/logo2.0.png" alt="Logo alizon" title="Logo alizon" width='200' class="img_logo">
             </a>
 
             <nav class="nav-vendeur">
@@ -196,7 +196,7 @@ if(isset($_GET["finalisation"])){
         <!--<section>
             <h1>Aperçu Général</h1>
             <p>Nombre de ventes</p>
-            <p>Chiffre d'affaires d'Alizon</p>
+            <p>Chiffre d'affaires d'alizon</p>
             <p>Nombre de produits</p>
             <p>Ventes de la semaine</p>
             <p>Produits épuisés</p>

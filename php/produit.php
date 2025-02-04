@@ -73,9 +73,9 @@
 
     /* vérification et suppression d'un commentaire */
     if (isset($_POST['SupprCommentaireId'])) {
-        $sth = $dbh -> prepare("DELETE FROM Alizon._Reponse WHERE ID_Commentaire = ?");
+        $sth = $dbh -> prepare("DELETE FROM alizon._Reponse WHERE ID_Commentaire = ?");
         $sth->execute(array($_POST['SupprCommentaireId']));
-        $sth = $dbh -> prepare("DELETE FROM Alizon._Avis WHERE ID_Commentaire = ?");
+        $sth = $dbh -> prepare("DELETE FROM alizon._Avis WHERE ID_Commentaire = ?");
         $sth->execute(array($_POST['SupprCommentaireId']));
 
     }

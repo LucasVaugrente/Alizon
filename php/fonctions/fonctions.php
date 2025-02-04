@@ -6,7 +6,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("SELECT ID_Commentaire, _Avis.ID_Client, nom_client, prenom_client, ID_Produit, Note_Produit, Commentaire, Image_Avis FROM $schema._Avis INNER JOIN $schema._Client on _Avis.ID_Client = _Client.ID_Client WHERE ID_Produit = ?");
+        $sth = $dbh -> prepare("SELECT ID_Commentaire, _avis.ID_Client, nom_client, prenom_client, ID_Produit, Note_Produit, Commentaire, Image_Avis FROM $schema._avis INNER JOIN $schema._client on _avis.ID_Client = _client.ID_Client WHERE ID_Produit = ?");
         $sth->execute(array($id_produit));
         
         return $sth->fetchAll();
@@ -16,7 +16,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("SELECT Commentaire FROM $schema._Reponse WHERE ID_Commentaire = ?");
+        $sth = $dbh -> prepare("SELECT Commentaire FROM $schema._reponse WHERE ID_Commentaire = ?");
         $sth->execute(array($id_commentaire));
         
         return $sth->fetchAll();
@@ -26,7 +26,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("SELECT _Commande.ID_Commande FROM $schema._Commande inner join $schema._Client on _Commande.ID_Client = _Client.ID_Client inner join $schema._contient_produit_c on _Commande.ID_Commande = _contient_produit_c.ID_Commande WHERE _Client.ID_Client = ? and ID_Produit = ?");
+        $sth = $dbh -> prepare("SELECT _commande.ID_Commande FROM $schema._commande inner join $schema._client on _commande.ID_Client = _client.ID_Client inner join $schema._contient_produit_c on _commande.ID_Commande = _contient_produit_c.ID_Commande WHERE _client.ID_Client = ? and ID_Produit = ?");
         $sth->execute(array($id_client,$id_produit));
         
         return $sth->fetchAll();
@@ -36,7 +36,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("INSERT INTO $schema._Reponse (ID_Commentaire,Commentaire) VALUES (?,?);");
+        $sth = $dbh -> prepare("INSERT INTO $schema._reponse (ID_Commentaire,Commentaire) VALUES (?,?);");
 
         $sth->execute(array($id_commentaire,$commentaire)); 
     }
@@ -45,7 +45,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("SELECT _Reponse.ID_Commentaire FROM $schema._Reponse WHERE ID_Commentaire = ?");
+        $sth = $dbh -> prepare("SELECT _reponse.ID_Commentaire FROM $schema._reponse WHERE ID_Commentaire = ?");
 
         $sth->execute(array($id_commentaire)); 
 
@@ -56,7 +56,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("SELECT nom_client FROM $schema._Client NATURAL JOIN $schema._Avis WHERE id_client = ?");
+        $sth = $dbh -> prepare("SELECT nom_client FROM $schema._client NATURAL JOIN $schema._avis WHERE id_client = ?");
         $sth->execute(array($id_client));
         $infosClient = $sth->fetchAll();
 
@@ -67,7 +67,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("SELECT * FROM $schema._Client WHERE id_client = ?");
+        $sth = $dbh -> prepare("SELECT * FROM $schema._client WHERE id_client = ?");
         $sth->execute(array($id_client));
         $infosClient = $sth->fetchAll();
 
@@ -123,7 +123,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("SELECT ID_Commentaire FROM $schema._Avis WHERE ID_Client = ? and ID_Produit = ?");
+        $sth = $dbh -> prepare("SELECT ID_Commentaire FROM $schema._avis WHERE ID_Client = ? and ID_Produit = ?");
 
         $sth->execute(array($id_client,$id_produit)); 
 
@@ -135,7 +135,7 @@
         global $dbh;
 
         
-        $sth = $dbh -> prepare("INSERT INTO $schema._Avis (ID_Client, ID_Produit, Note_Produit, Commentaire) VALUES (?,?,?,?);");
+        $sth = $dbh -> prepare("INSERT INTO $schema._avis (ID_Client, ID_Produit, Note_Produit, Commentaire) VALUES (?,?,?,?);");
 
         $sth->execute(array($id_client, $id_produit, $note, $commentaire)); 
     }
@@ -261,7 +261,7 @@
         global $schema;
         global $dbh;
 
-        $prix = $dbh->prepare("SELECT min(Prix_vente_TTC) FROM $schema._Produit");
+        $prix = $dbh->prepare("SELECT min(Prix_vente_TTC) FROM $schema._produit");
         $prix->execute();
 
         return $prix->fetch();
@@ -271,7 +271,7 @@
         global $schema;
         global $dbh;
 
-        $prix = $dbh->prepare("SELECT max(Prix_vente_TTC) FROM $schema._Produit");
+        $prix = $dbh->prepare("SELECT max(Prix_vente_TTC) FROM $schema._produit");
         $prix->execute();
 
         return $prix->fetch();
@@ -281,7 +281,7 @@
         global $schema;
         global $dbh;
 
-        $vendeur = $dbh->prepare("SELECT * FROM $schema._Vendeur inner join $schema._Produit on _Vendeur.ID_Vendeur = _Produit.ID_Vendeur where ID_Produit = ?");
+        $vendeur = $dbh->prepare("SELECT * FROM $schema._vendeur inner join $schema._produit on _vendeur.ID_Vendeur = _produit.ID_Vendeur where ID_Produit = ?");
         $vendeur->execute(array($id_produit));
 
         return $vendeur->fetchAll();
@@ -291,7 +291,7 @@
         global $schema;
         global $dbh;
 
-        $categorie = $dbh->prepare("SELECT * FROM $schema._Categorie");
+        $categorie = $dbh->prepare("SELECT * FROM $schema._categorie");
         $categorie->execute();
 
         return $categorie->fetchAll();
@@ -301,7 +301,7 @@
         global $schema;
         global $dbh;
 
-        $sous_categorie = $dbh->prepare("SELECT * FROM $schema._Sous_Categorie");
+        $sous_categorie = $dbh->prepare("SELECT * FROM $schema._sous_categorie");
         $sous_categorie->execute();
 
         return $sous_categorie->fetchAll();
@@ -311,7 +311,7 @@
         global $schema;
         global $dbh;
 
-        $sql = "INSERT INTO $schema._Produit(Nom_produit, Prix_coutant, Prix_vente_HT, Prix_vente_TTC, Quantite_disponnible, Description_produit, images1, images2, images3, Moyenne_Note_Produit, Id_Sous_Categorie, ID_Vendeur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO $schema._produit(Nom_produit, Prix_coutant, Prix_vente_HT, Prix_vente_TTC, Quantite_disponnible, Description_produit, images1, images2, images3, Moyenne_Note_Produit, Id_Sous_Categorie, ID_Vendeur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 
         $sth = $dbh->prepare($sql);
         $sth->execute($donnees_csv);
@@ -321,7 +321,7 @@
         global $schema;
         global $dbh;
 
-        $sql = "INSERT INTO $schema._Produit(Nom_produit, Prix_coutant, Prix_vente_HT, Quantite_disponnible, Description_produit, images1, images2, images3, Id_Sous_Categorie, ID_Vendeur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO $schema._produit(Nom_produit, Prix_coutant, Prix_vente_HT, Quantite_disponnible, Description_produit, images1, images2, images3, Id_Sous_Categorie, ID_Vendeur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 
         $sth = $dbh->prepare($sql);
         $sth->execute($donnees_form);
@@ -342,7 +342,7 @@
         global $schema;
         global $dbh;
 
-        $catalogue = $dbh->prepare("SELECT * FROM $schema.catalogue inner join $schema._Vendeur on _Vendeur.ID_Vendeur = catalogue.ID_Vendeur");
+        $catalogue = $dbh->prepare("SELECT * FROM $schema.catalogue inner join $schema._vendeur on _vendeur.ID_Vendeur = catalogue.ID_Vendeur");
         $catalogue->execute();
         $catalogue = $catalogue->fetchAll();
         return $catalogue;
@@ -352,7 +352,7 @@
         global $schema;
         global $dbh;
 
-        $catalogue = $dbh->prepare("SELECT id_produit, Nom_vendeur FROM $schema._Vendeur inner join $schema.catalogue on _Vendeur.ID_Vendeur = catalogue.ID_Vendeur");
+        $catalogue = $dbh->prepare("SELECT id_produit, Nom_vendeur FROM $schema._vendeur inner join $schema.catalogue on _vendeur.ID_Vendeur = catalogue.ID_Vendeur");
         $catalogue->execute();
         $catalogue = $catalogue->fetchAll();
         return $catalogue;
@@ -382,7 +382,7 @@
         global $schema;
         global $dbh;
 
-        $catalogue_produits = $dbh->prepare("SELECT * FROM $schema.catalogue inner join $schema._Vendeur on _Vendeur.ID_Vendeur = catalogue.ID_Vendeur WHERE nom_produit LIKE '%$mots%' OR description_produit LIKE '$mots%' OR nom_souscategorie LIKE '$mots%' OR nom_categorie LIKE '$mots%'");
+        $catalogue_produits = $dbh->prepare("SELECT * FROM $schema.catalogue inner join $schema._vendeur on _vendeur.ID_Vendeur = catalogue.ID_Vendeur WHERE nom_produit LIKE '%$mots%' OR description_produit LIKE '$mots%' OR nom_souscategorie LIKE '$mots%' OR nom_categorie LIKE '$mots%'");
         $catalogue_produits->execute();
         $catalogue_produits = $catalogue_produits->fetchAll();
         return $catalogue_produits;
@@ -504,10 +504,10 @@
         global $schema;
         global $dbh;
        
-        $cttc = $dbh->prepare("SELECT Prix_vente_TTC FROM $schema._Produit  where ID_Produit = ?");
+        $cttc = $dbh->prepare("SELECT Prix_vente_TTC FROM $schema._produit  where ID_Produit = ?");
         $ttc = $cttc->execute(array($id_produit));
 
-        $cht = $dbh->prepare("SELECT Prix_vente_HT FROM $schema._Produit  where ID_Produit  = ?");
+        $cht = $dbh->prepare("SELECT Prix_vente_HT FROM $schema._produit  where ID_Produit  = ?");
         $ht = $cht->execute(array($id_produit));
 
         $cverif = $dbh->prepare("SELECT COUNT(*) FROM $schema._Contient_Produit_p where ID_Produit  = ? AND ID_Panier = ?");
@@ -541,26 +541,26 @@
         
         //Mettre a jour les information du profil Client
         if(!empty($prenom)) {
-            $UpdatePrenom = $dbh->prepare("UPDATE $schema._Client SET prenom_client=? where id_client=?");
+            $UpdatePrenom = $dbh->prepare("UPDATE $schema._client SET prenom_client=? where id_client=?");
             $executePrenom = $UpdatePrenom->execute(array($prenom,$id));
         }
 
         if(!empty($nom)) {
-            $UpdateNom = $dbh->prepare("UPDATE $schema._Client SET nom_client=? where id_client=?");
+            $UpdateNom = $dbh->prepare("UPDATE $schema._client SET nom_client=? where id_client=?");
             $executeNom = $UpdateNom->execute(array($nom,$id));
         }
 
         if(!empty($date)) {
-            $UpdateDate = $dbh->prepare("UPDATE $schema._Client SET date_de_naissance=? where id_client=?");
+            $UpdateDate = $dbh->prepare("UPDATE $schema._client SET date_de_naissance=? where id_client=?");
             $executeDate = $UpdateDate->execute(array($date,$id));
         }
 
         if(!empty($adresse_f)) {
-            $UpdateAdresse = $dbh->prepare("UPDATE $schema._Client SET adresse_facturation=? where id_client=?");
+            $UpdateAdresse = $dbh->prepare("UPDATE $schema._client SET adresse_facturation=? where id_client=?");
             $executeAdresse = $UpdateAdresse->execute(array($adresse_f,$id));
         }
         if(!empty($adresse_l)) {
-            $UpdateAdresse = $dbh->prepare("UPDATE $schema._Client SET adresse_livraison=? where id_client=?");
+            $UpdateAdresse = $dbh->prepare("UPDATE $schema._client SET adresse_livraison=? where id_client=?");
             $executeAdresse = $UpdateAdresse->execute(array($adresse_l,$id));
         }
     }
@@ -569,10 +569,10 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT mdp FROM $schema._Client WHERE id_client = ?");
+        $sth = $dbh->prepare("SELECT mdp FROM $schema._client WHERE id_client = ?");
         $sth->execute(array($id));
         if($LastMdp == $sth->fetchAll()[0]['mdp']){
-            $update = $dbh->prepare("UPDATE $schema._Client SET mdp=? where id_client=?");
+            $update = $dbh->prepare("UPDATE $schema._client SET mdp=? where id_client=?");
             $executeUpdate = $update->execute(array($mdp, $id));
             return True;
         }
@@ -730,7 +730,7 @@
         global $schema;
         global $dbh;
         
-        $sth = $dbh->prepare("SELECT * from $schema._Client INNER JOIN $schema._panier on _Client.ID_Client = _panier.ID_Client where _Client.ID_Client = ?");
+        $sth = $dbh->prepare("SELECT * from $schema._client INNER JOIN $schema._panier on _client.ID_Client = _panier.ID_Client where _client.ID_Client = ?");
         $sth->execute(array($idClient));
         return $sth->fetchAll()[0];
     }
@@ -748,7 +748,7 @@
         global $schema;
         global $dbh;
         
-        $sth = $dbh->prepare("SELECT * from $schema._Client ORDER BY nom_client, prenom_client");
+        $sth = $dbh->prepare("SELECT * from $schema._client ORDER BY nom_client, prenom_client");
         $sth->execute();
         return $sth->fetchAll();
     }
@@ -757,7 +757,7 @@
         global $schema;
         global $dbh;
         
-        $sth = $dbh->prepare("SELECT * from $schema._Client WHERE nom_client LIKE '%$mots%' OR prenom_client LIKE '%$mots%' AND active=1 ORDER BY nom_client, prenom_client");
+        $sth = $dbh->prepare("SELECT * from $schema._client WHERE nom_client LIKE '%$mots%' OR prenom_client LIKE '%$mots%' AND active=1 ORDER BY nom_client, prenom_client");
         $sth->execute();
         return $sth->fetchAll();
     }
@@ -765,7 +765,7 @@
     function verif_email($email) {
         global $schema;
         global $dbh;
-        $sth = $dbh->prepare("SELECT count(*) FROM $schema._Client WHERE email = ?");
+        $sth = $dbh->prepare("SELECT count(*) FROM $schema._client WHERE email = ?");
         $execute = $sth->execute(array($email));
         return $execute->fetchAll()[0]['count'];
     }
@@ -787,7 +787,7 @@
             $suppPanier  = $dbh ->prepare("DELETE from $schema._panier where ID_Client = ?");
             $suppPanier ->execute(array($id_client));
             
-            $suppCompte = $dbh->prepare("UPDATE $schema._Client SET active = 0 WHERE ID_Client = ?");
+            $suppCompte = $dbh->prepare("UPDATE $schema._client SET active = 0 WHERE ID_Client = ?");
             $suppCompte->execute(array($id_client));
 
             $res = true;
@@ -850,7 +850,7 @@
         include("chiffrement.php");
         $mdp = chiffrementMDP($mdp);
         
-        $sth = $dbh->prepare("SELECT count(ID_Client) FROM Alizon._Client WHERE email = '$email' AND mdp = '$mdp'");
+        $sth = $dbh->prepare("SELECT count(ID_Client) FROM alizon._client WHERE email = '$email' AND mdp = '$mdp'");
         $sth->execute();
         $result = $sth->fetchAll();
 
@@ -859,9 +859,9 @@
         if ($result[0]['count(ID_Client)'] == 1) 
         {
 
-            $sth2 = $dbh -> prepare("SELECT ID_Client FROM Alizon._Client WHERE email = '$email' and mdp = '$mdp'");
+            $sth2 = $dbh -> prepare("SELECT ID_Client FROM alizon._client WHERE email = '$email' and mdp = '$mdp'");
             $sth2->execute();
-            $sth3 = $dbh -> prepare("SELECT active FROM Alizon._Client WHERE email = '$email' and mdp = '$mdp'");
+            $sth3 = $dbh -> prepare("SELECT active FROM alizon._client WHERE email = '$email' and mdp = '$mdp'");
             $sth3->execute();
 
             $id_client = $sth2 -> fetchAll()[0]['ID_Client'];
@@ -881,7 +881,7 @@
         include("chiffrement.php");
         $mdp = chiffrementMDP($mdp);
 
-        $sth = $dbh->prepare("SELECT count(ID_Vendeur) FROM Alizon._Vendeur WHERE email = '$email' AND mdp = '$mdp'");
+        $sth = $dbh->prepare("SELECT count(ID_Vendeur) FROM alizon._vendeur WHERE email = '$email' AND mdp = '$mdp'");
         $sth->execute();
         $result = $sth->fetchAll();
 
@@ -890,7 +890,7 @@
         if ($result[0]['count(ID_Vendeur)'] == 1) 
         {
 
-            $sth2 = $dbh -> prepare("SELECT ID_Vendeur FROM Alizon._Vendeur WHERE email = '$email' and mdp = '$mdp'");
+            $sth2 = $dbh -> prepare("SELECT ID_Vendeur FROM alizon._vendeur WHERE email = '$email' and mdp = '$mdp'");
             $sth2->execute();
             $id_client = $sth2 -> fetchAll()[0]['ID_Vendeur'];
             $res = true;
@@ -902,7 +902,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT * FROM Alizon._vendeur WHERE ID_Vendeur = '$id'");
+        $sth = $dbh->prepare("SELECT * FROM alizon._vendeur WHERE ID_Vendeur = '$id'");
         $sth->execute();
         $res = $sth->fetchAll();
         return $res;
@@ -914,10 +914,10 @@
         global $dbh;
 
         if(empty($complementAdresse)){
-            $sth = $dbh -> prepare("INSERT INTO Alizon._Adresse (ID_Client,nom_de_rue,ville,code_postale,adresse_facturation) VALUES (?,?,?,?,?)");
+            $sth = $dbh -> prepare("INSERT INTO alizon._Adresse (ID_Client,nom_de_rue,ville,code_postale,adresse_facturation) VALUES (?,?,?,?,?)");
             $sth->execute(array($id_client,$adr,$ville,$codePostal,$facturation));
         }else{
-            $sth = $dbh -> prepare("INSERT INTO Alizon._Adresse (ID_Client,nom_de_rue,complement,ville,code_postale,adresse_facturation) VALUES (?,?,?,?,?,?)");
+            $sth = $dbh -> prepare("INSERT INTO alizon._Adresse (ID_Client,nom_de_rue,complement,ville,code_postale,adresse_facturation) VALUES (?,?,?,?,?,?)");
             $sth->execute(array($id_client,$adr,$complementAdresse,$ville,$codePostal,$facturation));
         }
     }
@@ -948,7 +948,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("DELETE FROM Alizon._Adresse WHERE ID_Adresse = ? ;");
+        $sth = $dbh -> prepare("DELETE FROM alizon._Adresse WHERE ID_Adresse = ? ;");
         $sth->execute(array($ID_Adresse));
     }
 
@@ -958,7 +958,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("SELECT ID_Client FROM Alizon._Client WHERE email = ?");
+        $sth = $dbh -> prepare("SELECT ID_Client FROM alizon._client WHERE email = ?");
         $sth->execute(array($email));
         $tabverif = $sth->fetchAll();
         $verif = 0;
@@ -985,16 +985,16 @@
                 $question = $_POST['question'];
                 $reponse = $_POST['reponse'];
                 
-                $sth = $dbh -> prepare("INSERT INTO Alizon._Client (nom_client,prenom_client,date_de_naissance,email,mdp,QuestionReponse) VALUES ('$nom','$prenom','$ddn','$email','$mdp','$reponse')");
+                $sth = $dbh -> prepare("INSERT INTO alizon._client (nom_client,prenom_client,date_de_naissance,email,mdp,QuestionReponse) VALUES ('$nom','$prenom','$ddn','$email','$mdp','$reponse')");
                 $sth->execute();
                 
                 
                 // RECUPERATION DE L'ID CLIENT
-                $sth = $dbh -> prepare("SELECT ID_Client from Alizon._Client WHERE email = ?");
+                $sth = $dbh -> prepare("SELECT ID_Client from alizon._client WHERE email = ?");
                 $sth->execute(array($email));
                 $id_client = $sth->fetchAll()[0]['ID_Client'];
                 
-                $sth = $dbh -> prepare("UPDATE Alizon._panier SET ID_Client = ? WHERE id_panier = ?");
+                $sth = $dbh -> prepare("UPDATE alizon._panier SET ID_Client = ? WHERE id_panier = ?");
                 $sth->execute(array($id_client,$_COOKIE['id_panier']));
                 $res = true;
 
@@ -1018,7 +1018,7 @@
         global $schema;
         global $dbh;
 
-        $stmt = $dbh->prepare("SELECT mdp FROM $schema._Client WHERE ID_Client = ?");
+        $stmt = $dbh->prepare("SELECT mdp FROM $schema._client WHERE ID_Client = ?");
         $stmt->execute(array($id));
         $result = $stmt->fetchAll();
 
@@ -1057,7 +1057,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT count(*) FROM $schema._Client WHERE email = ?");
+        $sth = $dbh->prepare("SELECT count(*) FROM $schema._client WHERE email = ?");
         $sth->execute(array($email));
         $result = $sth->fetchAll();
 
@@ -1065,7 +1065,7 @@
 
         if ($result[0]['count(*)'] == 1) 
         {
-            $sth2 = $dbh -> prepare("SELECT QuestionReponse FROM $schema._Client WHERE email = ?");
+            $sth2 = $dbh -> prepare("SELECT QuestionReponse FROM $schema._client WHERE email = ?");
             $sth2->execute(array($email));
             $rep_cli = $sth2 -> fetchAll()[0]['QuestionReponse'];
             $res = "errorquestion";
@@ -1074,7 +1074,7 @@
             {
                 include("chiffrement.php");
                 $mdp = chiffrementMDP($mdp);
-                $sth = $dbh->prepare("UPDATE $schema._Client SET mdp = ? WHERE email = ?");
+                $sth = $dbh->prepare("UPDATE $schema._client SET mdp = ? WHERE email = ?");
                 $sth->execute(array($mdp, $email));
                 $res = 0;
             }
@@ -1088,7 +1088,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT count(*) FROM $schema._Client WHERE email = ?");
+        $sth = $dbh->prepare("SELECT count(*) FROM $schema._client WHERE email = ?");
         $sth->execute(array($email));
         $result = $sth->fetchAll();
 
@@ -1105,7 +1105,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT Question FROM $schema._Client NATURAL JOIN $schema._questionsecrete WHERE email = ?");
+        $sth = $dbh->prepare("SELECT Question FROM $schema._client NATURAL JOIN $schema._questionsecrete WHERE email = ?");
         $sth->execute(array($email));
         $result = $sth->fetchAll()[0];
 
@@ -1205,7 +1205,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT * from $schema._Produit where ID_Vendeur = $id;");
+        $sth = $dbh->prepare("SELECT * from $schema._produit where ID_Vendeur = $id;");
         $sth->execute();
         $result = $sth->fetchAll();
 
@@ -1217,7 +1217,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT * from $schema._Produit");
+        $sth = $dbh->prepare("SELECT * from $schema._produit");
         $sth->execute();
         $result = $sth->fetchAll();
 
@@ -1229,7 +1229,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT ID_Vendeur from $schema._Vendeur where Nom_vendeur = '$nom';");
+        $sth = $dbh->prepare("SELECT ID_Vendeur from $schema._vendeur where Nom_vendeur = '$nom';");
         $sth->execute();
         $result = $sth->fetchAll();
 
@@ -1241,7 +1241,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT * from $schema._Vendeur");
+        $sth = $dbh->prepare("SELECT * from $schema._vendeur");
         $sth->execute();
         $result = $sth->fetchAll();
 
@@ -1254,7 +1254,7 @@
         global $schema;
         global $dbh;
 
-        $vendeur = $dbh->prepare("SELECT * FROM $schema._Vendeur where ID_Vendeur = ?");
+        $vendeur = $dbh->prepare("SELECT * FROM $schema._vendeur where ID_Vendeur = ?");
         $vendeur->execute(array($id_vendeur));
 
         return $vendeur->fetchAll();
@@ -1264,7 +1264,7 @@
         global $schema;
         global $dbh;
 
-        $liste_produit = $dbh->prepare("SELECT * FROM $schema._Produit where ID_Vendeur = ?");
+        $liste_produit = $dbh->prepare("SELECT * FROM $schema._produit where ID_Vendeur = ?");
         $liste_produit->execute(array($id_vendeur));
 
         return $liste_produit->fetchAll();
@@ -1276,7 +1276,7 @@
         global $dbh;
 
 
-        $sth = $dbh->prepare("UPDATE $schema._Vendeur SET texte_Presentation = ?, note = ? WHERE ID_Vendeur = ?");
+        $sth = $dbh->prepare("UPDATE $schema._vendeur SET texte_Presentation = ?, note = ? WHERE ID_Vendeur = ?");
         $sth->execute(array($texte, $note, $id));
         $result = $sth->fetchAll();
     }
@@ -1310,7 +1310,7 @@
 
         $mdp = chiffrementMDP($mdp);
 
-        $sth = $dbh->prepare("UPDATE $schema._Vendeur SET mdp = ? WHERE ID_Vendeur = ?");
+        $sth = $dbh->prepare("UPDATE $schema._vendeur SET mdp = ? WHERE ID_Vendeur = ?");
         $sth->execute(array($mdp, $id));
         $result = $sth->fetchAll();
     }

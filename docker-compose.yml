@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  mysql:
+    build:
+      context: .
+      dockerfile: mysql-server/Dockerfile
+    container_name: alizon_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: alizon
+      MYSQL_USER: lucas
+      MYSQL_PASSWORD: Polimu87
+    ports:
+      - "3333:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  php-apache:
+    build:
+      context: .
+      dockerfile: php-server/Dockerfile
+    container_name: alizon_php
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+    volumes:
+      - ./php:/var/www/html
+      - ./css:/var/www/html/css
+      - ./csv:/var/www/html/csv
+      - ./fonts:/var/www/html/fonts
+      - ./img:/var/www/html/img
+      - ./js:/var/www/html/js
+
+
+volumes:
+  mysql_data:

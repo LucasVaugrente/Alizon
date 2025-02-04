@@ -271,7 +271,7 @@
                     <!-- Lien vers Se connecter -->
                     <p class="deja_inscrit">Déjà inscrit ?<a class="se_connecter" href="connexion.php">Se connecter</a></p>
 
-                    <p class="txt_prevention">En créant un compte, vous acceptez les conditions générales de vente d’Alizon. Veuillez consulter notre notice Protection de vos Informations Personnelles, notre notice Cookies et notre notice Annonces publicitaires basées sur vos centres d’intérêt.
+                    <p class="txt_prevention">En créant un compte, vous acceptez les conditions générales de vente d’alizon. Veuillez consulter notre notice Protection de vos Informations Personnelles, notre notice Cookies et notre notice Annonces publicitaires basées sur vos centres d’intérêt.
                     </p>
 
                 </div>

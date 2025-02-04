@@ -29,9 +29,9 @@
 <div class='sticky-header'>
   <div class="haut_de_page">
 
-    <!-- TITRE ALIZON -->
+    <!-- TITRE alizon -->
     <a href="index.php" title="Accueil" class="logo">
-        <img src="../img/logo2.0.png" alt="Logo Alizon" title="Logo Alizon" width='200' class="img_logo">
+        <img src="../img/logo2.0.png" alt="Logo alizon" title="Logo alizon" width='200' class="img_logo">
     </a>
 
     <!-- BARRE DE RECHERCHE FORMAT PC-->

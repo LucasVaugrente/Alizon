@@ -198,7 +198,7 @@
                     <h4><?php echo $prixTotal." €";?></h4>
                 </div>
                 <aside>
-                    En passant votre commande, Vous acceptez les <a href="#">Conditions générales de ventes</a> de Alizon.
+                    En passant votre commande, Vous acceptez les <a href="#">Conditions générales de ventes</a> de alizon.
                 </aside>
             </aside>
         </div>
