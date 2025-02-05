@@ -14,6 +14,6 @@
         //$dbh = null; afaire après vos requetes dans les autres fichier
 
     } catch (PDOException $e) {
-        print "Erreur :( : " . $e->getMessage() . "<br/>";
+        print "<b>Erreur SQL : </b>" . $e->getMessage() . "<br/>";
     }
 ?>
