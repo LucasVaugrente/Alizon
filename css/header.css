@@ -22,8 +22,6 @@ header {
   gap: 40px;
 }
 
-/* LOGOS */
-
 .logos {
   display: flex;
   justify-content: center;
@@ -46,11 +44,12 @@ header {
   gap: 5px;
   cursor: pointer;
   position: relative;
-  transition: all 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
 .logo_compte i,
-.logo_panier i {
+.logo_panier i,
+.search-btn-tel i {
   transition: all 0.3s ease-in-out;
   font-size: 38px;
 }
@@ -208,30 +207,22 @@ div.nom_compte {
   color: #fff;
 }
 
-/* BARRE DE RECHERCHE */
-
-@media screen and (max-width: 1024px) {
-  .search-box {
-    display: none;
-  }
-
-  .haut_de_page {
-    justify-content: space-between;
-  }
-
-  div.topnav {
-    padding: 10px 10px 0 10px;
-  }
-
-  ul.topnav--left {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    gap: 20px;
-  }
+.navbar {
+  background-color: var(--jaune);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-shrink: 2;
 }
 
-/* MENU BURGER */
+.navbar_admin {
+  background-color: var(--bleu);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-shrink: 2;
+}
+
 .topnav {
   font-weight: bolder;
   display: flex;
@@ -242,7 +233,6 @@ div.nom_compte {
 }
 
 .topnav a {
-  margin-right: 10px;
   color: white;
   font-family: Montserrat;
 }
@@ -264,7 +254,6 @@ div.nom_compte {
   height: 30px;
   display: inline-block;
   border-radius: 5px;
-  margin-left: -20px;
 }
 
 .topnav--right a + a {
@@ -285,20 +274,20 @@ div.nom_compte {
   color: #fff;
 }
 
-.v-line + li a:after,
-.v-line + li + li a:after {
+.v-line + li a::after,
+.v-line + li + li a::after {
   content: "";
   display: flex;
-  margin-top: 2px;
   height: 2px;
   width: 0;
   background: transparent;
   transition: width 0.5s ease, background-color 0.5s ease;
+  margin-bottom: -3px;
 }
 
 .v-line + li a:hover::after,
 .v-line + li + li a:hover::after {
-  width: 90%;
+  width: 100%;
   background: var(--bleu);
 }
 
@@ -352,10 +341,6 @@ div.nom_compte {
   transition: all 0.3s ease-in-out;
 }
 
-.search-btn-tel i {
-  font-size: 38px;
-}
-
 .search-btn-tel:hover {
   color: var(--jaune);
 }
@@ -378,25 +363,10 @@ div.nom_compte {
   border-color: #ff9800;
 }
 
-.navbar {
-  display: none;
-  background-color: #5fb7f6;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-shrink: 2;
-}
-
-.fa-bars {
-  color: black;
-  margin-bottom: 1%;
-}
-
 .topnav--left,
 .topnav--right {
   display: flex;
   justify-content: space-around;
-  flex-direction: row;
   align-items: center;
   margin: 0;
   gap: 20px;
@@ -406,62 +376,10 @@ div.nom_compte {
   margin-top: 1px;
 }
 
-@media screen and (max-width: 730px) {
-  .search-box {
-    display: none;
-  }
-
-  .search-btn-tel {
-    display: flex;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  form.example {
-    display: none;
-  }
-
-  .topnav {
-    display: none;
-  }
-
-  .fa-bars {
-    color: #fff;
-    margin-top: -10%;
-    margin-left: -10%;
-  }
-
-  div.topnav {
-    font-size: 10px;
-    padding: 10px;
-  }
-
-  .topnav--left,
-  .topnav--right {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    align-items: center;
-    margin: 0;
-    gap: 5px;
-  }
-
-  .topnav--right {
-    margin-bottom: 4px;
-  }
-
-  div.haut_de_page {
-    padding: 15px;
-  }
-}
-
-/*BURGER PC */
-/* header */
 .header {
   background: #ffb703;
   position: relative;
   max-width: 80vw;
-  margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -508,7 +426,6 @@ div.nom_compte {
 }
 
 .menu-items li {
-  padding: 0.5rem 1rem;
   transition: background 0.3s ease-in-out;
 }
 
@@ -516,10 +433,8 @@ div.nom_compte {
   background-color: #ffb703;
 }
 
-/* dropdown */
 .dropdown {
   position: relative;
-  /*display : none */
 }
 
 .dropdown-menu,
@@ -557,7 +472,6 @@ div.nom_compte {
   visibility: visible;
 }
 
-/* mega menu  */
 .mega-menu {
   position: absolute;
   left: 0;
@@ -642,9 +556,6 @@ ul.topnav--left {
   padding-left: 0;
 }
 
-/* NEW STUFFS */
-
-/* nav menu button */
 .menu-btn {
   position: relative;
   display: none;
@@ -679,19 +590,18 @@ ul.topnav--left {
   transform: translateY(0.5rem);
 }
 
-/* animation */
 .menu-btn.open .menu-btn__lines {
-  transform: translateX(2rem);
+  transform: translateX(-2rem);
   background: transparent;
 }
 
 .menu-btn.open .menu-btn__lines::before {
-  transform: rotate(45deg) translate(-1.5rem, 1.5rem);
+  transform: rotate(-45deg) translate(1.5rem, 1.5rem);
   background: #ffffff;
 }
 
 .menu-btn.open .menu-btn__lines::after {
-  transform: rotate(-45deg) translate(-1.5rem, -1.5rem);
+  transform: rotate(45deg) translate(1.5rem, -1.5rem);
   background: #ffffff;
 }
 
@@ -701,10 +611,6 @@ li .mega-menu2 {
   padding-left: 0;
 }
 
-li.mega-menu2,
-.mega-menu.expandable {
-  margin-left: -50px;
-}
 
 .header.tel .menu-item.expand-btn,
 .header_admin.tel .menu-item.expand-btn,
@@ -712,7 +618,41 @@ li.mega-menu2,
   display: none;
 }
 
-/* MEDIA QUERY */
+.topnav-tel {
+  overflow: hidden;
+  position: relative;
+  margin-left: 1em;
+  color: white;
+  padding: 20px;
+}
+
+.topnav-tel a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+  cursor: pointer;
+}
+
+.topnav-tel a.icon {
+  display: block;
+  position: absolute;
+  width: 50px;
+}
+
+@media screen and (max-width: 1024px) {
+  .search-box {
+    display: none;
+  }
+
+  ul.topnav--left {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+
 @media screen and (max-width: 970px) {
   .menu-btn {
     display: flex;
@@ -780,18 +720,17 @@ li.mega-menu2,
   .menu-items.open {
     visibility: visible;
     width: 350px;
+    top: 42px;
     left: 0;
-    margin-top: 20px;
   }
 
   .menu-items li {
-    margin: 15px 10px;
+    margin: 0 10px;
   }
 
   .menu-items li a {
-    padding: 0 1rem;
     display: block;
-    font-size: 1.4rem;
+    font-size: 20px;
   }
 
   .menu-items li:hover {
@@ -838,88 +777,55 @@ li.mega-menu2,
   }
 }
 
-/* MENU BURGER TEL*/
+@media screen and (max-width: 730px) {
+  .search-box {
+    display: none;
+  }
 
-.topnav-tel {
-  overflow: hidden;
-  position: relative;
-  margin-left: 1em;
-  color: white;
-  padding: 20px;
+  .search-btn-tel {
+    display: flex;
+  }
+
+  .haut_de_page {
+    justify-content: space-between;
+  }
 }
 
-.topnav-tel a {
-  color: white;
-  text-decoration: none;
-  font-size: 17px;
-  display: block;
-  cursor: pointer;
-}
+@media screen and (max-width: 650px) {
+  .topnav {
+    display: none;
+  }
 
-.topnav-tel a.icon {
-  display: block;
-  position: absolute;
-  width: 50px;
-}
+  div.topnav {
+    font-size: 10px;
+    padding: 10px;
+  }
 
+  .topnav--left,
+  .topnav--right {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    gap: 5px;
+  }
 
+  .topnav--right {
+    margin-bottom: 4px;
+  }
 
-/* FORMAT PC
-   STYLE the search field */
-form.example input[type="search"] {
-  padding: 10px;
-  margin-left: 85px;
-  font-size: 17px;
-  border: 1px solid var(--bleu);
-  width: 70%;
-  border-radius: 7px 0 0 7px;
-  border: 1px solid var(--bleu);
-  float: left;
-  background: #ffff;
-}
+  .haut_de_page {
+    gap: 20px;
+  }
 
-/* Bouton de Validation */
-
-form.example button {
-  height: 43px;
-  width: 8%;
-  padding: 10px;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-radius: 0 7px 7px 0;
-  margin: 0;
-  float: left;
-  background: white;
-  color: var(--bleu);
-  border: 1px solid grey;
-  border-left: none;
-  cursor: pointer;
-}
-
-form.example button:hover {
-  background: var(--jaune);
-  color: #fff;
-}
-
-form.example::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/*Barre de navigation*/
-.navbar {
-  background-color: var(--jaune);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-shrink: 2;
-}
-
-.navbar_admin {
-  background-color: var(--bleu);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-shrink: 2;
+  .logos {
+    gap: 10px;
+  }
+  
+  .logo_compte i,
+  .logo_panier i,
+  .search-btn-tel i {
+    font-size: 25px;
+  }
 }
