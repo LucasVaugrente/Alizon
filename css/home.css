@@ -1,0 +1,347 @@
+/******************************************************************************************************************************************************************************
+BODY POUR STYLE PAGE D'ACCUEIL
+******************************************************************************************************************************************************************************/
+
+.main-index {
+    padding : 0 100px;
+}
+
+.main-index h2 {
+    color: var(--bleu);
+    padding-top: 15px;
+
+}
+
+.main-index hr {
+    border: var(--jaune) 1px solid;
+    width: 280px;
+    margin-top: 10px;
+}
+
+.carousel {
+    padding: 0;
+}
+
+.carousel img {
+    height: 50%;
+    width : 100%;
+}
+
+.carousel-indicators {
+    padding-bottom: -20px;
+}
+
+.carousel-indicators button {
+    border-radius: 0;
+}
+
+.carousel-caption {
+    text-align: left;
+    left: 25%;
+    top: 25%;
+}
+
+.carousel-caption.second  {
+    color: var(--bleu)
+}
+
+.carousel-caption h4 {
+    font-family: Carter;
+    margin-left: 10px;
+}
+
+.carousel h3, .carousel h4 {
+    font-size: 35px;
+}
+
+.en_plus {
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.en_plus h4 {
+    font-family: Sniglet;
+}
+
+.en_plus--origine {
+    background-color: #000;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: min-content;
+}
+
+.en_plus--origine img {
+    width: 90px;
+    height: 134px;
+    transform: rotate(30deg);
+    margin-left: 50px;
+}
+
+.en_plus--origine h4 {
+    font-family: Carter;
+}
+
+.en_plus--livraison {
+    background-color: var(--jaune);
+    color: #000;
+    padding: 20px 80px 5px 80px;
+    border-radius: 10px;
+    text-align: center;
+    height: min-content;
+}
+
+.en_plus--livraison h4 {
+    font-size: 15px;
+}
+
+.en_plus--livraison h3 {
+    margin-top: -20px;
+    font-size: 20px;
+    font-family: MontserratBold;
+}
+
+.en_plus--livraison img {
+    width: 70px;
+}
+
+.en_plus--sav {
+    background-color: var(--bleu);
+    color: white;
+    padding: 20px 60px;
+    border-radius: 10px;
+    text-align: center;
+    height: min-content;
+}
+
+.en_plus--sav h4 {
+    font-size: 15px;
+}
+
+.en_plus--sav i, .en_plus--livraison img {
+    padding-bottom: 20px;
+}
+
+/* Catégories */
+
+.carte_categorie {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: min-content;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.carte_categorie h4 {
+    background-color: #fff;
+    font-size: 25px;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    font-family: 'MontserratBold';
+    color: var(--bleu);
+}
+
+.carte_categorie--img {
+    display:flex;
+    background-color: #D9D9D9;
+    padding: 5% 5% 5% 5%;
+    height: 70%;
+    width:200px;
+}
+.carte_categorie--img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.selec_categories, .plus_recherchees {
+    display: flex;
+    gap: 50px;
+    overflow-x: scroll;
+    padding: 20px 1em;
+}
+
+.plus_recherchees {
+    margin-bottom: 50px;
+}
+
+/* produits page accueil */
+
+.carte_produit--img {
+    padding: 0 10px 0 10px;
+    width: 225px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10%;
+}
+
+.carte_produit {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    color: #080854;
+    width: min-content;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carte_produit--bloc__delivery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #615757;
+    font-size: 16px;
+    font-family: 'sniglet';
+}
+
+.carte_produit--bloc__delivery p {
+    margin: 0;
+    margin-right: -40px;
+}
+
+.carte_produit--bloc__delivery img {
+    width: 40px;
+    height: 50px;
+    margin-right: 20px;
+    margin-left: -40px;
+}
+
+.carte_produit h2 {
+    font-size: 20px;
+    font-family: 'MontserratBold';
+    color: #023064;
+}
+
+.carte_produit h3 {
+    margin: 0;
+    font-family: 'MontserratBold';
+    color: #023064;
+}
+
+.carte_produit h4 {
+    margin: 0;
+    font-family: 'montserrat';
+    text-transform: uppercase;
+}
+
+.carte_produit:hover, .carte_categorie:hover {
+    outline: var(--jaune) 2px solid;
+    transform: scale(1.05);
+}
+
+div.navbar {
+    padding: 0;
+}
+
+div.alert
+{
+    box-sizing: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background-color: var(--jaune);
+    width: max-content;
+    color: #fff;
+    padding: 10px 20px 0px 20px;
+    margin: 0;
+    border-radius: 5px;
+    position: fixed;
+    top: 200px;
+    right: -400px;
+    z-index: 2;
+
+    animation-name: mapop-up;
+    animation-duration: 3s;
+    animation-direction: alternate;
+    animation-iteration-count: 2;
+    animation-timing-function: cubic-bezier(.93,.02,.32,1);
+}
+
+.no_bootstrap p {
+    margin: 0;
+    padding: 0.5em;
+}
+
+@keyframes mapop-up
+{
+    from
+    {
+        opacity: 0;
+        right: -400px;
+    }
+
+    to
+    {
+        opacity: 1;
+        right: 20px;
+    }
+}
+
+.alert p
+{
+    font-size: 20px;
+    font-family: Montserrat;
+}
+
+.alerte_invalide
+{
+    display: none;
+}
+
+.alert.ajouterpanier, .alert.retirerpanier
+{
+    align-items: center;
+    padding-top: 0px;
+    z-index: 100;
+}
+
+.alert.retirerpanier
+{
+    background-color: var(--rouge);
+}
+
+@media screen and (max-width: 600px){
+    
+    .main-index {
+        padding : 10px;
+    }
+
+    .en_plus>div{
+        width: 85%;
+    }
+
+    .carousel{
+        display: none;
+    }
+
+    .carte_produit--img{
+        width: 175px;
+        height: 230px;
+    }
+
+    .carte_produit{
+        padding: 0px 30px;
+    }
+
+    .carte_produit h2{
+        padding-top: 0px;
+    }
+
+}
+
+@media screen and (min-width: 1920px) {
+    .main-index {
+        padding: 0 10%;
+    }
+}

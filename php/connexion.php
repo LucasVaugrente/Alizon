@@ -44,7 +44,7 @@
 
                         <!-- Bouton Resté Connecté et Mdp oublié -->
                         <div class="bloc_connexion_boutons">
-                            <label><input type="checkbox" name="remember">Rester connecté</label>
+                            <!-- <label><input type="checkbox" name="remember">Rester connecté</label> -->
                             <span><a class="lien_mdp_oubli" href="./recupererMdp.php">Mot de passe oublié ?</a></span>
                         </div>
 

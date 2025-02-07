@@ -1,0 +1,721 @@
+/*******************************************************************************************************************************************************************************
+Body POUR STYLE INSCRIPTION ET CONNEXION
+*******************************************************************************************************************************************************************************/
+
+.main-inscription, .main-connexion {
+    text-align: center;
+    background-color: rgb(238, 238, 238);
+    padding-bottom: 5em;
+}
+
+.titre-inscription, .titre-connexion {
+    font-size: 3em;
+    margin: 0;
+    padding: 0.5em;
+}
+
+.form-inscription, .form-connexion {
+    background-color: white;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2em;
+    border-radius: 20px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+}
+
+.main-inscription div > label, .main-connexion div > label {
+    align-self: baseline;
+}
+
+.obligatoire_indication {
+    font-size: 0.8em;
+    color: var(--rouge);
+}
+
+.champ_prenom, .champ_mdp, .champ_mdp_conf, .champ_nom, .champ_mail, .champ_date_naissance, input[type="number"][class=champ_codePostal], .champ_ville, .champ_adresse, .champ_reponse, .champ_question{
+    padding: 10px 10px;
+    width: 100%;
+    margin: 8px 0;
+    font-size: 1em;
+    display: inline-block;
+    border: none;
+    box-shadow: 0 0 2px black;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    --c: var(--jaune);
+    --b: 3px;
+    --g: 5px;
+    padding: calc(var(--g) + var(--b));
+    --_g: #0000 25%,var(--c) 0;
+    background: conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g)) var(--_i,200%) 0  /200% var(--_i,var(--b))  no-repeat, conic-gradient(at bottom var(--b) left  var(--b),var(--_g)) 0 var(--_i,200%)/var(--_i,var(--b)) 200%  no-repeat;
+    background-color: #ececec;
+  }
+
+.champ_prenom:focus, .champ_mdp:focus, .champ_mdp_conf:focus, .champ_nom:focus, .champ_mail:focus, .champ_date_naissance:focus, input[type="number"][class=champ_codePostal]:focus, .champ_ville:focus, .champ_adresse:focus, .champ_reponse:focus, .champ_question:focus {
+    --_i: 100%;
+    transition: .1s, background-size .1s .1s;
+    outline: none;
+}
+
+.champ_prenom:hover, .champ_mdp:hover, .champ_mdp_conf:hover, .champ_nom:hover, .champ_mail:hover, .champ_date_naissance:hover, input[type="number"][class=champ_codePostal]:hover, .champ_ville:hover, .champ_adresse:hover, .champ_reponse:hover, .champ_question:hover {
+    background-color: #dcdcdc;
+}
+
+.bloc-adresse div{
+    text-align: left;
+}
+.bloc-adresse div h3{
+    text-align: center;
+}
+
+.bloc-flexAdresse, .bloc-flexAdresse div{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bloc-flexAdresse{
+    flex-direction: row;
+}
+
+.bloc-flexAdresse div{
+    flex-direction: column;
+}
+
+.bloc-flexAdresse div:first-child{
+    width: 60%;
+    margin-right: 6%;
+}
+
+.bloc-flexAdresse > div + div{
+    width: 34%;
+}
+
+#err-mdp-diff, #err-mail_utilise {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-left : 3.3em;
+    display: none;
+}
+
+.bloc_connexion_boutons>span>a{
+    text-decoration: underline;
+}
+
+.form-connexion > p{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap : 10px;
+    margin-right: 10px;
+    font-family: 'montserrat';
+}
+
+.form-connexion > p > a{
+    color: var(--bleu);
+    text-decoration: underline;
+    font-family: 'montserrat';
+    transition: all 0.2s ease;
+}
+
+.form-connexion > p > a:checked{
+    color: var(--bleu);
+}
+
+.form-connexion > p > a:hover{
+    color: var(--jaune);
+    transition: all 0.2s ease;
+}
+
+/* CHAMPS SECURITE */
+.champ_reponse, .champ_question{
+    font-family: 'sniglet';
+}
+
+.bloc-nom, .bloc-prenom, .bloc-email, .bloc-mdp, .bloc-cmdp, .bloc-ddn, .bloc-adresse, .bloc-question, .bloc_rep {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.5em;
+}
+
+.bloc-mdp {
+    padding: 0;
+}
+
+.mdp_diff {
+    margin: 0;
+    text-align: left;
+    font-family: montserrat;
+    font-size: 0.8em;
+    color: var(--rouge);
+    padding-top: 0.8em;
+    transition: all 0.5s ease-in-out;
+}
+
+.se_connecter {
+    padding-left: 0.5em;
+    text-decoration: underline;
+    color: #000;
+    transition: all 0.2s ease;
+}
+
+.se_connecter:hover {
+    color: var(--jaune);
+    transition: all 0.2s ease;
+}
+
+.se_connecter:visited {
+    color: #000;
+}
+
+.formulaire {
+    font-size:1.1em;
+}
+
+.deja_inscrit {
+    font-family: 'sniglet';
+}
+
+.btn-inscrire, .btn-connecter {
+    font-family: 'sniglet';
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-inscrire:hover, .btn-connecter:hover {
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.connecte{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.txt_prevention {
+    margin: 0;
+    font-family: 'montserrat';
+    font-size: 0.8em;
+}
+
+.btn-connecter {
+    margin: 1em;
+}
+
+.obligatoire {
+    color: var(--rouge);
+    font-family: 'sniglet';
+}
+
+.btn-connecter,.btn-inscrire {
+    background-color: var(--bleu);
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 0.8em 2em;
+    font-size: 1em;
+}
+
+.erreur_inscr {
+    animation: erreur_inscription 1s alternate infinite;
+    border: solid 2px var(--rouge);
+    background-color: rgb(255, 233, 233);
+}
+
+.erreur_inscr:focus{
+    outline: none;
+    border: solid 2px var(--rouge);
+}
+
+
+@keyframes erreur_inscription {
+    0% { transform: rotate(0deg)}
+    25% { transform: rotate(-0.3deg);}
+    50% { transform: rotate(0.3deg);}
+    75% { transform: rotate(-0.3deg);}
+    100% { transform: rotate(0deg);}
+}
+
+.bloc_connexion_boutons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bloc_connexion_boutons label {
+    display: flex;
+    align-items: center;
+}
+
+.lien_mdp_oubli {
+    color: #000;
+    transition: all 0.2s ease;
+}
+
+.lien_mdp_oubli:hover {
+    color: var(--jaune);
+    transition: all 0.2s ease;
+}
+
+.titre-nv_client {
+    margin: 0;
+    font-size: 2em;
+    padding: 0.5em 1em;
+}
+
+.erreur_co {
+    display: flex;
+    justify-content: center;
+}
+
+.texte_erreur_co {
+    padding: 0.8em;
+    color: var(--rouge);
+    background-color: rgb(255, 176, 176);
+    border-radius: 40px;
+    border: 2px solid var(--rouge);
+    width: 80%;
+    text-align: center;
+}
+
+.texte_erreur_adr{
+    padding: 0.8em;
+    color: var(--rouge) !important;
+    
+    width: 80%;
+    text-align: center;
+}
+
+.texte_erreur_co_mail {
+    color: var(--rouge);
+    background-color: rgb(255, 176, 176);
+    border-radius: 40px;
+    border: 2px solid var(--rouge);
+    margin-bottom: 1em;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Page Commandes en cours 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.mesCommandes{
+    width: 75%;
+    padding: 2.5%;
+}
+
+.mesCommandes>nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mesCommandes>nav>div>h2{
+    margin-bottom: 0%;
+}
+
+.commande_nav_barre-cours, .commande_nav_barre-archi{
+    width: 90%;
+    background-color: var(--jaune);
+    border: 0.5px solid var(--jaune);
+    border-radius: 5px;
+}
+
+
+.commande{
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 2em;
+    padding-bottom: 7px;
+}
+
+.commande>aside{
+    display: flex;
+    background-color: #ffb703;
+    border-radius: 10px 10px 0px 0px;
+    justify-content: space-between;
+    padding: 0px 7px;
+    align-items: center;
+}
+
+.commande>aside>div>h3{
+    margin: 4% 0%;
+}
+
+.produit_commande{
+    display: flex;
+    flex-direction: column;
+    padding: 7px;
+   
+    justify-content: space-between;
+    width: 95%;
+    
+    border-width: 2px;
+    border-radius: 3px;
+    border-color: #D9D9D9;
+}
+
+.commande>div{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 18px;
+    margin-right: 7px;
+    align-items: center;
+}
+
+.commande>div>form{
+    margin-block-end: 0;
+}
+
+.commande>div>h2{
+    text-align: left;
+}
+
+.commande>div>form>button, .commande>div>button{
+    cursor: pointer;
+    display: block;
+    font-family: 'sniglet';
+    font-size: 1em;
+    border-radius: 15px;
+    border : none;
+    padding: 0.9em 1em;
+}
+.commande>div>form>button{
+    background-color: var(--bleu);
+    color : #fff;
+    transition: all 0.2s ease-in-out;
+}
+
+.commande>div>form>button:hover {
+    background-color: #03438b;
+    box-shadow: 0 0 4px var(--bleu);
+}
+
+.commande>div>button{
+    background-color: var(--jaune);
+    color : #000;
+    transition: all 0.2s ease-in-out;
+}
+.commande>div>button:hover{
+    background-color: #f1ad00;
+    box-shadow: 0 0 5px var(--jaune);
+}
+
+.details-cours{
+    margin-right: -550px;
+}
+
+.details-archiv{
+    margin-right: 0px;
+}
+
+.img_commande{
+    width: 10em;
+    border-radius: 10px;
+}
+
+.infos_produit_commande{
+    flex-direction: column;
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: auto;
+}
+
+.produit_commande-description{
+    width: 55%;
+    text-align: left;
+
+}
+
+
+.bleu{
+    color: #080854;
+}
+
+.produit_commande-boutons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 30px;
+}
+
+.rachat_compl>a{
+    width: fit-content;
+}
+
+.produit_commande-boutons>a, .rachat_compl>a, .rachat_plus>a, .form-recommander>button{
+    display: block;
+    background-color: var(--bleu);
+    color: white;
+    cursor: pointer;
+    padding: 0.7em 1em;
+    font-family: 'sniglet';
+    font-size: 1em;
+    border-radius: 10px;
+    margin: 0.5em 0em;
+    transition: all 0.2s ease-in-out;
+}
+
+.rachat_compl>a:hover {
+    opacity: 0.8;
+}
+
+.commande>hr{
+    width: 90%;
+    background-color: #D9D9D9;
+    border: 0.5px solid #D9D9D9;
+    border-radius: 5px;
+}
+
+.no_deco{
+    text-decoration: none;
+}
+
+.carter{
+    font-family: 'carter';
+}
+
+.gris{
+    color: var(--gris);
+}
+
+.facture{
+    font-weight: bolder;
+    color: var(--rouge);
+}
+
+.liste_produits_commande{
+    flex-direction: column;
+    width: 100%;
+    
+}
+
+.nb_articles_commande, .rachat_plus{
+    display: none;
+}
+
+
+
+@media screen and (max-width: 600px){
+    .main-Compte{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .champ_mdp_compte{
+        padding-right: 0em;
+    }
+
+    .bloc_infos_persos_client{
+        padding: 2em 0em;
+    }
+
+    .bloc_infos_client{
+        width: 90%;
+    }
+
+    .nb_articles_command, .rachat_plus, .nb_articles_commande{
+        display: initial;
+    }
+
+    .rachat_plus>a{
+        padding: 0.1em 0.5em;
+        font-size: 2em;
+    }
+
+    .rachat_compl{
+        display: none;
+    }
+
+    .mesInfos{
+        width: 80%;
+        position: initial;
+        padding: 1em;
+    }
+
+    .mesCommandes{
+        padding: 2.5% 0%;
+        align-items: center;
+        width: 90%;
+    }
+
+    .mesCommandes>nav{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mesCommandes>nav>div>h2{
+        margin-top: 0%;
+    }
+
+
+    .commande>aside{
+        flex-direction: column;
+    }
+
+    .commande>div{
+        width: 95%;
+        margin: 0%;
+        padding: 0px 7px;
+    }
+
+    .commande>div>a{
+        font-size: 0.8em;
+        padding: 0.4em 0.5em;
+    }
+
+    .commande>div>h2{
+        font-size: 1.3em;
+    }
+
+    .date_commande, .adresse_livraison{
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+    }
+
+    .prix_commande{
+        justify-content: space-between;
+        width: 90%;
+        display: flex;
+    }
+
+    .commande>aside>div{
+        text-align: left;
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .infos_produit_commande{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .infos_produit_commande>div{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .infos_produit_commande>div>a{
+        margin-left: 1em;
+        font-size: 0.8em;
+        padding: 0.4em;
+        width: 4.3em;
+        height: 2.5em;
+    }
+
+    .produit_commande-description{
+        align-items: center;
+    }
+
+    .produit_commande-description>h4{
+        width: 70%;
+    }
+
+    .produit_commande{
+        flex-direction: column;
+        margin: 0%;
+        padding-left: 7px;
+    }
+    .liste_produits_commande{
+        height: 300px;
+    }
+
+}
+
+/*////////////////////////////////////////////////////////////////////
+Recupérer son mot de passe :
+///////////////////////////////////////////////////////////////////*/
+
+.main-renitialiser
+{
+    background-color: #D9D9D9;
+    padding: 30px 200px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 125px;
+}
+
+.main-renitialiser h1
+{
+    text-align: center;
+    color: var(--bleu);
+}
+
+.main-renitialiser--bloc
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgb(0 0 0 / 60%);
+    width: max-content;
+    padding: 0 50px;
+}
+
+.main-renitialiser--bloc form.champ_infos_persos
+{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items:center;
+    width: 100%;
+    font-size: 20px;
+}
+
+.main-renitialiser--bloc form.champ_infos_persos div
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0 30px;
+
+}
+
+.main-renitialiser--bloc #confirmer
+{
+    margin: 16px 30px;
+}
+
+.main-renitialiser input
+{
+    font-family: Montserrat;
+}
+
+.main-renitialiser .erreur_co
+{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 15px;
+    font-family: Montserrat;
+}
+
+.main-renitialiser .erreur_co.switch .texte_erreur_co, .bloc_mdp_vendeur .erreur_co.switch .texte_erreur_co, .exporter_catalogue .erreur_co.switch .texte_erreur_co, .exporter_catalogue_admin .texte_erreur_co
+{
+    color: var(--vert);
+    background-color:#fff;
+    border-color: var(--vert);
+}
+
+@media screen and (max-width: 600px){
+    .main-renitialiser{
+        padding: 30px 0px;
+
+    }
+
+    .main-renitialiser--bloc{
+        width: 95%;
+        padding: 0 5px;
+    }
+}

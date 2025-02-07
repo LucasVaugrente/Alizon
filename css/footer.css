@@ -1,0 +1,115 @@
+/*////////////////////////////////////////////////////////////////////
+Footer:
+///////////////////////////////////////////////////////////////////*/
+
+footer {
+    background-color: var(--jaune);
+    color: white;
+    font-family: 'sniglet';
+    font-weight: lighter;
+}
+
+footer>section {
+    background: var(--bleu);
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 2em;
+}
+
+
+@media screen and (max-width: 600px) {
+    footer>section {
+        background: var(--bleu);
+        color: white;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding: 2em;
+    }
+}
+
+footer>section>div {
+    margin: 1em;
+}
+
+footer>figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 10px 0 10px;
+}
+
+footer>figure>img {
+    width: 5em;
+    margin-right: 20px;
+    filter: invert(100%);
+}
+
+footer>figure>figcaption {
+    font-size: 2em;
+}
+
+/*######################################## MENTION LEGALES, CGU, CGV ########################################*/
+
+.lien_mentionL, .lien_cgu, .lien_cgv, .lien_mentionL:hover, .lien_mentionL:visited, .lien_cgv:hover, .lien_cgv:visited, .lien_cgu:hover, .lien_cgu:visited {
+    color: white;
+}
+
+.lien_mentionL:hover, .lien_cgv:hover, .lien_cgu:hover {
+    text-decoration: underline;
+}
+
+.main-mentions_legales {
+    padding: 2em 5%;
+    width: 90%;
+}
+
+.blockmL {
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    border-radius: 30px;
+    padding: 2em;
+}
+
+.main-mentions_legales hr {
+    margin: 3em 0;
+}
+
+.heberg_media {
+    display: flex;
+    flex-direction: row;
+}
+
+.heberg, .media {
+    width: 50%;
+}
+
+.titre_mentions_legales {
+    text-align: center;
+    font-size: 2.5em;
+    color: var(--bleu);
+}
+
+.main-mentions_legales h3 {
+    font-size: 1.7em;
+    font-family: 'sniglet';
+    color: var(--bleu);
+}
+
+.main-mentions_legales p {
+    font-size: 1.1em;
+    font-family: 'montserrat';
+    width: 80%;
+    text-indent: 2em;
+}
+
+#editeur {
+    text-indent: 0em;
+}
+
+@media screen and (max-width: 1024px) {
+    .main-mentions_legales p {
+        width: 100%;
+    }
+}

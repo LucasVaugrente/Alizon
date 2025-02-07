@@ -1,0 +1,71 @@
+/*******************************************************************************************************************************************************************************
+STYLE POP-UP COOKIES
+*******************************************************************************************************************************************************************************/
+
+.block_cookies {
+    background-color: rgba(0, 0, 0, 0.967);
+    padding: 1em 2em;
+    border-style: solid;
+    border: 1px solid black;
+    text-align: center;
+    position: fixed;
+    bottom: 0em;
+    z-index: 100;
+    transition: all 0.3s ease;
+    width: 100%;
+    color: white;
+}
+
+.texte_cookies {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.block_cookies p {
+    font-size: 1em;
+    text-align: left;
+    margin: 0;
+}
+
+.block_cookies h3 {
+    font-family: 'carter';
+}
+
+.boutons_cookies {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.boutons_cookies div {
+    display: flex;
+}
+
+.btn_accept_cookies, .btn_refuse_cookies {
+    padding: 0.5em 1.5em;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn_refuse_cookies:hover {
+    background-color: rgba(128, 128, 128, 0.122);
+    transition: all 0.3s ease;
+}
+
+.btn_accept_cookies {
+    margin-left: 1em;
+    background-color: var(--bleu);
+}
+
+.btn_accept_cookies:hover {
+    box-shadow: 0 0px 15px var(--bleu);
+    transition: all 0.3s ease;
+}
+
+.btn_refuse_cookies {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid white;
+}

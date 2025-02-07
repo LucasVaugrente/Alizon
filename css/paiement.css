@@ -1,0 +1,353 @@
+/*******************************************************************************************************************************************************************************
+Body POUR STYLE PAIEMENT
+*******************************************************************************************************************************************************************************/
+
+.paiement
+{
+    padding: 10px 80px;
+}
+
+.paiement h1
+{
+    font-size: 25px;
+    color: var(--bleu);
+    margin-bottom: 5px;
+}
+
+.paiement hr
+{
+    border: 0.5px solid #D9D9D9;
+    border-radius: 50%;
+    width: 100%;
+}
+
+.paiement .carte_paiement
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.carte_paiement section
+{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-right: 40px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.carte_livraison aside a
+{
+    color: green;
+    float: right;
+    font-family: Montserrat;
+    margin-top: 10px;
+}
+
+.adr_livraison_enr {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.carte_livraison label{
+    
+    background-color: var(--bleu);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.carte_livraison input[type="checkbox"]{
+
+    border-radius: 4px;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+}
+
+.carte_livraison input[type="text"]{
+
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 2px solid var(--bleu);
+    font-size: 18px;
+}
+
+.carte_livraison p
+{
+    font-family: Sniglet;
+    font-size: 18px;
+    padding: 0 10px;
+    text-align: justify;
+    width: max-content;
+    color: var(--gris);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.carte_livraison h2, .carte_methode_paiement h2
+{
+    color: var(--jaune);
+    font-family: 'sniglet';
+}
+
+.carte_livraison_chooseAdresse{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.carte_livraison_chooseAdresse select{
+    
+    background-color: var(--bleu);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.carte_methode_paiement
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#paypal-button-container
+{
+    padding-top: 20px;
+   text-align: center;
+}
+
+.carte_commande
+{
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    border-radius: 10px;
+    padding: 10px 20px 20px 20px;
+    height: min-content;
+    font-family: 'sniglet';
+    margin-bottom: 20px;
+}
+
+.carte_commande h2
+{
+    text-align: center;
+    color: var(--bleu);
+}
+
+.carte_commande h3
+{
+    background: var(--jaune);
+    margin: 0 -20px;
+    padding: 2px 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.carte_commande--recap
+{
+    color: #615757;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin-bottom: -10px;
+}
+
+.carte_commande--total
+{
+   display: flex;
+   justify-content: space-between;
+   font-size: 30px;
+}
+
+.carte_commande--total h4+h4
+{
+    color:var(--rouge);
+    font-family: Carter;
+}
+
+.carte_commande--total h4
+{
+    margin: 20px 0;
+}
+
+.carte_commande a 
+{
+    color: var(--jaune);
+    font-weight: bold;
+}
+
+.btn-cb{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #2C2E2F;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 750px;
+}
+
+.btn-cb{
+    font-size: 18px;
+}
+
+.btn-cb:hover{
+    opacity: 0.8;
+}
+
+.CarteBancaire .texte_erreur_co{
+    width: 82%;
+    text-align: center;
+}
+
+.CarteBancaire{
+    box-shadow: 0 0px 8px rgb(0 0 0 / 60%);
+    border-radius: 10px;
+    padding: 10px 20px 20px 20px;
+    height: min-content;
+    font-family: 'sniglet';
+    align-self: center;
+    width: 82%;
+    margin: 20px 0;
+    color: var(--bleu);
+}
+
+.CarteBancaire .ligne {
+display: -ms-flexbox; /* IE10 */
+display: flex;
+-ms-flex-wrap: wrap; /* IE10 */
+flex-wrap: wrap;
+}
+
+.CarteBancaire .col-25 {
+-ms-flex: 25%; /* IE10 */
+flex: 25%;
+}
+
+.CarteBancaire .col-50 {
+-ms-flex: 50%; /* IE10 */
+flex: 50%;
+}
+
+.CarteBancaire .col-75 {
+-ms-flex: 75%; /* IE10 */
+flex: 75%;
+}
+
+.CarteBancaire .col-25,
+.CarteBancaire .col-50,
+.CarteBancaire .col-75 {
+padding: 0 16px;
+}
+
+.CarteBancaire input[type=text], .CarteBancaire input[type=month]{
+width: 100%;
+margin-bottom: 20px;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 3px;
+}
+
+.CarteBancaire label {
+margin-bottom: 10px;
+display: block;
+}
+
+.CarteBancaire .icon-conteneur {
+margin-bottom: 20px;
+padding: 7px 0;
+font-size: 24px;
+}
+
+.CarteBancaire .btn {
+background-color: var(--jaune);
+color: white;
+padding: 12px;
+margin: 10px 0;
+border: none;
+width: 100%;
+border-radius: 3px;
+cursor: pointer;
+font-size: 17px;
+}
+
+.CarteBancaire .btn:hover {
+opacity: 0.80;
+}
+
+.CarteBancaire a {
+color: #2196F3;
+}
+
+.CarteBancaire hr {
+border: 1px solid lightgrey;    
+}
+
+.CarteBancaire span.price {
+float: right;
+color: grey;
+}
+
+.col-50 h3{
+    font-size: 20px;
+    text-align: center;
+}
+
+.fermer-blocCB {
+
+    float:right;
+    cursor: pointer;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+    .CarteBancaire .ligne {
+        flex-direction: column-reverse;
+    }
+    .CarteBancaire .col-25 {
+        margin-bottom: 20px;
+}
+}
+
+/*////////////////////////////////////////////////////////////////////
+Page confirmation paiement :
+///////////////////////////////////////////////////////////////////*/
+
+.confirm-paiement
+{
+    background-color: #D9D9D9;
+    padding: 30px 200px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 125px;
+}
+
+.confirm-paiement--client
+{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgb(0 0 0 / 60%);
+    padding: 20px;
+    text-align: center;
+}
+
+.confirm-paiement--client h1
+{
+    color: var(--bleu);
+}
+
+.confirm-paiement--client p
+{
+    font-family: Montserrat;
+    font-size: 20px;
+}

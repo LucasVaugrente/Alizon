@@ -1,0 +1,867 @@
+/*////////////////////////////////////////////////////////////////////
+Dashboard Vendeur:
+///////////////////////////////////////////////////////////////////*/
+
+.header-vendeur
+{
+    background-color: var(--bleu);
+    padding: 30px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    height: 100%;
+}
+
+/* header vendeur quand produit afficher */
+.header-vendeur + .main_produit
+{
+    padding-left: 300px;
+    padding-right: 100px;
+}
+
+.header-vendeur a
+{
+    color: #fff;
+}
+/**/
+
+.deconnexion-vendeur
+{
+    background-color: var(--rouge);
+    border-radius: 10px;
+}
+
+.deconnexion-vendeur:hover
+{
+    opacity: 0.7;
+}
+
+div.deco {
+    background-color: var(--rouge);
+    align-items: center;
+    padding: 0 1em;
+}
+
+.deconnexion-vendeur input{
+    margin: 15px 0;
+    background-color: var(--rouge);
+    border: none;
+    color: #fff;
+    font-size: 15px;
+    padding: 0;
+    cursor: pointer;
+}
+
+
+.nav-vendeur div
+{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    color: white;
+    padding-left: 10px;
+    border-radius: 10px;
+    margin: 15px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-vendeur .active
+{
+    background-color: var(--jaune);
+    border-radius: 10px;
+    color: var(--bleu);
+}
+
+.commandes-vendeur:hover, .catalogue-vendeur:hover, .dashboard-vendeur:hover, .compte-vendeur:hover, .exporter-catalogue:hover
+{
+    background-color: var(--jaune);
+    color: var(--bleu);
+    transition: all 0.3s ease;
+}
+
+.nav-vendeur div p
+{
+    font-size: 15px;
+}
+
+.main-vendeur
+{
+    padding-left: 300px;
+    padding-top: 10px;
+}
+
+.main-vendeur section
+{
+    font-size: 20px;
+}
+
+.main-vendeur h1
+{
+    color: var(--bleu);
+    margin-bottom: 10px;
+}
+
+.main-vendeur h2
+{
+    color: var(--bleu);
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.main-vendeur hr
+{
+    border: var(--jaune) 1px solid;
+    width: 95%;
+    margin: 0;
+}
+
+.main-vendeur form hr{
+    width: 100%;
+    border: black solid 1px;
+}
+
+.debcritionProduit{
+    margin: 10px;
+}
+
+.debcritionProduit textarea{
+    padding-bottom: 3em;
+    padding-top: 10px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+
+.nomenclatureProduit{
+    margin-left: 10px;
+    
+}
+
+.main-vendeur form  {
+    margin-right: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.main-vendeur form article {
+    display: flex;
+    align-items: center;
+}
+
+.nomenclatureProduit input[type=text]{
+    margin: 10px;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+#image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .image-container {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    position: relative;
+  }
+  .image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .image-container .remove-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 24px;
+    color: red;
+    cursor: pointer;
+  }
+
+  #file-input {
+    position: absolute;
+    left: -9999px;
+  }
+  
+  .drop-zone {
+    margin-left: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    display: block;
+    width: 80%;
+    height: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: gray;
+    cursor: pointer;
+    border: 1px dashed gray;
+    box-sizing: border-box;
+    align-items: center;
+  }
+
+  .imageProduit{
+    height: auto;
+  }
+
+.Categorie 
+{
+   display: flex;
+   justify-content: space-evenly;
+}
+
+section.recette {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.recette>input[type="number"]{
+    width: 14.8%;
+    border: solid #858585 1px;
+}
+
+.Categorie select
+{
+    width: 30.956%;
+    height: 34px;
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: 'sniglet';
+}
+
+.filtreCommande{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+
+.filtreCommande{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.filtreCommande .active
+{
+    background-color: var(--jaune);
+}
+
+tr.en-tete
+{
+    background-color: var(--jaune); 
+}
+
+.filtreCommande> a {
+    margin: 5px;
+    background-color: var(--bleu);
+    color: #fff;
+    border-radius: 10px;
+    padding: 3px 10px;
+}
+
+table {
+    width: 95%;
+    font-family: sniglet;
+    border-radius: 10px;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 16px;
+    color: var(--bleu);
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  td p 
+  {
+    display : inline-block;
+  }
+
+  td a{
+    color: var(--bleu);
+    text-decoration : underline;
+}
+
+  td a:hover{
+    color: var(--jaune);
+}
+
+.Etats-acceptee{
+    background: #FFDE66;
+    padding: 0.5em;
+    color: #A86B16;
+    text-align: center;
+    width: 80%;
+    transition: all .5s ease;
+}
+
+.Etats-en-charge{
+    background: greenyellow;
+    padding: 0.5em;
+    color: rgb(0, 102, 0);
+    text-align: center;
+    width: 80%;
+    transition: all .5s ease;
+}
+
+.Etats-finie{
+    background: lightblue;
+    padding: 0.5em;
+    color: rgb(0, 0, 146);
+    text-align: center;
+    width: 80%;
+    transition: all .5s ease;
+}
+
+.Etats-en-cours{
+    background: rgb(217, 160, 255);
+    padding: 0.5em;
+    color: rgb(81, 0, 119);
+    text-align: center;
+    width: 80%;
+    transition: all .5s ease;
+}
+
+.Etats-annulee{
+    background: rgb(235, 146, 146);
+    padding: 0.5em;
+    color: rgb(146, 2, 2);
+    text-align: center;
+    width: 80%;
+    transition: all .5s ease;
+}
+
+.changer-etat-button{
+    background-color: var(--jaune);
+    color: #080854;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-family: 'sniglet';
+    text-decoration: none;
+    font-weight: lighter;
+    padding: 10px;
+    font-size: 17px;
+}
+
+.block_changer_etat1, .block_changer_etat2, .block_changer_etat3, .block_changer_etat4 {
+    display: none;
+    background-color: rgb(233, 233, 233);
+    position: relative;
+    padding: 1em;
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+    width: 43%;
+    transition: all .5s ease;
+}
+
+.changer_etat {
+    display: flex;
+    flex-direction: column;
+}
+
+.block_changer_etat1 button, .block_changer_etat2 button, .block_changer_etat3 button, .block_changer_etat4 button {
+    padding: 0.5em;
+    border: none;
+    font-size: 1em;
+    color: white;
+    background-color: var(--bleu);
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 1em;
+    box-shadow: 0 1px 4px black;
+}
+
+.block_changer_etat1 button:hover, .block_changer_etat2 button:hover, .block_changer_etat3 button:hover, .block_changer_etat4 button:hover {
+    opacity: 0.8;
+}
+
+.en-tete a
+{
+    color: var(--bleu);
+    font-weight: bolder;
+}
+
+.prixtab
+{
+    display: flex;
+    align-items: center;
+    padding: 30px 16px;
+}
+
+.cache
+{
+    display: none;
+}
+
+.affiche
+{
+    display: block;
+}
+
+.catalogue h3
+{
+    text-align: center;
+}
+
+.catalogue .plus_recherchees
+{
+    padding-left: 20px;
+}
+
+.Detailcache
+{
+    display: none;
+}
+
+.cursor
+{
+    cursor: pointer;
+}
+
+.Detailaffiche
+{
+    display: table-row;
+}
+
+.en-teteP th
+{
+    color: white;
+    font-weight: bolder;
+    text-align: start;
+}
+
+tr.en-teteP
+{
+    background-color: var(--bleu); 
+}
+
+td{
+    text-align: start;
+}
+
+.row_vendeur{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 60px;
+
+    font-family: 'sniglet';
+    font-size: 1.2em;
+
+    bottom: 1em;
+    left: 1.7em;
+    color: var(--jaune);
+   
+   
+}
+.row_vendeur h4{
+    border: solid 3px var(--jaune);
+    border-radius: 10px;
+    padding: 0.5em;
+    font-size: 25px;
+   
+}
+.lien_vendeur{
+    cursor: auto;
+    width: 120px;
+
+}
+
+.bloc_infos_persos_vendeur h2, .bloc_mdp_vendeur h2{
+    color: var(--bleu);
+    text-align: center;
+    text-transform: uppercase;
+    font-family: montserrat;
+    font-size: 25px;
+}
+
+.bloc_infos_persos_vendeur .blocs, .bloc_mdp_vendeur .formulaire{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form_infos_compte .blocs, .champ_infos_persos.un{
+    text-align: center;
+}
+
+.form_infos_compte .adresse{
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.form_infos_compte .adresse h3{
+    color: var(--bleu);
+}
+
+.bloc_infos_persos_vendeur .champ_infos_persos.un{
+    margin-left: 33%;
+}
+
+.bloc_infos_persos_vendeur i{
+    color: var(--bleu);
+    padding-left: 2.5px;
+}
+
+.bloc_infos_persos_vendeur textarea{
+    margin: 10px 0;
+    resize: none;
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    font-family: Sniglet;
+    font-size: 0.8em;
+}
+
+.champ_infos_persos2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right : 5%;
+    margin-left : 5%;
+}
+
+.champ_infos_persos2 textarea {
+    width: 100%;
+}
+
+.blocs + .champ_infos_persos2 {
+    margin-top: 30px;
+}
+
+.exporter_catalogue .confirmer{
+
+   display: block;
+   margin: 20px auto;
+}
+
+.exporter_catalogue td.check{
+    text-align: center;
+    width: 150px;
+}
+
+.exporter_catalogue .checkbox{
+
+    transform: scale(2);
+    margin: 0;
+    accent-color: var(--jaune);
+    background-color: var(--jaune);
+    border-radius: 5px;
+}
+
+.exporter_catalogue .confirmer{
+
+    cursor: not-allowed;
+}
+
+.exporter_catalogue .confirmer.available{
+
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* sous-partie changement état commande
+//////////////////////////////////////////*/
+
+.changement_etat-popup{
+    z-index: 4;
+    background-color: #FFFFFF;
+    padding: 30px 50px;
+    width: 23%;
+    position: absolute;
+    left: 550px;
+    top: 200px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    text-align: center;
+}
+
+.croix-sortie{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: var(--rouge);
+    cursor: pointer;
+}
+
+.croix-sortie:hover{
+    color: #BF3037;
+}
+
+.changement_etat-popup > h3{
+    margin-top: 0px;
+}
+
+.changement_etat-popup > form {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio_etat, .radio_default{
+    display: none;
+}
+
+.radio_etat + label{
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.radio_etat:not(:checked) + label{
+    background-color:#080854;
+    color: white;
+    
+}
+
+.radio_etat:not(:checked):hover + label{
+    background-color:#080854CC;
+}
+
+.radio_etat:checked + label{
+    background-color:#FFB703;
+    color: #080854;
+    border: #080854 solid 3px;
+}
+
+.boutons_finalisation{
+    text-align: center;
+    justify-content: space-between;
+    display: flex;
+}
+
+.boutons_finalisation > button{
+    padding: 15px 18px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-family: 'sniglet';
+    text-decoration: none;
+    font-weight: lighter;
+    font-size: 20px;
+}
+
+.bouton-annuler{
+    background-color: var(--rouge);
+}
+
+.bouton-annuler:hover{
+    background-color: #BF3037;
+}
+
+.bouton-valider{
+    background-color: #080854;
+
+}
+
+.bouton-valider:disabled{
+    background-color: var(--gris);
+}
+
+.filtre-flou {
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+/*######################################## FICHE VENDEUR ########################################*/
+
+.main_fiche_vendeur{
+    font-size: 1.2em;
+    font-family: 'montserrat';
+}
+.main_fiche_vendeur>section>h2{
+    text-align-last:center ;
+}
+.DescriptionVendeur{
+        
+    width: 1300px;
+    height: auto;
+    margin: auto;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+ 
+}
+.barre_jaune{
+    border-color : #FFB703;
+    margin: 0 10%;
+  
+}
+.vendeurPartieHaut{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+.infos_vendeur{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.informationsVenSansNote{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.Adresse>h4{
+    margin: 0;
+}
+
+.AdresseVendeur{
+    margin-right: 10em;
+    margin-top:1.5em;
+}
+
+.block1infos{
+    padding-right: 5em;
+}
+.infosSupp{
+    padding-right: 5em;
+}
+.vendeurDescription{
+    padding: 1em;
+}
+
+.vendeurPartieHaut>.imgVendeur>img{
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+
+.titre_produit{
+    text-align-last: center;
+}
+
+.infos_produit_vendeur{
+    display : flex;
+    flex-direction: row;
+    align-self: flex-start;
+    gap: 10px;
+}
+
+.produit_vendeur{
+    display : flex;
+    flex-direction : column;
+    align-self: center;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    border-radius: 10px;
+    padding : 2%;
+    width : 80%;
+    margin-bottom: 2%; 
+    border : 1px solid #FFB703;
+    margin : 0 100px;
+    margin-bottom: 2%;
+}
+
+.entête_infos_vendeur>img{
+    width: 150px;
+}
+
+.column_vendeur_infos>h3{
+    text-align: center;
+    background-color: pink;
+}
+
+.info_produit_bleu_vendeur{
+    color : #023064;
+}
+
+.info_produit_jaune_vendeur{
+    color : #FFB703;
+}
+
+.infos_produit1{
+    display: flex;
+    flex-direction: row;
+    gap : 5px;
+}
+
+.info_produit_gris_vendeur{
+    color : #615757;
+}
+.infos_produit_vendeur>img{
+    padding: 0 10px 0 10px;
+    width: 225px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10%;
+}
+
+.vendeur_HT,.vendeur_TTC{
+    display: flex;
+    margin: 25.536px 40px 25.536px 40px;
+    
+}
+.vendeur_HT>h4,.vendeur_TTC>h4{
+    margin: unset;
+}
+
+
+/********* EXPORTER CATALOGUE ADMIN ********/
+
+.exporter_catalogue_admin{
+
+    padding: 10px 30px
+}
+
+.exporter_catalogue_admin h1{
+
+    text-align: center;
+    color: var(--bleu);
+}
+
+.exporter_catalogue_admin hr{
+    
+    border: var(--jaune) 1px solid;
+    width: 100%;
+    margin: 0;
+}
+
+.exporter_catalogue_admin table{
+    width: 100%;
+}
+
+.exporter_catalogue_admin table td{
+    padding: 5px;
+}
+
+.exporter_catalogue_admin .confirmer{
+    display: block;
+    margin: 20px auto;
+    cursor: not-allowed;
+}
+
+.exporter_catalogue_admin .confirmer.available{
+
+    opacity: 1;
+    cursor: pointer;
+}

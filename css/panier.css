@@ -1,0 +1,635 @@
+/*******************************************************************************************************************************************************************************
+Body POUR STYLE PANIER
+*******************************************************************************************************************************************************************************/
+.main_panier {
+    display: flex;
+}
+
+.recap>h2, .titre-panier {
+    color: var(--bleu);
+    font-size: 2em;
+}
+
+/* Tous les produits du panier */
+
+.div-panier {
+    width: 70%;
+    margin: 40px;
+}
+
+.blockPanier {
+    padding: 1em 2em 2em 2em;
+    border-radius: 30px;
+}
+
+/* Un produit du panier */
+
+.div-panier>section{
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.Sous-titre-Panier{
+    background-color: var(--jaune);
+    border-radius: 5px;
+    font-size: 1.2em;
+    padding: 1px 50px;
+    text-align: left;
+    color: #ffffff;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    font-family: 'sniglet';
+}
+
+.Produit-Panier {
+    margin-top: 2em;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Produit-Global {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Produit-Global > img {
+    margin: 2em;
+    border-radius: 10px;
+}
+
+.Produit-Infos {
+    margin: 2em 0 2em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.Prix_et_Quantites_et_Suppr {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Prix_et_Quantites_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Prix_et_Quantites_block h2 {
+    color: var(--bleu);
+    font-size: 2em;
+}
+
+.Prix_et_Quantites_block select {
+    font-size: 1em;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+}
+
+.Supprimer_Produit {
+    position: relative;
+    bottom: -43%;
+    padding: 1em;
+}
+
+.Titre-Produit_Panier {
+    font-family: 'sniglet';
+    color: var(--bleu);
+    font-size: 1.7em;
+    white-space: nowrap;
+    margin: 0.5em 0;
+}
+
+.Categorie-Produit_Panier {
+    font-family: 'sniglet';
+    color: var(--bleu);
+    font-size: 1.2em;
+    margin: 0.5em 0 0 0;
+}
+
+.stockage-panier {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.Stock-Produit_Panier {
+    font-family: 'sniglet';
+    color: var(--gris);
+    font-size: 1.4em;
+}
+
+.stockage-panier img {
+    margin-left: 10%;
+}
+
+.supprimer-article {
+    font-family: 'sniglet';
+    color: var(--rouge);
+    font-size: 1.1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.quantites-produit {
+    padding: 0.5em;
+    border-radius: 10px;
+}
+
+/* Récapitulatif */
+
+.recap {
+    width: 20%;
+    margin: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 8em;
+    align-self: flex-start;
+}
+
+.recap>section{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    font-family: 'montserrat';
+}
+
+.calcul-prix {
+    padding: 0 2em;
+}
+
+.Prix_totaux {
+    display: flex;
+    flex-direction: column;
+}
+
+.recap hr {
+    width: 90%;
+    background-color: #D9D9D9;
+    border: 0.5px solid #D9D9D9;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.panier-prix, .frais {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;
+}
+
+.prix-panier-texte, .frais-livraison-texte {
+    color: var(--gris);
+    font-family: 'montserrat';
+}
+
+.prix-base, .frais-livraison {
+    color: var(--bleu);
+    font-family: 'montserrat';
+}
+ 
+.logo_et_texte_livraison {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo_et_texte_livraison img {
+    margin-right: 0.5em;
+}
+/* Bouton Valider Panier */
+.recap>section>form{
+    text-align: center;
+}
+
+.valider-panier, .vider-panier {
+    cursor: pointer;
+    color: #ffffff;
+    margin: 10px;
+    font-family: 'sniglet';
+    transition: all 0.3s ease;
+}
+
+.valider-panier:hover, .vider-panier:hover {
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.valider-panier {
+    background-color: var(--bleu);
+    border-radius: 10px;
+    border: none;
+    padding: 1em 2em;
+    font-size: 1.1em;
+}
+
+.vider-panier {
+    border-radius: 10px;
+    background-color: var(--rouge);
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    margin: 1em 25%;
+}
+
+.vider-panier {
+    margin-top: 20px;
+    border: none;
+    margin: 2em 20%;
+}
+
+.vider-panier .fa {
+    align-self: center;
+}
+
+.vider-panier-texte {
+    font-size: 1em;
+    padding: 1em;
+}
+
+.prix-ht, .tva-incluse, .prix-ttc {
+    color: var(--bleu);
+    display: flex;
+    justify-content: space-between;
+}
+
+.prix-ht h2, .tva-incluse h2, .prix-ttc h2 {
+    font-family: 'montserrat';
+}
+
+.prix-total {
+    color: var(--rouge);
+}
+
+.tva-texte {
+    text-align: center;
+    font-family: 'montserrat';
+}
+
+.prix-base_responsive {
+    display: none;
+}
+
+.valider-panier-resp {
+    display: none;
+}
+
+.vider-panier-responsive {
+    display: none;
+}
+
+/* Responsive Panier */
+@media screen and (max-width: 1400px) {
+
+    .main_panier {
+        flex-direction: column;
+    }
+
+    .div-panier {
+        width: 95%;
+        margin: 0 2.5%;
+    }
+
+    .titre-panier {
+        font-size: 1.5em;
+    }
+
+    .infos-panier-sticky-responsive {
+        z-index: 9;
+        margin: 0 -3% 1em -3%;
+        padding: 1em;
+        position: sticky;
+        top: 8.8em;
+        bottom: 10%;
+        background-color: white;
+        box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    }
+
+    .block-nbr-prix {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .prix-base_responsive {
+        display: block;
+        color: var(--bleu);
+        font-size: 1.5em;
+        margin: 0;
+    }
+
+    .photo-prod {
+        margin-bottom: 0;
+    }
+
+    .Produit-Global, .Produit-Infos, .Titre-Produit_Panier, .Stock-Produit_Panier {
+        margin: 0;
+    }
+
+    .boutons-panier-responsive {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .form-valider-responsive {
+        margin-right: 1em;
+    }
+
+    .valider-panier-resp {
+        display: block;
+        background-color: var(--bleu);
+        color: white;
+        cursor: pointer;
+        padding: 1em;
+        font-family: 'sniglet';
+        font-size: 1em;
+        border-radius: 10px;
+        margin: 1em 0;
+    }
+
+    .vider-panier-responsive {
+        display: block;
+        background-color: var(--rouge);
+        color: white;
+        cursor: pointer;
+        padding: 1em 2em;
+        font-family: 'sniglet';
+        font-size: 1em;
+        border-radius: 10px;
+        margin: 1em 0 1em 1em;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .vider-panier-responsive i {
+        padding: 0.5em;
+    }
+
+    .Sous-titre-Panier h3 {
+        font-size: 1em;
+    }
+
+    .recap {
+        width: 60%;
+        margin: 3em 20%;
+    }
+
+    .recap > h2 {
+        font-size: 2em;
+        margin: 0;
+        text-align: center;
+    }
+
+    .recap > section {
+        padding: 1em;
+    }
+
+    .vider-panier {
+        margin: 1em 40%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+    .infos-panier-sticky-responsive {
+        top: 13em;
+    }
+
+    .paiement .carte_paiement{
+       flex-direction: column-reverse;
+       justify-content: center;
+       align-items: center;
+    }
+
+    .paiement .carte_commande{
+
+        margin-top: 20px;
+        align-self: center;
+    }
+
+    .paiement .carte_livraison{
+        font-size: 15px;
+    }
+
+    .paiement .carte_livraison aside+p{
+        margin-top: 50px;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+    .vider-panier {
+        margin: 1em 30%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .recap {
+        width: auto;
+        margin: 3em auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .infos-panier-sticky-responsive {
+        top: 10.8em;
+    }
+
+    .Produit-Global {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Produit-Infos {
+        align-items: center;
+    }
+
+    .stockage-panier, .Categorie-Produit_Panier {
+        padding: 0;
+    }
+}
+
+/* Responsive des produits dans Panier */
+
+@media screen and (max-width:1187px) {
+    .Produit-Panier, .Prix_et_Quantites_et_Suppr {
+        flex-direction: column;
+    }
+
+    .Prix_et_Quantites_block {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 75%;
+    }
+
+    .Prix_et_Quantites_block > h2 {
+        font-size: 1.8em;
+        margin: 0;
+    }
+}
+
+/* POP-UP Suppression du Panier */  
+
+.form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9;
+    border-radius: 20px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    opacity: 0;
+    z-index: -1;
+}
+
+.form-popup--affiche {
+    opacity: 1;
+    z-index: 21;
+    transition: opacity 0.5s;
+}
+
+.form-container {
+    max-width: 300px;
+    padding: 3em 10em;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.form-container .btn {
+    background-color: var(--bleu);
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    width: 70%;
+    font-family: 'sniglet';
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-container .cancel {
+    background-color: var(--rouge);
+}
+
+.open-button:hover {
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.message-suppr-panier {
+    text-align: center;
+    font-family: 'sniglet';
+}
+
+/* Panier Vide */
+
+.block-panierVide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2% auto;
+    padding: 1em 5em;
+    border-radius: 30px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+}
+
+.titre-panierVide {
+    font-family: 'sniglet';
+    font-size: 2.5em;
+    color: var(--bleu);
+    text-align: center;
+}
+
+.texte-panierVide {
+    font-size: 2em;
+    color: var(--bleu);
+    text-align: center;
+}
+
+.texte-panierVide a {
+    color: var(--jaune);
+    font-family: 'carter';
+    text-decoration: underline;
+}
+
+.block-texte_panierVide {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right: 2em;
+}
+
+@media screen and (max-width: 930px) {
+
+    .block-panierVide {
+        box-shadow: 0px 0 0;
+        padding: 0 2em;
+    }
+
+    .block-texte_panierVide {
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .texte-panierVide {
+        font-size: 1.5em;
+    }
+
+    .Produit-Global > img {
+        height: 20%;
+    }
+
+    .titre-panierVide {
+        margin: 0;
+        font-size: 2em;
+    }
+
+    .block-texte_panierVide img {
+        width: 300px;
+        height: 250px;
+    }
+
+    .Titre-Produit_Panier {
+        white-space: inherit;
+        padding: 0.5em;
+    }
+
+    .Categorie-Produit_Panier {
+        margin: 0;
+        padding: 0.5em;
+    }
+
+    .stockage-panier {
+        padding: 0.5em;
+    }
+
+}

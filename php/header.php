@@ -26,6 +26,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
 <link rel='stylesheet' type='text/css' href='../css/style.css'>
+<link rel='stylesheet' type='text/css' href='../css/header.css'>
+<link rel='stylesheet' type='text/css' href='../css/catalogue.css'>
+<link rel='stylesheet' type='text/css' href='../css/compte_client.css'>
+<link rel='stylesheet' type='text/css' href='../css/cookies.css'>
+<link rel='stylesheet' type='text/css' href='../css/footer.css'>
+<link rel='stylesheet' type='text/css' href='../css/home.css'>
+<link rel='stylesheet' type='text/css' href='../css/gestion_comptes.css'>
+<link rel='stylesheet' type='text/css' href='../css/import_catalogue.css'>
+<link rel='stylesheet' type='text/css' href='../css/login.css'>
+<link rel='stylesheet' type='text/css' href='../css/paiement.css'>
+<link rel='stylesheet' type='text/css' href='../css/panier.css'>
+<link rel='stylesheet' type='text/css' href='../css/produit.css'>
+<link rel='stylesheet' type='text/css' href='../css/vendeur.css'>
 <div class='sticky-header'>
   <div class="haut_de_page">
 

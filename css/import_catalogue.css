@@ -1,0 +1,105 @@
+/*******************************************************************************************************************************************************************************
+Body POUR STYLE IMPORT CATALOGUE
+*******************************************************************************************************************************************************************************/
+
+body {
+    margin: 0px;
+}
+
+.main-ajoutCatalogue > h1 {
+    text-align: center;   
+}
+
+.main-ajoutCatalogue > section > div > h2 {
+    text-align: center;
+}
+
+.main-ajoutCatalogue > section > div {
+    margin: 0 15% 3em 15%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgb(103, 103, 103);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10% 5%;
+}
+
+#submit {
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: var(--bleu);
+    color:white;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 1em 1.5em;
+    transition: all 0.5s ease;
+}
+
+#submit:hover {
+    opacity: 0.8;
+    transition: all 0.5s ease;
+}
+
+.importCSV-button {
+    background-color: red;
+}
+
+#drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    font-family: sans-serif;
+    margin: 2em 10% 2em 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.importCSV {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+}
+
+#gallery {
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.4);
+    margin-bottom: 1em;
+    border-radius: 10px;
+}
+
+#gallery img {
+    padding: 1em;
+}
+
+/* APRES AVOIR INSERE LE CATALOGUE */
+
+.revenirImport {
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #ce2a2a;
+    color:white;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding:1em;
+    margin-bottom: 1em;
+    position: fixed;
+    top: 10em;
+    right: 0;
+}
+
+.revenirImport:hover {
+    opacity: 0.9;
+}

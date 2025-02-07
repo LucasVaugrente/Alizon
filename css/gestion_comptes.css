@@ -1,0 +1,163 @@
+/*******************************************************************************************************************************************************************************
+Body POUR STYLE Gestion Compte Client (Admin)
+*******************************************************************************************************************************************************************************/
+
+.main-GestionCompte aside button{
+    font-size: 1.2em;
+}
+
+.ListeClients {
+    padding: 2em;
+    margin: 2.5%; /* 5% sur les bords */
+    width: 20%; /* 15% sur les bords, Donc le tout 20% à gauche*/
+    background-color: var(--jaune);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.bloc_infos_persos_client_gestion {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 2px 8px rgb(0 0 0 / 60%);
+    padding: 2em 2em 0 2em;
+    margin: 0;
+    position: sticky;
+    top: 11em;
+}
+
+.main-GestionCompte>aside>section li button{
+    color: black;
+    background-color:white;
+    border: none;
+    font-weight: bold;
+    text-align: left;
+    padding: 8px 0 8px 16px; 
+}
+
+.main-GestionCompte #supp {
+    cursor: pointer;
+    text-transform: uppercase;
+    background: var(--rouge);
+    color: white;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.main-Compte li button.active {
+    background-color: #FFB703;
+    color:white;
+    border-radius: 10px;
+}
+
+.main-Compte li button {
+    display: block;
+    width: 90%;
+    padding: 5%;
+    background-color: #FFB703;
+    border-radius: 10px;
+}
+
+.comptes_clients {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.comptes_clients form {
+    width: 100%;
+}
+
+.comptes_clients hr {
+    width: 95%;
+    height: 0.01em;
+    background-color: black;
+}
+
+.ButtonGestionCompte {
+    cursor: pointer;
+    margin-bottom: 0.2em;
+    width: 100%;
+    border: 0;
+    background: linear-gradient(to right, var(--jaune), #db9d00, #d59900, #db9d00, var(--jaune));
+    color: black;
+}
+
+.ButtonGestionCompte:hover {
+    opacity: 0.6;
+}
+
+.comptes_clients form button:hover {
+    background-color: #cc9200;
+}
+
+.active {
+    background-color: #d39700;
+}
+
+.btn-confirmer_gestion {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn-suppr {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.affiche {
+    display: block;
+    transform: translateY(0);
+    transition: .6s;
+}
+
+.cache {
+    display: none;
+    transform: translateY(-10px);
+}
+
+.search-box-cli {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 60%);
+    border-radius: 5px;
+}
+
+.search-txt-cli {
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 5px 0 0 5px;
+    border : 0;
+}
+
+.search-btn-cli {
+    color: var(--bleu);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0 5px 5px 0;
+    transition: all 0.4s;
+    border: 0;
+    outline: 0;
+}
+
+.search-btn-cli:hover {
+    background-color: var(--jaune);
+    color: #fff;
+}
+
+.client_non_trouve {
+    display: none;
+}
+
+.trouve_cli {
+    font-size: 1.4em;
+    text-align: center;
+}

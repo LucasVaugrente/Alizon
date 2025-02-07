@@ -1,0 +1,716 @@
+/*******************************************************************************************************************************************************************************
+Body POUR STYLE PRODUIT
+*******************************************************************************************************************************************************************************/
+
+/******************** INFORMATIONS DU PRODUIT ********************/
+
+.main_produit {
+    padding: 0 10%;
+}
+
+.main_produit>section>h1 {
+    font-family: 'montserrat';
+    color: #080854;
+    margin: 0;
+}
+
+.stars-quantité {
+    padding-top: 5px;
+}
+
+.stars-quantité p {
+    margin: 0;
+    margin-left: 4px;
+}
+
+.infos_produit {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 1em;
+}
+
+.photos_prod {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    padding: 1em;
+    margin: 0 0.5em;
+    height: 22em;
+}
+
+.mySlides {
+    padding: 0 50px;
+}
+
+.mySlides img {
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 60%);
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.mySlides img:hover {
+    transform-origin: center center;
+    transform: scale(1.1);
+    cursor: crosshair;
+}
+
+.photo_min_1,
+.photo_min_2,
+.photo_min_3 {
+    width: 100px;
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.row img {
+    box-shadow: 0 2px 6px rgb(0 0 0 / 40%);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.row img:active {
+    filter: opacity(0.7);
+}
+
+.infos {
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    border-radius: 10px;
+    padding: 1em 2em;
+    margin: 0 0.5em;
+    height: 22em;
+}
+
+.coeur {
+    margin-left: 83%;
+    margin-top: -60%;
+    width: 12%;
+}
+
+.infos>aside {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    padding: 1em 0;
+}
+
+.infos hr {
+    border: 0.1px solid #B1B2AF;
+    margin: 1em;
+}
+
+.infos>aside>form {
+    text-align: center;
+    margin-block-end: 0em;
+}
+
+.ajout {
+    background-color: var(--jaune);
+    color: #fff;
+    font-family: 'sniglet';
+    border: 2px solid var(--jaune);
+    font-size: 1.1em;
+    padding: 1em 3em;
+    border-radius: 10px;
+    cursor: pointer;
+    width: max-content;
+    transition: all 0.2s ease-in-out;
+}
+
+.ajout:hover {
+    background-color: rgb(255, 247, 222);
+    color: var(--jaune);
+}
+
+.ajout:active {
+    background-color: rgb(255, 234, 173);
+}
+
+.ajoutPanierPageProduit {
+    display: flex;
+}
+
+.form_ajout_tel {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.ajout-tel {
+    display: none;
+    background-color: var(--jaune);
+    color: #fff;
+    font-family: 'sniglet';
+    border: var(--jaune);
+    padding: 1em;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    width: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.ajout-tel:hover {
+    background-color: #edad0c;
+}
+
+.infos>p, .carte_commentaire>p {
+    font-family: 'montserrat';
+    line-height: 25px;
+    font-weight: 100;
+}
+
+.infos>p {
+    margin-top:0;
+}
+
+.infos>div>p {
+    color: #615757cc;
+    margin: 0;
+}
+
+.expediteur {
+    background-color: var(--bleu);
+    width: fit-content;
+    color : #FFFFFF;
+    border-radius: 5px;
+    padding: 0.4em 1em;
+    transition: all 0.2s ease-in-out;
+}
+
+.expediteur:hover {
+    background-color: #07448b;
+}
+
+.expediteur:active {
+    background-color: #031e3d;
+}
+
+.logo_infos_stock {
+    width: 40px;
+    height: 40px;
+    margin-right: 0.5em;
+}
+
+.logo_infos_livraison{
+    width: 45px;
+    height: 45px;
+    margin-left: 2em;
+    margin-top: -0.2em;
+    margin-right: 1em;
+}
+
+.produit-quantité > h5 {
+    margin : 0;
+    font-size: 1em;
+    padding-right:1em;
+}
+
+.logos-stock-livraison {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logos-stock-livraison > p {
+    margin-top: 1.4em;
+}
+
+.lienVendeur {
+    text-align-last:center ;
+}
+
+.bloc-ajout-commentaire {
+    margin: 5% 5%;
+}
+
+#texte-commentaire {
+    width: 70%;
+    border-radius: 10px;
+}
+
+.main_produit>section>h1 {
+    padding-top: 50px;
+}
+
+.prix_ht_ttc {
+    display: flex;
+}
+
+.HT,
+.TTC {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 4em;
+}
+
+.HT h2,
+.HT h3,
+.TTC h2,
+.TTC h3 {
+    margin: 0;
+}
+
+.TTC h3, .HT h3 {
+    font-size: 1.5em;
+}
+
+.produit-quantité {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 0 1em 0;
+}
+
+.quantite {
+    padding: 5px;
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+}
+
+.quantite:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+.quantite_prod {
+    margin: 0;
+}
+
+.signaler {
+    margin-top: -25px;
+}
+
+@media screen and (max-width: 1480px) {
+
+    .photos_prod {
+        flex-direction: column-reverse;
+    }
+
+    .main_produit>section>h1{
+        padding-top : 20px
+    }
+
+    .prix_ht_ttc {
+        display: flex;
+    }
+
+    .HT,
+    .TTC {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .HT h2,
+    .HT h3,
+    .TTC h2,
+    .TTC h3 {
+        margin: 0;
+        width: max-content;
+    }
+
+    .produit-quantité {
+        justify-content: flex-start;
+    }
+
+    .row {
+        flex-direction: row;
+        padding-top: 2em;
+    }
+}
+
+@media screen and (max-width: 1335px) {
+    .main_produit {
+        padding: 0 5%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+
+    .photos_prod {
+        width: 85%;
+        padding: 1em 2em;
+        margin-bottom: 2em;
+    }
+
+    .infos {
+        height: auto;
+        width: 85%;
+        margin: 0;
+    }
+
+    .logos-stock-livraison {
+        display: none;
+    }
+
+    .commentaires>hr {
+        display: none;
+    }
+
+    .ajout {
+        display: none;
+    }
+
+    .ajout-tel {
+        display: block;
+    }
+
+    .main_produit>section>section {
+        flex-direction: column;
+    }
+
+    .photo_min_1,
+    .photo_min_2,
+    .photo_min_3 {
+        margin: 0 0.5em;
+        transition: all 0.1s ease-in-out;
+    }
+
+    .coeur {
+        margin-left: 61%;
+        margin-top: -43%;
+        width: 12%;
+        margin-bottom: 35%;
+    }
+
+    .signaler {
+        margin-top: -5%;
+    }
+
+    .commentaires>aside>select {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .ajout-tel {
+        width: 100%;
+    }
+}
+
+/******************** COMMENTAIRES DU PRODUIT ********************/
+.commentaires>hr {
+    margin-top: 2%;
+}
+
+.bloc-étoile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.carte_commentaire {
+    border-radius: 10px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    margin: 5% 5%;
+    padding: 0 2em;
+}
+
+a.anchor-top {
+    display: block;
+    position: relative;
+    top: -250px;
+    visibility: hidden;
+}
+
+.font {
+    width: 30px;
+    height: 60px;
+}
+
+.premier_commentaire {
+    text-align: center;
+}
+
+.carte_commentaire--bloc {
+    display: flex;
+    justify-content: left;
+    display: inline-flex;
+    align-items: center;
+}
+
+.carte_commentaire--bloc h2 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.carte_commentaire--bloc+p {
+    padding: 0 20px
+}
+
+.commentaires>aside>select {
+    background-color: #FFB703;
+    border: 1px solid #FFB703;
+    border-radius: 10px;
+    width: 10%;
+    height: 2em;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+/* */
+
+.commentaires{
+    margin-left: 7%;
+    margin-right : 5%;
+}
+
+.commentaires>aside{
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: -3.1%;
+}
+
+.commentaires>aside>h3{
+    font-family: 'montserrat';
+    font-size: 1.5em;
+}
+
+
+.fa-star {
+    color: gray;
+    /*cursor: pointer;*/
+    padding: 0.0625rem;
+}
+.fa-star.gold {
+	color: #ffdc0f;
+}
+
+/* Le groupe '.stars' positionne les étoiles
+        les unes à côté des autres sans espacements. */
+.stars {
+    display: inline-flex;
+    justify-content: center;
+    font-size: 1em;
+}
+
+/**
+    * Et là opère la magie du ':hover' !
+    */
+
+/* A l'état :hover sur le parent '.rating',
+        on force TOUTES les étoiles à passer en jaune. */
+/*
+.stars:hover .fa-star {
+    color: #ffdc0f;
+}
+*/
+/* Et si la souris survole une étoile en particulier,
+        on sélectionne toutes les étoiles qui sont APRÈS celle-ci
+        grâce à l'opérateur '~' et on les force en GRIS */
+/*
+.stars .fa-star:hover ~ .fa-star {
+    color: gray;
+}
+*/
+.commentaires>article>aside{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 10%;
+    justify-content: flex-start;
+    gap : 20px
+}
+
+.commentaires>article>aside>h2 {
+    color: var(--bleu);
+}
+
+.commentaires>article>h3 {
+    margin-left : 7%;
+    color: var(--bleu);
+    font-family: 'carter', Arial, Helvetica, sans-serif;
+}
+
+.commentaires>article>h4 {
+    margin-left : 9%;
+    font-weight: normal;
+    padding-bottom: 2em;
+}
+
+#btn-annuler-commentaire {
+    color: #FFFFFF;
+    background-color: var(--rouge);
+    font-family: 'montserrat';
+    cursor: pointer;
+    padding: 0.7em 1em;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.réponse, #btn-valider-reponse {
+    color: #fff;
+    float: right;
+    font-family: 'montserrat';
+    background-color: var(--bleu);
+    cursor: pointer;
+    padding: 0.7em 1em;
+    border-radius: 8px;
+    border: none;
+}
+
+#btn-valider-commentaire {
+    color: #fff;
+    font-family: 'montserrat';
+    background-color: var(--bleu);
+    cursor: pointer;
+    padding: 0.7em 1em;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+#btn-valider-commentaire:hover, #btn-annuler-commentaire:hover {
+    opacity: 0.8;
+}
+
+.réponse {
+    margin-right: 1%;
+    margin-top : -25px;
+}
+
+.bloc-reponse {
+    display : flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 7%;
+    width : 75%;
+}
+
+.reponse-comm, .reponse-comm-texte {
+    display : none;
+    align-self : center;
+}
+
+.reponse-comm {
+    color : var(--bleu);
+}
+
+.reponse-comm-texte {
+    border-color: var(--bleu);
+}
+
+#texte-reponse {
+    width : 70%;
+}
+
+.reponse-comm-btn-valider, .reponse-comm-btn-annuler {
+    display : none;
+    text-align: center;
+    align-self: center;
+}
+
+.reponse-comm-btn-valider {
+    color: #fff;
+    font-family: 'montserrat';
+    background-color: var(--bleu);
+    cursor: pointer;
+    border-radius: 8px;
+    border-color: var(--bleu);
+    width : 11%;
+}
+
+.reponse-comm-btn-annuler {
+    color: #fff;
+    font-family: 'montserrat';
+    background-color: var(--rouge);
+    cursor: pointer;
+    border-radius: 8px;
+    border-color: var(--rouge);
+    width : 11%;
+}
+
+.ajouter-avis {
+    height : 140%;
+    padding : 1em;
+    color: #fff;
+    float: right;
+    font-family: 'montserrat';
+    background-color: var(--bleu);
+    cursor: pointer;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.ajouter-avis:hover {
+    opacity: 0.8;
+}
+
+.bloc-btn-ajouter-avis {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+
+.bloc-ajout-commentaire {
+    display: none;
+    justify-content: space-around;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    border-radius: 10px;
+    padding: 2% 3%;
+}
+
+#texte-commentaire {
+    border-color: var(--bleu);
+}
+
+.fa-star-ajout-commentaire {
+    cursor : pointer;
+}
+
+.signaler, #btn-annuler-reponse {
+    color: #FFFFFF;
+    background-color: var(--rouge);
+    font-family: 'montserrat';
+    cursor: pointer;
+    padding: 0.7em 1em;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.signaler:hover, #btn-annuler-reponse:hover {
+    background-color: #b42d34;
+}
+
+.signaler{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+}
+
+@media screen and (max-width: 800px) {
+    .carte_commentaire {
+        height: max-content;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .commentaires>article>aside>h2 {
+        font-size: 1.2em;
+    }
+}

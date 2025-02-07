@@ -1,0 +1,548 @@
+/*******************************************************************************************************************************************************************************
+Body POUR STYLE Compte Client
+*******************************************************************************************************************************************************************************/
+.main-Compte, .main-GestionCompte {
+    display: flex;   
+    flex-direction: row;
+}
+
+/*********** MENU A GAUCHE COMPTE (NOM, DECONNEXION, MENU, SUPPPRIMER...) + MENU GESTION CLIENTS ***********/
+.mesInfos {
+    padding: 2em 4em;
+    margin: 2.5%;
+    width: 15%;
+    height: 50%;
+    background-color: var(--jaune);
+    box-shadow: 0px 5px 5px rgb(0 0 0 / 25%);
+    border-radius: 20px;
+    position: sticky;
+    top: 11em;
+}
+
+.nom_compte {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+}
+
+.bloc_nom_compte {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.bloc_nom_compte .fa-user {
+    padding-right: 0.5em;
+}
+
+.bloc_deconnexion form, .bloc_suppression form {
+    margin: 0;
+}
+
+.bloc_suppression, .bloc_deconnexion {
+    display: flex;
+    justify-content: center;
+}
+
+.deconnexion {
+    margin-top: 2em;
+}
+
+.deconnexion, .supprimer {
+    cursor: pointer;
+    padding: 1em 3em;
+    background-color: var(--rouge);
+    color: white;
+    border-radius: 20px;
+    border-style: none;
+    font-size: 0.9em;
+    text-align: center;
+    font-family: 'montserrat';
+    transition: all 0.2s ease-in-out;
+}
+
+.deco {
+    background-color: var(--rouge);
+}
+
+.deconnexion-admin {
+    cursor: pointer;
+    padding: 1em 2em;
+    background-color: var(--rouge);
+    color: white;
+    border-radius: 20px;
+    border-style: none;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.deconnexion-admin:hover {
+    opacity: 0.8;
+    transition: all 0.5s ease;
+}
+
+.deconnexion-admin input {
+    background-color: var(--rouge);
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.deconnexion:hover, .supprimer:hover {
+    background-color: #b42d34;
+}
+
+/* Désactivation POPUP */
+
+.form-container2 {
+    padding: 3em 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.btn-desac {
+    background-color: var(--rouge);
+    color: #fff;
+    padding: 0.8em;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    font-family: 'montserrat';
+    font-size: 1.2em;
+    border-radius: 10px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 4px black;
+}
+
+.btn-cancel {
+    border: 3px solid var(--rouge);
+    background-color: white;
+    color: var(--rouge);
+    padding: 0.8em;
+    cursor: pointer;
+    width: 40%;
+    font-family: 'montserrat';
+    font-size: 1.2em;
+    border-radius: 10px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 1px black;
+}
+
+.bouton_cancel {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.form-popup2 .btn-desac:hover {
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+.form-popup2 .btn-cancel:hover {
+    background-color: var(--rouge);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.form-container2 input {
+    width: auto;
+    background: none;
+    border: none;
+    border-bottom: solid 2px #FFB703;
+    font-size: 1.5em;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.message-desac-compte {
+    text-align: center;
+    font-size: 1.7em;
+    font-family: 'montserrat';
+}
+
+.form-container2 .texte_erreur_co, .form-container2 .texte_erreur_imp, .form-container2 .texte_erreur_non_saisi {
+    display: none;
+    padding: 0.4em 0.8em;
+    color: var(--rouge);
+    background-color: rgb(255, 176, 176);
+    border-radius: 40px;
+    border: 2px solid var(--rouge);
+    width: 50%;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.form-popup2 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    opacity: 0;
+    z-index: -1;
+}
+
+.form-popup2--affiche {
+    opacity: 1;
+    z-index: 21;
+    transition: opacity 0.5s;
+}
+
+.fond_opacity {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.fond_opacity--affiche {
+    opacity: 1;
+    transition: opacity 0.5s;
+    z-index: 20;
+}
+
+/* Style pour les liens du Menu Compte */
+.liens_compte {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1em;
+}
+
+.infosClient, .btn-commande, .liste {
+    padding: 0.7em 1em;
+    border-radius: 20px;
+    margin-bottom: 0.3em;
+    transition: all 0.3s ease;
+}
+
+.infosClient:hover, .btn-commande:hover, .liste:hover {
+    background-color: white;
+}
+
+.liens_compte_active {
+    background-color: #af7e00;
+}
+
+.infosClient .fa-solid, .btn-commande .fa-solid, .liste .fa-solid {
+    padding-right: 0.3em;
+}
+
+.liens_compte a {
+    font-size: 1.2em;
+    color: var(--bleu);
+    min-width: 80%;
+}
+
+.liens_compte a:visited {
+    color: var(--bleu);
+}
+
+/*********** BLOC INFORMATIONS COMPTE (INFOS, MDP...) ***********/
+.bloc_infos_client {
+    margin: 2.5%; /* 5% sur les bords */
+    width: 75%; /* 75% sur les bords, Donc le tout 80% à droite*/
+    display: flex;
+    flex-direction: column;
+}
+
+.bloc_infos_persos_client {
+    margin-bottom: 2em;
+}
+
+.bloc_infos_persos_vendeur, .bloc_mdp_vendeur{
+    margin-top: 2em;
+    margin-right: 70px;
+    margin-bottom: 20px;
+}
+
+.bloc_infos_persos_client, .bloc_mdp_client, .bloc_infos_persos_vendeur, .bloc_mdp_vendeur {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 2px 8px rgb(0 0 0 / 60%);
+    padding: 2em;
+}
+
+.main-Compte .formulaire, .main-GestionCompte .formulaire {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.titre_infos_client, .titre_mdp_client, .main-GestionCompte>section>h1 {
+    word-spacing: 5px;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+
+.coordonnees, .motDePasse {
+    padding: 1em;
+}
+
+.form_infos_compte, .form_mdp_compte{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+
+.form_infos_adresse {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form_infos_adresse div, .ChangerAdresse .bloc_confirmer, .SupprimerAdresse .bloc_confirmer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+
+
+.form_infos_adresse input , .ChangerAdresse label, .ChangerAdresse input, .SupprimerAdresse label, .SupprimerAdresse input{
+    color:black;
+    font-size: 1em;
+    transition: all 0.2s ease-in-out;
+}
+
+.form_infos_adresse button, .form_infos_adresse input[type="submit"], .ChangerAdresse input[type="submit"], .ChangerAdresse a,.SupprimerAdresse input[type="submit"], .SupprimerAdresse a{
+    text-transform: uppercase;
+    font-size: 0.7em;
+    cursor: pointer;
+    padding: 1.1em 4em;
+    border-radius: 20px;
+    color: white;
+    border-style: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.form_infos_adresse input.ajouter,.ChangerAdresse input[type="submit"].modifier, .ChangerAdresse .ajouter[type="submit"], .SupprimerAdresse .ajouter[type="submit"], .ChangerAdresse a.supprimer, .SupprimerAdresse a.supprimer{
+    background-color: var(--bleu);
+    margin: 1em 0em;
+    font-size: 1em; 
+    transition: all 0.2s ease-in-out;
+}
+.ChangerAdresse input[type="submit"].modifier{
+    color: black;
+    background-color: var(--jaune);
+    transition: all 0.2s ease-in-out;
+}
+.form_infos_adresse button.modifier{
+    background-color: var(--jaune);
+    color: black;
+    margin-left: 1em ;
+    transition: all 0.2s ease-in-out;
+}
+
+.form_infos_adresse button.supprimer,.form_infos_adresse input.supprimer, .ChangerAdresse a.supprimer, .SupprimerAdresse a.supprimer{
+    background-color: var(--rouge);
+    margin-left: 1em;
+    transition: all 0.2s ease-in-out;
+}
+
+.form_infos_adresse input.ajouter:hover, .ChangerAdresse input[type="submit"].modifier:hover, .ChangerAdresse .ajouter[type="submit"]:hover, .SupprimerAdresse .ajouter[type="submit"]:hover, .ChangerAdresse input[type="submit"].modifier:hover, .form_infos_adresse button.modifier:hover, .form_infos_adresse button.supprimer:hover, .form_infos_adresse input.supprimer:hover, .ChangerAdresse a.supprimer:hover, .SupprimerAdresse a.supprimer:hover {
+    opacity: 0.8;
+}
+
+.form_infos_adresse button.supprimer:disabled {
+    background-color: var(--gris);
+}
+
+.bloc_infos_persos_client .texte_erreur_co {
+    padding: 0.6em;
+    color: var(--rouge);
+    background-color: rgb(255, 176, 176);
+    border-radius: 40px;
+    border: 2px solid var(--rouge);
+    width: 80%;
+    text-align: center;
+}
+
+.Block_checkbox_Adressefacturation_disbaled {
+    margin-top: 2%;
+}
+
+
+
+.main-GestionCompte>section>article{ 
+    padding: 15px 100px;
+    margin-left: 90px;
+    margin-bottom: 20px;
+    width: 65%;
+    align-content: flex-end;
+    background-color: white;
+    color:#615757;
+    border: none;
+    box-shadow: 0 0px 8px rgba(0, 0, 0, 60%);
+    border-radius: 20px;
+    transition: border-bottom 0.5s;
+}
+
+.champ_infos_persos input, .champ_mdp_compte input{
+    width: 100%;
+    margin: 8px 0;
+    font-size: 1em;
+    display: inline-block;
+    border: none;
+    box-shadow: 0 0 2px black;
+    box-sizing: border-box;
+    border-radius: 5px;
+
+    --c: var(--jaune);
+    --b: 3px;
+    --g: 5px;
+    padding: calc(var(--g) + var(--b));
+    --_g: #0000 25%,var(--c) 0;
+    background: conic-gradient(from 180deg at top    var(--b) right var(--b),var(--_g)) var(--_i,200%) 0  /200% var(--_i,var(--b))  no-repeat, conic-gradient(at bottom var(--b) left  var(--b),var(--_g)) 0 var(--_i,200%)/var(--_i,var(--b)) 200%  no-repeat;
+    transition: .1s, background-position .1s .1s;
+    background-color: #ececec;
+  }
+
+.champ_infos_persos input:focus, .champ_mdp_compte input:focus {
+    --_i: 100%;
+    transition: .1s, background-size .1s .1s;
+    outline: none;
+}
+
+.champ_infos_persos input:hover, .champ_mdp_compte input:hover {
+    background-color: #dcdcdc;
+}
+
+.champ_mdp_compte {
+    padding-right: 2em;
+}
+
+.champ_infos_persos {
+    margin-right : 5%;
+    margin-left : 5%;
+    width: 20em;
+}
+
+.main-Compte .mdp {
+    display: flex;
+    align-items: center;
+}
+
+/* BOUTON CONFIRMER COMPTE ET GESTION COMPTE */ 
+.main-Compte #confirmer1, .main-Compte #confirmer2, .main-GestionCompte #confirmer, .main-renitialiser #confirmer, .bloc_infos_persos_vendeur .confirmer, .bloc_mdp_vendeur .confirmer, .exporter_catalogue .confirmer, .exporter_catalogue_admin .confirmer{
+    text-transform: uppercase;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 1.1em 4em;
+    border-radius: 20px;
+    background-color: var(--bleu);
+    color: white;
+    border-style: none;
+    margin: 1em;
+    transition: all 0.2s ease-in-out;
+}
+
+.main-Compte #confirmer1:hover, .main-Compte #confirmer2:hover, .main-GestionCompte #confirmer:hover, .main-renitialiser #confirmer:hover, .bloc_infos_persos_vendeur .confirmer:hover, .bloc_mdp_vendeur .confirmer:hover, .exporter_catalogue .confirmer, .exporter_catalogue_admin .confirmer{
+    opacity: 0.9;
+}
+
+/* Bouton Voir ou pas le mot de passe */
+.main-Compte #eye1,#eye2,#eye3 {
+    height: 20px;
+    cursor:pointer;
+    vertical-align: middle;
+    margin-left: 0.5em;
+}
+
+
+/**************Block pour suivi de commande ***********/
+#progression {
+	margin-bottom: 2.5%;
+	padding-bottom: 23px; /* taille de la margin top et de lataille de police de la description */
+    background-color: var(--jaune);
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+#progression > * {
+	background: #DEDEDE;
+	display: inline-block;
+	vertical-align: middle;
+   
+}
+
+#progression .etape {
+	color: black;
+    background-color: white;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	font-size: 24px;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	position: relative;
+}
+#progression .etape .desc {
+	color: white;
+	position: absolute;
+	top: 100%;
+	margin-top: 5px;
+	left: 50%;
+	font-size: 18px;
+	margin-left: -75px;
+	width: 150px;
+	line-height: 1;
+}
+#progression .fait .desc, #progression .fait + .etape .desc {
+	color: var(--bleu);
+}
+#progression .EtatCommandeAnnulee .desc{
+    color : var(--rouge);
+}
+#progression .EtatCommandeAnnulee + *, #progression .EtatCommandeAnnulee,#EtatCommandeAnnulee {
+	background: var(--rouge);
+    color: white;
+}
+
+.etape{
+    background-color: var(--bleu);
+}
+#progression .ligne {
+	width: 130px;
+	height: 4px;
+	margin: 0 3px;
+}
+.block_suiviCommande{
+    font-family: sans-serif;
+    text-align: center;
+    
+    width: 100%;
+    
+    
+}
+.block_commande{
+    margin-left: 3%;
+    width: 69%;
+}
+#progression .fait + *, #progression .fait,#fait {
+	background: var(--bleu);
+    color: white;
+}

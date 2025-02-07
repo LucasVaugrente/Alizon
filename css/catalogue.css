@@ -1,0 +1,931 @@
+/*******************************************************************************************************************************************************************************
+Body POUR STYLE CATALOGUE
+*******************************************************************************************************************************************************************************/
+
+.main-catalogue {
+    background-color: rgb(240, 240, 240);
+    scroll-behavior: smooth;
+}
+
+.haut_catalogue{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-direction: row;
+}
+
+
+#sorting-options{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 2%;
+    position: absolute;
+    right: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: rgb(240, 240, 240);
+    padding: 1em;
+    z-index: 3;
+    user-select: none;
+}
+
+.boutons_tri {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.triTitre {
+    list-style: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    color: var(--bleu);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.detailTri:not([open]) {
+    height: 4em;
+}
+
+.detailTri {
+    height: 10em;
+    width: 12em;
+}
+
+.detailTri h2 {
+    font-family: "sniglet";
+    margin-right: 0.2em;
+    pointer-events: none;
+}
+
+.boutonTri { 
+    background-color: var(--bleu);
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.7em 1.5em;
+    margin: 0.2em;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    font-size: 1em;
+    font-family: "montserrat";
+    transition: all 0.3s ease;
+}
+
+.boutonTri:hover {
+    opacity: 0.8;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.boutonTri.actif {
+    background-color: var(--jaune);
+}
+
+.liste-filtre {  
+    border:none;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2em;
+    width: 20%;
+    height: 50%;
+    margin-left: 2%;
+    user-select: none;
+    margin-bottom: 2em;
+}
+
+.article_cat {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    background-color: white;
+    border-radius: 20px;
+    width: 70%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2em;
+    padding: 2em;
+}
+
+.titre-filtre {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid var(--bleu);
+    border-radius: 5px;
+    color : var(--bleu);
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.titre-filtre h1 {
+    font-family: 'montserrat';
+    font-size: 1.8em;
+}
+
+.normal-button{
+    border: none;
+    width: 65%;
+    height: 3em;
+    border-radius: .5em;
+    align-self: center;
+}
+
+.normal-button.rouge {
+    background-color: var(--rouge);
+    align-items: center;
+    color: white;
+    width: 100%;
+    cursor:pointer;
+    font-family: 'montserrat';
+    font-size: 1em;
+    transition: .2s;
+}
+
+.normal-button.rouge:hover {
+    background-color: #b42d34;
+}
+
+.normal-button.rouge:active {
+    background-color: #cf353d;
+}
+
+.categorie-catalogue summary ~ div label {
+    cursor: pointer;
+    width: auto;
+    width: 55%;
+}
+
+.categorie-catalogue summary ~ div label {
+    text-align: left;
+    color: #FFB703;
+    font-size: 1.2rem;
+    padding-left: 0.5em;
+    width: auto;
+}
+
+.categorie-catalogue summary ~ div label::first-lette {
+    text-transform: uppercase;
+}
+
+.categorie-catalogue summary ~ div label ~ input {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin: 0;
+}
+
+.categorie-catalogue .sous-categorie, .categorie-vendeur {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 1em;
+    height: 2.5rem;
+    transition: all 1s ease-in-out;
+}
+
+.categorie-catalogue summary {
+    padding: 15px 0 ;
+    min-width: 100%;
+    background-color: #164F57
+}
+
+.categorie-catalogue h2 {
+    display: inline-block;
+    text-transform: capitalize;
+    width: 90%;
+    text-align: inherit;
+    font-family: "sniglet";
+    font-weight: lighter;
+    font-size: auto;
+    font-size: 1.3em;
+}
+
+
+details summary::-webkit-details-marker { 
+    display: none; 
+}
+
+summary::after {
+    font-family: "Hiragino Mincho ProN", "Open Sans", sans-serif;
+    content: "▼";
+    transform: rotate(0);
+    transform-origin: center;
+    transition: 0.45s transform ease;
+}
+
+details[open] > summary:after {
+    transform: rotate(180deg);
+    transition: 0.45s transform ease;
+}
+
+details {
+    transition: height .5s ease;
+    overflow: hidden;
+}
+
+.details0:not([open]), .details1:not([open]), .details2:not([open]), .details3:not([open]), .details4:not([open]), .details5:not([open]) { 
+    height: 4.2em; 
+}
+
+.details1[open], .details4[open], .details5[open] { 
+    height: 8.5em; 
+}
+
+.details2[open], .details3[open] { 
+    height: 11em; 
+}
+
+.details0[open] {
+    height: 16em;
+}
+
+.categorie-catalogue summary {
+    cursor: pointer;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.categorie-catalogue summary {
+    background-color: var(--bleu);
+    text-align:left;
+    margin-top: 1em;
+    border-radius: 10px;
+    color : white;
+    list-style:none;
+    height: 50px;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.categorie-catalogue summary:hover {
+    opacity: 0.95;
+    transition: all 0.3s ease;
+}
+
+.apres-current-page a, .avant-current-page a{
+    text-decoration: none;
+    font-weight: lighter;
+    position: relative;
+    top: 14px;
+    width: 40.0%;
+    font-size: 1em;
+}
+
+.form_suppr_filtres {
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 1em;
+    position: sticky;
+    bottom: 0;
+    z-index: 4;
+}
+
+.current-page,.apres-current-page,.avant-current-page{
+    font-size: 1.5em;
+}
+
+
+.trouve, .erreur {
+    font-family: "sniglet";
+    font-size: 1.7em;
+    color: var(--bleu);
+    padding: 1em 2em 1em 2em;
+    margin: 0;
+    margin-top: 0.5em;
+}
+
+.plus {
+    margin-bottom: 0.5em;
+}
+
+.milieu_catalogue{
+    display: flex;
+}
+
+.alert-import-csv{
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 10px;
+    width: 60%;
+    max-width: 1000px;
+    background-color: #fff;
+    z-index: 21;
+    position: absolute;
+    top: 100px;
+    right: 400px;
+    opacity: 0;
+    display: none;
+    transition: opacity 0.5s;
+}
+
+.alert-import-csv.-affiche{
+    opacity: 1;
+    display: block;
+}
+
+.alert-import-csv h3{
+    font-family: carter;
+    font-size: 25px;
+    color: var(--bleu);
+    text-align: center;
+}
+
+.alert-import-csv div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.alert-import-csv i{
+    color: var(--bleu);
+    float: right;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.alert-import-csv p{
+    font-size: 20px;
+}
+
+.alert-import-csv div i{
+    color: rgb(3, 94, 3);
+    font-size: 70px;
+}
+
+.alert-import-csv div i.fa-circle-xmark{
+    color: var(--rouge);
+}
+
+.alert-import-csv button, .alert-import-csv .downloadcsv{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 18px;
+    background-color: var(--jaune);
+    color: #fff;
+    float: right;
+    font-family: sniglet;
+    cursor: pointer;
+}
+
+.alert-import-csv table{
+    margin-top: 50px;
+    width: 100%;
+    opacity: 0;
+    display: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.alert-import-csv table.-affiche{
+    opacity: 1;
+    display: table;
+}
+
+.alert-import-csv table.-affiche i{
+    font-size: 20px;
+}
+
+.alert-import-csv table td{
+    padding: 0 16px;
+}
+
+/***Article***/
+
+.carte_produit_ajout {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    margin: 0.5em;
+    padding: 1em;
+    transition: transform 0.2s ease-out;
+}
+
+.carte_produit_ajout>a>img{
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.carte_produit_ajout .prix_avis {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap: 10px;
+}
+
+.carte_produit_ajout .prix_avis h4 {
+    color: #023064;
+    font-size: 25px;
+    margin: 5px 0;
+}
+
+.carte_produit_ajout .infoVendeurProduit {
+    background-color: var(--jaune);
+    border: solid 2px var(--jaune);
+    padding:10px 38px;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+    cursor:pointer;
+    font-weight: bold;
+    transition: background 0.5s ease;
+}
+
+.carte_produit_ajout > h3 {
+    color: var(--bleu);
+    margin: 0;
+    margin-top: 0.5em;
+}
+
+.carte_produit_ajout:hover {
+    outline: 2px solid rgb(219, 172, 16);
+    transform: scale(1.02);
+    transition: transform 0.5s ease-out;
+    
+}
+
+.carte_produit_ajout:hover .infoVendeurProduit {
+    display: none;
+}
+
+.carte_produit_ajout:hover .ajoutPanier {
+    display: block;
+}
+
+.ajoutPanier {
+    display: none;
+    background-color: white;
+    border : solid 2px var(--jaune);
+    height:49px;
+    border-radius : 15px;
+    color : var(--jaune);
+    padding:10px 38px;
+    text-align: center;
+    cursor:pointer;
+    font-weight: bold;
+    align-items: center;
+    transition: all 0.2s ease-in-out; 
+}
+
+.ajoutPanier:hover {
+    cursor: pointer;
+    background-color: rgb(255, 247, 222);
+}
+
+.carte_produit_ajout .ajoutPanier:hover {
+    background-color: white;
+    color : var(--jaune);
+    transition: background 0.5s ease;
+}
+
+.stock_prixAvis h3 {
+    margin: 0;
+    text-transform: uppercase;
+    margin-top: 5%;
+    font-family: 'montserrat';
+}
+
+.produit_enStock {
+    color: var(--vert);
+}
+
+.produit_horsStock {
+    color: var(--rouge);
+}
+
+.ajoutPanier {
+    display: none;
+}
+
+.filtres_responsive {
+    display: none;
+    position: sticky;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4em;
+    background-color: white;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 1px 5px black;
+}
+
+.filtres_responsive div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.filtres_responsive button {
+    width: 47%;
+    cursor: pointer;
+    padding: 0.8em 1em;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 2px black;
+    margin-top: 0.9em;
+    text-align: left;
+    font: 0.9em "montserrat", sans-serif;
+    transition: all 0.2s ease-in-out;
+}
+
+.cat_responsives {
+    background-color: var(--bleu);
+    color: white;
+}
+
+.cat_responsives:hover {
+    background-color: #022854;
+}
+
+.prix_responsives:hover {
+    background-color: rgb(222, 222, 222);
+}
+
+.filtres_prix_responsives_block, .filtres_cat_responsives_block {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    animation-name: arrive-from-bottom;
+    animation-duration: 0.3s;
+    z-index: 20;
+    transition: all 0.3s ease-in-out;
+    background-color: #fffffa;
+    overflow-y: scroll;
+    overscroll-behavior: auto;
+}
+
+.filtres_prix_responsives_block {
+    bottom: 0;
+    top: auto;
+    height: max-content;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.filtres_prix_responsives_block::-webkit-scrollbar, .filtres_cat_responsives_block::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.fermer_filtres, .fermer_filtres2 {
+    padding: 1em;
+    cursor: pointer;
+}
+
+.titre_filtres_resp {
+    display: none;
+}
+
+.resp_filtres {
+    margin: 6em 1em;
+}
+
+.titre_filtres_resp h2 {
+    font: 1.3em "montserrat", sans-serif;
+    color: var(--bleu);
+    font-weight: 600;
+    margin-left: 1em;
+}
+
+.boutons_resp_filtres {
+    display: none;
+}
+
+.boutons_resp_filtres button, .boutons_resp_filtres form {
+    width: 90%;
+}
+
+.fermer_filtres_cat {
+    margin-right: 1em;
+}
+
+.valider_resp_filtres {
+    background-color: var(--bleu);
+    border-radius: 10px;
+    border: none;
+    font-size: 1em;
+    font-family: 'montserrat';
+    box-shadow: 0 0 2px black;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.valider_resp_filtres:hover {
+    background-color: #04264d;
+}
+
+.valider_resp_filtres:active {
+    background-color: #063b77;
+}
+
+.boutonTri_resp {
+    width: 100%;
+    padding: 1em;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-family: 'montserrat';
+    font-size: 1.1em;
+}
+
+.boutonTri_resp:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.boutons_tri hr {
+    height: 1px;
+    margin: 0;
+    width: 95%;
+    background-color: #000;
+}
+
+@keyframes arrive-from-bottom {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/***** Style pour le filtre produit -> double slider**/
+
+.range_container {
+    margin-top: 5px;
+    width: 20%;
+}
+
+.sliders_control {
+    position: relative;
+    min-height: 25px;
+    margin-top: 10%;
+}
+
+.form_control {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    color: black;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: none;
+    pointer-events: all;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #C6C6C6;
+    cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+    appearance: none;
+    pointer-events: all;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #C6C6C6;
+    cursor: pointer;  
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    background: #f7f7f7;
+}
+
+input[type="number"]:not(input[type="number"][class=champ_codePostal]) {
+    color: black;
+    width: 50px;
+    height: 30px;
+    font-size: 20px;
+    border: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+    opacity: 1;
+}
+
+input[type="range"] {
+    -webkit-appearance: none; 
+    appearance: none;
+    height: 2px;
+    width: 98%;
+    position: absolute;
+    background-color: #C6C6C6;
+    pointer-events: none;
+}
+
+#fromSlider {
+    height: 0;
+    z-index: 1;
+}
+
+/* Responsive Catalogue */
+@media screen and (max-width: 1400px) {
+    .partie-produits{
+        width: 60%;
+    }
+    .partie-filtre{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width:1310px) {
+    .filtres_responsive {
+        display: block;
+    }
+
+    .liste-filtre {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 90%;
+        margin: 2em 0 0 0;
+        animation-name: arrive-from-bottom;
+        animation-duration: 0.3s;
+        z-index: 20;
+        transition: all 0.3s ease-in-out;
+        background-color: #fffffa;
+        overflow-y: scroll;
+        overscroll-behavior: auto;
+    }
+
+    .boutons_resp_filtres {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 15;
+        position: sticky;
+        padding: 1em;
+        bottom: 4em;
+        background-color: #fffffa;
+    }
+
+    .liste-filtre > .form_suppr_filtres {
+        display: none;
+    }
+
+    .titre-filtre {
+        display: none;
+    }
+
+    .titre_filtres_resp {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 0 2px black;
+        background-color: var(--jaune);
+        z-index: 22;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        cursor: pointer;
+        height: 3.6em;
+    }
+
+    input[type="range"] {
+        width: 83%;
+    }
+    
+    .article_cat {
+        width: auto;
+    }
+
+    #sorting-options {
+        display: none;
+    }
+
+    .form_suppr_filtres {
+        position: static;
+        padding: 0;
+        margin: 1em 0 0 0;
+    }
+
+    .sliders_control {
+        position: static;
+    }
+
+    .haut_catalogue {
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 1270px) {
+
+    main#Catalogue {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mobile-ouvrir-filtres:not(.est-filtre-ouvert ){
+        display: block;
+    }
+
+    .partie-produits {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .fermer-filtre {
+        display: block;
+    }
+    
+    .partie-filtre {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        min-height: 100%;
+    }
+
+    .partie-filtre.est-filtre-ouvert {
+        padding-bottom: 5em;
+        z-index: 100;
+        overflow: auto;
+        top: 80px;
+    }
+
+    .partie-filtre:not(.est-filtre-ouvert) {
+        position: fixed;
+        bottom: -100vh;
+    }
+
+    .onglets + form {
+        gap: 1.5em;
+        padding-bottom: 7%;
+    }
+
+    .categorie-catalogue summary {
+        padding: 1em 5%;
+    }
+
+    #Catalogue {
+        padding: 7.5rem 0;
+    }
+}
+
+@media screen and (max-width:600px) {
+
+    .carte_produit_ajout {
+        width: 100%;
+        flex-direction: column;
+        flex-wrap: unset;
+        padding: 1em 10%;
+    }
+
+    .carte_produit_ajout--boutons__panier {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .carte_produit_ajout--boutons__panier form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .carte_produit_ajout .ajoutPanier {
+        display: block;
+        margin-top: 1em;
+    }
+
+    .carte_produit_ajout:hover .infoVendeurProduit {
+        display: block;
+    }
+
+    .carte_produit_ajout>a>img {
+        width: 100%;
+    }
+}
