@@ -55,8 +55,7 @@ Police de caractère:
 /*Police de titre*/
 @font-face {
     font-family: 'carter';
-    src: url('../fonts/carterOne/carterone-webfont.woff2') format('woff2'),
-        url('../fonts/carterOne/carterone-webfont.woff') format('woff');
+    src: url('../fonts/Calibre/calibre_semi_bold.woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -124,7 +123,7 @@ Main:
 ///////////////////////////////////////////////////////////////////*/
 
 /* Style d'écriture des titres h1 et h2 */
-h1, h2 {
+h1, h2{
     font-family: 'carter', Arial, Helvetica, sans-serif;
 }
 
