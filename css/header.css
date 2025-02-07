@@ -641,9 +641,6 @@ li .mega-menu2 {
 }
 
 @media screen and (max-width: 1024px) {
-  .search-box {
-    display: none;
-  }
 
   ul.topnav--left {
     display: flex;

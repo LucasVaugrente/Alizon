@@ -63,16 +63,13 @@
     ?>
     <main class="main-index">
 
-        <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
-            <!-- Indicators/dots -->
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
                 <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
             </div>
 
-            <!-- The slideshow/carousel -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="../img/palets_bretons.png" alt="Image palets bretons" class="d-block">
@@ -104,8 +101,10 @@
             </button>
         </div>
 
-        <h2>LA SÉLECTION Alizon</h2>
-        <hr>
+        <div>
+            <h2>LA SÉLECTION Alizon</h2>
+            <hr>
+        </div>
 
         <div class="selec_categories">
             <?php 
@@ -139,8 +138,10 @@
 
             <div class="en_plus--livraison">
                 <img src="../img/money-euro-circle-fill.svg" alt="logo euro">
-                <h3>Livraison offerte</h3>
-                <h4>Partout en Bretagne</h4>
+                <div>
+                    <h3>Livraison offerte</h3>
+                    <h4>Partout en Bretagne</h4>
+                </div>
             </div>
 
             <div class="en_plus--sav">
@@ -149,8 +150,10 @@
             </div>
         </aside>
 
-        <h2>LES PLUS RECHERCHÉES</h2>
-        <hr>
+        <div>
+            <h2>LES PLUS RECHERCHÉES</h2>
+            <hr>
+        </div>
 
         <div class="plus_recherchees">
 
