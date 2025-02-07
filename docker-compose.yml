@@ -25,6 +25,7 @@ services:
       - ./php:/var/www/html
       - ./css:/var/www/html/css
       - ./csv:/var/www/html/csv
+      - ./download:/var/www/html/download
       - ./fonts:/var/www/html/fonts
       - ./img:/var/www/html/img
       - ./js:/var/www/html/js

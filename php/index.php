@@ -104,7 +104,7 @@
             </button>
         </div>
 
-        <h2>LA SÉLECTION alizon</h2>
+        <h2>LA SÉLECTION Alizon</h2>
         <hr>
 
         <div class="selec_categories">

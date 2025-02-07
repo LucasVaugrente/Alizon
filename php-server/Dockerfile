@@ -5,6 +5,7 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql
 COPY php /var/www/html/php
 COPY css /var/www/html/css
 COPY csv /var/www/html/csv
+COPY download /var/www/html/download
 COPY fonts /var/www/html/fonts
 COPY img /var/www/html/img
 COPY js /var/www/html/js

@@ -1,30 +1,34 @@
 <section>
     <div>
-        <h4>A propos</h4>
-        <p>
-            <a class="lien_cgv" href="../download/cgv.pdf" target="_blank">Conditions générales de ventes</a><br>
-            <a class="lien_cgu" href="../download/cgu.pdf" target="_blank">Conditions générales d'utilisation du compte</a><br>
-            <a class="lien_mentionL" href="mentionlegales.php">Mentions légales</a><br>
+        <h4>À propos</h4>
+        <ul>
+            <li><a class="lien_cgv" href="../download/cgv.pdf" target="_blank">Conditions générales de ventes</a></li>
+            <li><a class="lien_cgu" href="../download/cgu.pdf" target="_blank">Conditions générales d'utilisation du compte</a></li>
+            <li><a class="lien_mentionL" href="mentionlegales.php">Mentions légales</a></li>
+        <ul>
     </div>
 
-    <div class="gcbr">
+    <div>
         <h4>Le groupe COBREC</h4>
-        <p>Qui sommes nous ?<br>
-            Recrutement<br>
-            Développement durable<br>
-            Groupe Fnac Darty</p>
+        <ul>
+            <li>Qui sommes nous ?</li>
+            <li>Recrutement</li>
+            <li>Développement durable</li>
+            <li>Groupe Fnac Darty</li>
+        </ul>
     </div>
 
-    <div class="gcbr">
+    <div>
         <h4>Aide, SAV et Service</h4>
-        <p>Besoin d'aide ?<br>
-            Contactez-nous !<br>
-            Services alizon</p>
+        <ul>
+            <li>Besoin d'aide ?</li>
+            <li>Contactez-nous !</li>
+            <li>Services alizon</li>
+        </ul>
     </div>
 </section>
 
-<!-- LOGO alizon EN BAS DE PAGE -->
 <figure>
-    <img src="../img/logo_caddie.svg" alt="logo_caddie">
-    <figcaption>alizon</figcaption>
+    <img src="../img/logo_caddie.svg" alt="Logo Alizon" title="Alizon">
+    <figcaption>Alizon</figcaption>
 </figure>

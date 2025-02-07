@@ -2,7 +2,7 @@
     include('databaseConnexion.php');
     
     /* ######################################## GESTION DES COMMENTAIRES ######################################## */
-    function avis_produit($id_produit){
+    function avis_produit($id_produit){ 
         global $schema;
         global $dbh;
 
@@ -429,7 +429,7 @@
         global $schema;
         global $dbh;
 
-        $videPannier = $dbh->prepare("DELETE FROM $schema._Contient_Produit_p WHERE ID_Panier = ?");
+        $videPannier = $dbh->prepare("DELETE FROM $schema._contient_produit_p WHERE ID_Panier = ?");
         $videPannier->execute(array($_COOKIE['id_panier']));
         header("Location: ./panier.php");
         exit();
@@ -439,7 +439,7 @@
         global $schema;
         global $dbh;
 
-        $supprimerProduit = $dbh->prepare("DELETE FROM $schema._Contient_Produit_p WHERE ID_Panier = ? and ID_Produit  = ?");
+        $supprimerProduit = $dbh->prepare("DELETE FROM $schema._contient_produit_p WHERE ID_Panier = ? and ID_Produit  = ?");
         $supprimerProduit->execute(array($_COOKIE['id_panier'],$id_produit));
         header("Location: ./panier.php?produitretiré");
         exit();
@@ -450,7 +450,7 @@
         global $dbh;
         
 
-        $modifQuantite = $dbh->prepare("UPDATE $schema._Contient_Produit_p set Quantite = ? where ID_Produit  = ? AND ID_Panier = ?");
+        $modifQuantite = $dbh->prepare("UPDATE $schema._contient_produit_p set Quantite = ? where ID_Produit  = ? AND ID_Panier = ?");
 
         if ($quantiteSelect>99) {
             print "Erreur !: Le produit a atteint la quantiter max <br/>";
@@ -459,7 +459,7 @@
             supprimerProduit($id_produit);
         }
         else {
-            $upProduit = $dbh->prepare("UPDATE $schema._Contient_Produit_p set Quantite = ? where ID_Produit  = ? AND ID_Panier = ?");
+            $upProduit = $dbh->prepare("UPDATE $schema._contient_produit_p set Quantite = ? where ID_Produit  = ? AND ID_Panier = ?");
             $upProduit->execute(array($quantiteSelect,$id_produit,$_COOKIE['id_panier']));
             header("Location: ./panier.php");
             exit();
@@ -510,18 +510,18 @@
         $cht = $dbh->prepare("SELECT Prix_vente_HT FROM $schema._produit  where ID_Produit  = ?");
         $ht = $cht->execute(array($id_produit));
 
-        $cverif = $dbh->prepare("SELECT COUNT(*) FROM $schema._Contient_Produit_p where ID_Produit  = ? AND ID_Panier = ?");
+        $cverif = $dbh->prepare("SELECT COUNT(*) FROM $schema._contient_produit_p where ID_Produit  = ? AND ID_Panier = ?");
         $cverif->execute(array($id_produit,$_COOKIE['id_panier']));
         $verif = $cverif->fetchAll();
 
-        $addProduit = $dbh->prepare("INSERT INTO $schema._Contient_Produit_p(ID_Panier,ID_Produit,Quantite)VALUES(?,?,?);");
-        $upProduit = $dbh->prepare("UPDATE $schema._Contient_Produit_p set Quantite = ? where ID_Produit  = ? AND ID_Panier = ?");
+        $addProduit = $dbh->prepare("INSERT INTO $schema._contient_produit_p(ID_Panier,ID_Produit,Quantite)VALUES(?,?,?);");
+        $upProduit = $dbh->prepare("UPDATE $schema._contient_produit_p set Quantite = ? where ID_Produit  = ? AND ID_Panier = ?");
 
         if ($verif[0]["COUNT(*)"]<1) {
             $addProduit->execute(array($_COOKIE['id_panier'],$id_produit,$nbProduits)); 
         }
         else {
-            $cquantite = $dbh->prepare("SELECT Quantite FROM $schema._Contient_Produit_p where ID_Produit  = ? AND ID_Panier = ?");
+            $cquantite = $dbh->prepare("SELECT Quantite FROM $schema._contient_produit_p where ID_Produit  = ? AND ID_Panier = ?");
             $quantite = $cquantite->execute(array($id_produit,$_COOKIE['id_panier']));
             if ($quantite + $nbProduits<99) {
                 $upProduit->execute(array($quantite+$nbProduits,$id_produit,$_COOKIE['id_panier']));
@@ -739,7 +739,7 @@
         global $schema;
         global $dbh;
         
-        $sth = $dbh->prepare("SELECT * from $schema._Adresse where _Adresse.ID_Client = ?");
+        $sth = $dbh->prepare("SELECT * from $schema._adresse where _Adresse.ID_Client = ?");
         $sth->execute(array($idClient));
         return $sth->fetchAll();
     }
@@ -927,10 +927,10 @@
         global $dbh;
 
         if(empty($complementAdresse)){
-            $sth = $dbh -> prepare("UPDATE $schema._Adresse SET nom_de_rue = ? , complement = ? , ville = ? ,code_postale = ? , adresse_facturation = ?  WHERE ID_Adresse = ? ;");
+            $sth = $dbh -> prepare("UPDATE $schema._adresse SET nom_de_rue = ? , complement = ? , ville = ? ,code_postale = ? , adresse_facturation = ?  WHERE ID_Adresse = ? ;");
             $sth->execute(array($adr,NULL,$ville,$codePostal,$facturation,$id_adresse));
         }else{
-            $sth = $dbh -> prepare("UPDATE $schema._Adresse SET nom_de_rue = ? , complement = ? , ville = ? ,code_postale = ? , adresse_facturation = ? WHERE ID_Adresse = ? ;");
+            $sth = $dbh -> prepare("UPDATE $schema._adresse SET nom_de_rue = ? , complement = ? , ville = ? ,code_postale = ? , adresse_facturation = ? WHERE ID_Adresse = ? ;");
             $sth->execute(array($adr,$complementAdresse,$ville,$codePostal,$facturation,$id_adresse));
         }
     }
@@ -938,7 +938,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT * FROM $schema._Adresse WHERE ID_Adresse = ?");
+        $sth = $dbh->prepare("SELECT * FROM $schema._adresse WHERE ID_Adresse = ?");
         $sth->execute(array($id_adresse));
         $result = $sth->fetchAll();
         return $result;
