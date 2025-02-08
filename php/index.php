@@ -88,7 +88,11 @@
                 </div>
 
                 <div class="carousel-item">
-                    <img src="../img/palets_bretons.png" alt="Image palets bretons" class="d-block">
+                    <img src="../img/Breizh-Cola.jpg" alt="Image Breizh Cola" class="d-block">
+                    <div class="carousel-caption">
+                        <h3>Promotions</h3>
+                        <h4>-20%</h4>
+                    </div>
                 </div>
             </div>
 
