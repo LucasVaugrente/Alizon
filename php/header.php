@@ -131,15 +131,12 @@ foreach ($res as $categorie) {
                   </div>";
           }
         }
-
         ?>
       </a>
     </div>
   </div>
 
-  <!-- BARRE DE NAVIGATION -->
   <div class="navbar">
-    <!-- MENU BUGER FORMAT PC-->
     <div class="topnav">
       <ul class="topnav--left">
         <li class="header tel">
@@ -166,8 +163,6 @@ foreach ($res as $categorie) {
                     </ul>
                   </li>
                 <?php endforeach; ?>
-
-
               </ul>
             </li>
           </ul>
@@ -230,26 +225,28 @@ foreach ($res as $categorie) {
 </div>
 
 <script>
-  /*############### ANIMATION MENU DE CATEGORIES ###############*/
   const menuBtn = document.querySelector(".menu-btn");
   const menuItems = document.querySelector(".menu-items");
   const expandBtn = document.querySelectorAll(".expand-btn");
+  const dropdownMenu = document.querySelector(".dropdown-menu");
 
-  // humburger toggle
   menuBtn.addEventListener("click", () => {
     menuBtn.classList.toggle("open");
     menuItems.classList.toggle("open");
+    
+    if(!menuBtn.classList.contains("open")) {
+      dropdownMenu.classList.remove("expandable");
+    }
   });
 
-  // mobile menu expand
   expandBtn.forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", () => {      
       btn.classList.toggle("open");
     });
   });
 
-  let btn_compte = document.querySelector(".logo_compte");
-  let bloc_compte = document.querySelector(".bloc-compte");
+  const btn_compte = document.querySelector(".logo_compte");
+  const bloc_compte = document.querySelector(".bloc-compte");
 
   btn_compte.addEventListener("click", function(event) {
     bloc_compte.classList.toggle("actif");

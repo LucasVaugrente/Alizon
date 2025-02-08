@@ -32,6 +32,8 @@
             ?>
         </div>
     </div>
+
+    <hr>
     <div class="stock_prix">
         <?php if($produit["quantite_disponnible"]>=1):?>
         <h4 class="produit_enStock">En Stock</h4>

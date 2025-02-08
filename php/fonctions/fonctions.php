@@ -739,7 +739,7 @@
         global $schema;
         global $dbh;
         
-        $sth = $dbh->prepare("SELECT * from $schema._adresse where _Adresse.ID_Client = ?");
+        $sth = $dbh->prepare("SELECT * from $schema._adresse where _adresse.ID_Client = ?");
         $sth->execute(array($idClient));
         return $sth->fetchAll();
     }
