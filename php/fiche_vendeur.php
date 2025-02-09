@@ -29,7 +29,6 @@
             <section class = "DescriptionVendeur">
                 <section class = "vendeurPartieHaut">
                     <div class = "imgVendeur">
-                        
                         <?php
                             echo "<img class='lien_vendeur' src='../img/vendeur/".$vendeur['ID_Vendeur']."/img1.webp' alt='marche stp'>";
                         ?>
@@ -94,7 +93,7 @@
                     <?php for ($i=0; $i < $nbrProduits; $i++): ?>
                     <section class = "produit_vendeur cursor">
                         <div class = "infos_produit_vendeur">
-                            <?php $src = str_replace(' ', "_","../img/catalogue/Produits/".$liste_produit_vendeur[$i]['ID_Produit']."/"); ?>
+                            <?php $src = str_replace(' ', "_","../img/catalogue/Produits/".$liste_produit_vendeur[$i]['ID_produit']."/"); ?>
                             <img class='photo_min_2' src='<?php echo(str_replace(' ', "_",$src.$liste_produit_vendeur[$i]['images1']));?>' alt='image_produit'>
                             <section>
                                 <div class = "infos_produit1">
@@ -134,17 +133,15 @@
         </footer>
     </body>
     <script>
-        var liste_produit = document.getElementsByClassName("produit_vendeur");
+        const liste_produit = document.getElementsByClassName("produit_vendeur");
         <?php for($i = 0; $i < $nbrProduits; $i++):?>
             function redirectionPageProduit<?php echo $i;?>(){
-                <?php $string = "'produit.php?idProduit=".$liste_produit_vendeur[$i]['ID_Produit']."';" ?>
+                <?php $string = "'produit.php?idProduit=".$liste_produit_vendeur[$i]['ID_produit']."';" ?>
                 <?php echo "document.location.href = $string";?>
-                console.log("aaaaa");
             }
         <?php endfor;?>
 
         <?php for($i = 0; $i < $nbrProduits; $i++):?>
-            console.log(liste_produit);
             liste_produit[<?php echo $i;?>].addEventListener('click',redirectionPageProduit<?php echo $i;?>);
         <?php endfor;?>
     </script>
