@@ -766,8 +766,8 @@
         global $schema;
         global $dbh;
         $sth = $dbh->prepare("SELECT count(*) FROM $schema._client WHERE email = ?");
-        $execute = $sth->execute(array($email));
-        return $execute->fetchAll()[0]['count'];
+        $sth->execute(array($email));
+        return $sth->fetchAll()[0]['count'];
     }
     
     function desactiver_compte($id_client, $id_panier){
@@ -914,10 +914,10 @@
         global $dbh;
 
         if(empty($complementAdresse)){
-            $sth = $dbh -> prepare("INSERT INTO alizon._Adresse (ID_Client,nom_de_rue,ville,code_postale,adresse_facturation) VALUES (?,?,?,?,?)");
+            $sth = $dbh -> prepare("INSERT INTO alizon._adresse (ID_Client,nom_de_rue,ville,code_postale,adresse_facturation) VALUES (?,?,?,?,?)");
             $sth->execute(array($id_client,$adr,$ville,$codePostal,$facturation));
         }else{
-            $sth = $dbh -> prepare("INSERT INTO alizon._Adresse (ID_Client,nom_de_rue,complement,ville,code_postale,adresse_facturation) VALUES (?,?,?,?,?,?)");
+            $sth = $dbh -> prepare("INSERT INTO alizon._adresse (ID_Client,nom_de_rue,complement,ville,code_postale,adresse_facturation) VALUES (?,?,?,?,?,?)");
             $sth->execute(array($id_client,$adr,$complementAdresse,$ville,$codePostal,$facturation));
         }
     }
@@ -927,10 +927,10 @@
         global $dbh;
 
         if(empty($complementAdresse)){
-            $sth = $dbh -> prepare("UPDATE $schema._adresse SET nom_de_rue = ? , complement = ? , ville = ? ,code_postale = ? , adresse_facturation = ?  WHERE ID_Adresse = ? ;");
+            $sth = $dbh -> prepare("UPDATE $schema._adresse SET nom_de_rue = ? , complement = ? , ville = ? ,code_postale = ? , adresse_facturation = ?  WHERE ID_adresse = ? ;");
             $sth->execute(array($adr,NULL,$ville,$codePostal,$facturation,$id_adresse));
         }else{
-            $sth = $dbh -> prepare("UPDATE $schema._adresse SET nom_de_rue = ? , complement = ? , ville = ? ,code_postale = ? , adresse_facturation = ? WHERE ID_Adresse = ? ;");
+            $sth = $dbh -> prepare("UPDATE $schema._adresse SET nom_de_rue = ? , complement = ? , ville = ? ,code_postale = ? , adresse_facturation = ? WHERE ID_adresse = ? ;");
             $sth->execute(array($adr,$complementAdresse,$ville,$codePostal,$facturation,$id_adresse));
         }
     }
@@ -948,7 +948,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh -> prepare("DELETE FROM alizon._Adresse WHERE ID_Adresse = ? ;");
+        $sth = $dbh -> prepare("DELETE FROM alizon._adresse WHERE ID_Adresse = ? ;");
         $sth->execute(array($ID_Adresse));
     }
 

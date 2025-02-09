@@ -7,7 +7,6 @@
 
         $connected = connexion($_POST["email"], $_POST["pwd"]);
         
-        print_r($connected);
         /**
          * Tableau $connected
          * ['res']

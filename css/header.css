@@ -47,15 +47,15 @@ header {
   transition: color 0.3s ease-in-out;
 }
 
-.logo_compte i,
+.logo_compte > i,
 .logo_panier i,
 .search-btn-tel i {
   transition: all 0.3s ease-in-out;
   font-size: 38px;
 }
 
-.logo_compte:hover i,
-.logo_compte:hover p,
+.logo_compte:hover > i,
+.logo_compte:hover > p,
 .logo_panier:hover i,
 .logo_panier:hover p {
   color: var(--jaune);
@@ -117,22 +117,23 @@ header {
   flex-direction: column;
   justify-content: flex-start;
   background-color: var(--bleu);
-  position: fixed;
-  padding: 0.7em 1.2em;
-  top: 80px;
+  position: absolute;
+  padding: 10px;
+  top: 70px;
+  right: 0;
   z-index: 10;
   border-radius: 5px;
-  box-shadow: 0 0 3px var(--jaune);
+  box-shadow: 0px 0px 10px rgba(103, 103, 103, 0.596);
   opacity: 0;
   visibility: hidden;
   transition: transform 0.3s ease;
   transform: translateY(-10px);
+  width: max-content;
 }
 
-.actif {
+.bloc-compte.actif {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0px);
 }
 
 .nonactif {
@@ -140,23 +141,21 @@ header {
   visibility: hidden;
 }
 
-div.nom_compte {
+.nom_compte {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  cursor: initial;
+  gap: 10px;
   color: white;
+  font-size: 1.5em;
+  padding: 0.5em;
 }
 
 .bloc-compte h3 {
   font-size: 16px;
-  margin: 10px 0;
-  padding: 0 5px;
   font-family: Montserrat;
   font-weight: lighter;
+  margin: 0;
 }
 
 .bloc-compte hr {
@@ -174,13 +173,14 @@ div.nom_compte {
   color: #fff;
   font-family: "montserrat";
   border-radius: 5px;
-  padding: 0.5em 1em;
-  text-align: center;
+  padding: 10px;
   transition: all 0.2s ease-in-out;
 }
 
-.bloc-compte form {
-  padding: 2px 0;
+.bloc-compte a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .bloc-compte a:hover {
@@ -188,21 +188,30 @@ div.nom_compte {
   color: var(--bleu);
 }
 
-.bloc-compte input {
-  margin-top: 2px;
-  border: none;
+.bloc-compte form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
   color: #fff;
+  transition: all 0.2s ease-in-out;
+  border-radius: 5px;
+}
+
+.bloc-compte input {
+  border: none;
   font-family: "montserrat";
   font-size: 16px;
   background-color: var(--bleu);
   width: 100%;
-  border-radius: 5px;
-  padding: 0.5em 1em;
-  cursor: pointer;
+  padding: 0;
   transition: all 0.2s ease-in-out;
+  color: #fff;
+  text-align: left;
 }
 
-.bloc-compte input:hover {
+.bloc-compte form:hover,
+.bloc-compte form:hover input {
   background-color: var(--rouge);
   color: #fff;
 }

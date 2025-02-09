@@ -94,25 +94,27 @@ foreach ($res as $categorie) {
         echo "<div class='logo_compte' id='logo_c'>
                 <i class='fa-solid fa-user'></i>
                 <p class='texte_img_compte'>Compte</p>
-              </div>
-              <div class='bloc-compte'>
-              <div class='nom_compte'>
-                <i class='fa-solid fa-circle-user'></i>
-                <h3>" . $prenom_client . " " . $nom_client . "</h3>
-              </div>
-              <hr>
-              <a href='$lien'>Mon compte</a>
-              <form action='#' method='post'>
-                <input name='deco' type='submit' value='Se Déconnecter'>
-              </form>
-            </div>";
-      } else {
+                <div class='bloc-compte'>
+                  <div class='nom_compte'>
+                      <i class='fa-solid fa-circle-user'></i>
+                      <h3>" . $prenom_client . " " . $nom_client . "</h3>
+                  </div>
+                  <hr>
+                  <a href='$lien'><i class='fa-solid fa-user'></i> Mon compte</a>
+                  <form action='#' method='post'>
+                    <i class='fa-solid fa-right-from-bracket'></i>
+                    <input name='deco' type='submit' value='Se Déconnecter'>
+                  </form>
+                </div>
+              </div>";
+      } 
+      else {
         echo "<div class='logo_compte' id='logo_c'>
                 <i class='fa-solid fa-user'></i>
                 <p class='texte_img_compte'>Compte</p>
                 <div class='bloc-compte nonco'>
-                  <a href='connexion.php'>S'inscrire</a>
-                  <a href='inscription.php'>Se Connecter</a>
+                  <a href='inscription.php'><i class='fa-solid fa-address-card'></i>S'inscrire</a>
+                  <a href='connexion.php'><i class='fa-solid fa-right-to-bracket'></i>Se Connecter</a>
                 </div>
               </div>";
       }
