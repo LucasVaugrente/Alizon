@@ -1,5 +1,3 @@
-/*############# FONCTIONS #######################*/
-
 /**
  * DESCRIPTION
  *  Permet de selectionner toutes commandes de n'importe quelle etat
@@ -1106,25 +1104,24 @@ btn_tous.innerHTML = "Tous (" + (nb_en_cours.length+nb_en_attente.length+nb_term
 */
 
 // onglets de la page 
-let btn_catalogue = document.querySelector(".catalogue-vendeur");
+const btn_catalogue = document.querySelector(".catalogue-vendeur");
 btn_catalogue.addEventListener("click", ouverture_onglet_catalogue);
 
-let btn_commandes = document.querySelector(".commandes-vendeur");
+const btn_commandes = document.querySelector(".commandes-vendeur");
 btn_commandes.addEventListener("click", ouverture_onglet_commandes)
 
-let btn_compte = document.querySelector(".compte-vendeur");
+const btn_compte = document.querySelector(".compte-vendeur");
 btn_compte.addEventListener("click", ouverture_onglet_compte);
 
-let btn_exporter = document.querySelector(".exporter-catalogue")
+const btn_exporter = document.querySelector(".exporter-catalogue")
 btn_exporter.addEventListener("click", ouverture_onglet_exporter)
 
-let btn_newProduit = document.querySelector(".ajout-produit");
+const btn_newProduit = document.querySelector(".ajout-produit");
 btn_newProduit.addEventListener("click", ouverture_onglet_ajout_produit)
 
 
 // redirection formulaires vendeur
-let url_page = document.location.href; 
-console.log(url_page)
+const url_page = document.location.href; 
 
 if(url_page.includes("#Mon_Compte")){
     
@@ -1438,20 +1435,20 @@ function available_export(nb_checkbox_checked){
 }
 
 // Récupérer les éléments de la zone de drop
-const dropZone = document.getElementById('drop-zone');
-const fileInput = document.getElementById('file-input');
-const dropLabel = document.getElementById('drop-label');
-const imagePreview = document.getElementById('image-preview');
+// const dropZone = document.getElementById('drop-zone');
+// const fileInput = document.getElementById('file-input');
+// const dropLabel = document.getElementById('drop-label');
+// const imagePreview = document.getElementById('image-preview');
 
-// Ajouter un gestionnaire d'événements pour empêcher la propagation du clic sur les croix rouges
-imagePreview.addEventListener('click', (e) => {
-  if (e.target.classList.contains('remove-button')) {
-    e.stopImmediatePropagation();
-    const imageDiv = e.target.parentNode;
-    const imageIndex = Array.from(imagePreview.children).indexOf(imageDiv);
-    removeImage(imageIndex);
-  }
-});
+// // Ajouter un gestionnaire d'événements pour empêcher la propagation du clic sur les croix rouges
+// imagePreview.addEventListener('click', (e) => {
+//   if (e.target.classList.contains('remove-button')) {
+//     e.stopImmediatePropagation();
+//     const imageDiv = e.target.parentNode;
+//     const imageIndex = Array.from(imagePreview.children).indexOf(imageDiv);
+//     removeImage(imageIndex);
+//   }
+// });
 
 // Fonction pour afficher les images sélectionnées
 function showImages(files) {
@@ -1480,28 +1477,28 @@ function showImages(files) {
 }
 
 // Ajouter un gestionnaire d'événements pour la zone de drop
-dropZone.addEventListener('dragover', (e) => {
-  e.preventDefault();
-  dropZone.classList.add('drag-over');
-});
+// dropZone.addEventListener('dragover', (e) => {
+//   e.preventDefault();
+//   dropZone.classList.add('drag-over');
+// });
 
-dropZone.addEventListener('dragleave', () => {
-  dropZone.classList.remove('drag-over');
-});
+// dropZone.addEventListener('dragleave', () => {
+//   dropZone.classList.remove('drag-over');
+// });
 
-dropZone.addEventListener('drop', (e) => {
-  e.preventDefault();
-  dropZone.classList.remove('drag-over');
-  const files = e.dataTransfer.files;
-  showImages(files);
-  fileInput.files = files;
-});
+// dropZone.addEventListener('drop', (e) => {
+//   e.preventDefault();
+//   dropZone.classList.remove('drag-over');
+//   const files = e.dataTransfer.files;
+//   showImages(files);
+//   fileInput.files = files;
+// });
 
 // Ajouter un gestionnaire d'événements pour le sélecteur de fichiers
-fileInput.addEventListener('change', () => {
-  const files = fileInput.files;
-  showImages(files);
-});
+// fileInput.addEventListener('change', () => {
+//   const files = fileInput.files;
+//   showImages(files);
+// });
 
 // Fonction pour supprimer une image
 function removeImage(index) {
@@ -1541,49 +1538,49 @@ function removeImage(index) {
     });
   }
 
-const inputcategorie = document.getElementById("categorie");
-inputcategorie.setAttribute("list", "categorie-list");
+// const inputcategorie = document.getElementById("categorie");
+// inputcategorie.setAttribute("list", "categorie-list");
 
-const inputsouscategorie = document.getElementById("souscategorie");
-inputsouscategorie.setAttribute("list", "souscategorie-list");
+// const inputsouscategorie = document.getElementById("souscategorie");
+// inputsouscategorie.setAttribute("list", "souscategorie-list");
 
 
-var categorieInput = document.getElementById('categorie');
-var categorieDatalist = document.getElementById('categorie-list');
-var categorieOptions = categorieDatalist.getElementsByTagName('option');
+// var categorieInput = document.getElementById('categorie');
+// var categorieDatalist = document.getElementById('categorie-list');
+// var categorieOptions = categorieDatalist.getElementsByTagName('option');
 
-var souscategorieInput = document.getElementById('souscategorie');
-var souscategorieDatalist = document.getElementById('souscategorie-list');
-var souscategorieOptions = souscategorieDatalist.getElementsByTagName('option');
+// var souscategorieInput = document.getElementById('souscategorie');
+// var souscategorieDatalist = document.getElementById('souscategorie-list');
+// var souscategorieOptions = souscategorieDatalist.getElementsByTagName('option');
 
-categorieInput.addEventListener('change', function() {
-  var found = false;
-  for (var i = 0; i < categorieOptions.length; i++) {
-    if (categorieInput.value === categorieOptions[i].value) {
-      found = true;
-      break;
-    }
-  }
-  if (!found) {
-    categorieInput.value = '';
-    souscategorieInput.value = '';
-    alert('La catégorie saisie ne correspond à aucune option de la liste déroulante.');
-  }
-});
+// categorieInput.addEventListener('change', function() {
+//   var found = false;
+//   for (var i = 0; i < categorieOptions.length; i++) {
+//     if (categorieInput.value === categorieOptions[i].value) {
+//       found = true;
+//       break;
+//     }
+//   }
+//   if (!found) {
+//     categorieInput.value = '';
+//     souscategorieInput.value = '';
+//     alert('La catégorie saisie ne correspond à aucune option de la liste déroulante.');
+//   }
+// });
 
-souscategorieInput.addEventListener('change', function() {
-  var found = false;
-  for (var i = 0; i < souscategorieOptions.length; i++) {
-    if (souscategorieInput.value === souscategorieOptions[i].value) {
-      found = true;
-      break;
-    }
-  }
-  if (!found) {
-    souscategorieInput.value = '';
-    alert('La sous-catégorie saisie ne correspond à aucune option de la liste déroulante.');
-  }
-});
+// souscategorieInput.addEventListener('change', function() {
+//   var found = false;
+//   for (var i = 0; i < souscategorieOptions.length; i++) {
+//     if (souscategorieInput.value === souscategorieOptions[i].value) {
+//       found = true;
+//       break;
+//     }
+//   }
+//   if (!found) {
+//     souscategorieInput.value = '';
+//     alert('La sous-catégorie saisie ne correspond à aucune option de la liste déroulante.');
+//   }
+// });
  
 /** 
  * Filtre des categorie sous-categorire
@@ -1592,66 +1589,66 @@ souscategorieInput.addEventListener('change', function() {
  * 
 */
 
-const selectCategorie = document.getElementById("categorie");
-const inputSousCategorie = document.getElementById("souscategorie");
-const datalistSousCategories = document.getElementById("souscategorie-list");
-const optionsInitiales = datalistSousCategories.innerHTML;
+// const selectCategorie = document.getElementById("categorie");
+// const inputSousCategorie = document.getElementById("souscategorie");
+// const datalistSousCategories = document.getElementById("souscategorie-list");
+// const optionsInitiales = datalistSousCategories.innerHTML;
 
-// Fonction pour filtrer les options de la liste de données en fonction de la sélection de catégorie
-function filtrerOptionsSousCategories(categorieSelectionnee) {
-  const optionsSousCategories = datalistSousCategories.querySelectorAll(`option.${categorieSelectionnee}`);
-  console.log(optionsSousCategories);
-  datalistSousCategories.innerHTML = "";
-  console.log(datalistSousCategories);
-  optionsSousCategories.forEach((option) => {
-    datalistSousCategories.appendChild(option.cloneNode(true));
-  });
-  console.log(datalistSousCategories);
-}
+// // Fonction pour filtrer les options de la liste de données en fonction de la sélection de catégorie
+// function filtrerOptionsSousCategories(categorieSelectionnee) {
+//   const optionsSousCategories = datalistSousCategories.querySelectorAll(`option.${categorieSelectionnee}`);
+//   console.log(optionsSousCategories);
+//   datalistSousCategories.innerHTML = "";
+//   console.log(datalistSousCategories);
+//   optionsSousCategories.forEach((option) => {
+//     datalistSousCategories.appendChild(option.cloneNode(true));
+//   });
+//   console.log(datalistSousCategories);
+// }
 
-// Fonction pour réinitialiser la liste de données
-function reinitialiserListeDonnees() {
-  datalistSousCategories.innerHTML = optionsInitiales;
-}
+// // Fonction pour réinitialiser la liste de données
+// function reinitialiserListeDonnees() {
+//   datalistSousCategories.innerHTML = optionsInitiales;
+// }
 
-// Ecouteur d'événement pour le changement de sélection de catégorie
-selectCategorie.addEventListener("change", () => {
-  const categorieSelectionnee = selectCategorie.value;
-  inputSousCategorie.value = ""; // Réinitialise la valeur du champ de sous-catégorie
-  filtrerOptionsSousCategories(categorieSelectionnee);
-});
+// // Ecouteur d'événement pour le changement de sélection de catégorie
+// selectCategorie.addEventListener("change", () => {
+//   const categorieSelectionnee = selectCategorie.value;
+//   inputSousCategorie.value = ""; // Réinitialise la valeur du champ de sous-catégorie
+//   filtrerOptionsSousCategories(categorieSelectionnee);
+// });
 
-// Ecouteur d'événement pour le changement de valeur du champ de sous-catégorie
-inputSousCategorie.addEventListener("input", () => {
+// // Ecouteur d'événement pour le changement de valeur du champ de sous-catégorie
+// inputSousCategorie.addEventListener("input", () => {
 
-    const optionSousCategorie = datalistSousCategories.querySelector(`option[value="${inputSousCategorie.value}"]`);
-    const categorieParent = optionSousCategorie ? optionSousCategorie.classList[0] : "";
-    const optionsSousCategories = datalistSousCategories.querySelectorAll('option');
-    const valuesSousCategories = [];
-    optionsSousCategories.forEach(option => {
-      valuesSousCategories.push(option.value);
-    });
+//     const optionSousCategorie = datalistSousCategories.querySelector(`option[value="${inputSousCategorie.value}"]`);
+//     const categorieParent = optionSousCategorie ? optionSousCategorie.classList[0] : "";
+//     const optionsSousCategories = datalistSousCategories.querySelectorAll('option');
+//     const valuesSousCategories = [];
+//     optionsSousCategories.forEach(option => {
+//       valuesSousCategories.push(option.value);
+//     });
   
-    let optionTrouvee = false;
-    optionsSousCategories.forEach((option) => {
-      if (option.value === inputSousCategorie.value) {
-        optionTrouvee = true;
-      }
-    });
+//     let optionTrouvee = false;
+//     optionsSousCategories.forEach((option) => {
+//       if (option.value === inputSousCategorie.value) {
+//         optionTrouvee = true;
+//       }
+//     });
   
-    if (!optionTrouvee) {
-      inputSousCategorie.value = "";
-    } else if (categorieParent && selectCategorie.value === "") {
-      selectCategorie.value = categorieParent;
-    }
-  });
+//     if (!optionTrouvee) {
+//       inputSousCategorie.value = "";
+//     } else if (categorieParent && selectCategorie.value === "") {
+//       selectCategorie.value = categorieParent;
+//     }
+//   });
 
-  inputSousCategorie.addEventListener("change", () => {
-    const categorieSelectionnee = selectCategorie.value;
-    filtrerOptionsSousCategories(categorieSelectionnee);
-  });
+//   inputSousCategorie.addEventListener("change", () => {
+//     const categorieSelectionnee = selectCategorie.value;
+//     filtrerOptionsSousCategories(categorieSelectionnee);
+//   });
   
 
-inputSousCategorie.addEventListener("blur", () => {
-  reinitialiserListeDonnees();
-});
+// inputSousCategorie.addEventListener("blur", () => {
+//   reinitialiserListeDonnees();
+// });

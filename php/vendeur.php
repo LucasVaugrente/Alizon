@@ -2,12 +2,13 @@
     include("fonctions/fonctions.php");
     include("fonctions/carte_produit.php");
     include("fonctions/Session.php");
+    include("fonctions/ChangementEtatCommande.php");
+
     if(isset($_POST["deco_vendeur"])) {
         $_SESSION['vendeur_deconnecte'] = true;
         header("Location: ./index.php");
         exit();
     } 
-    include("fonctions/ChangementEtatCommande.php");
 
     if (isset($_SESSION["vendeur"])) {
         $test = $_SESSION["vendeur"];
@@ -22,26 +23,25 @@
         exit();
     }
 
-    if(isset($_POST['annule'])) {
-        echo "ANNULE";
-        update_etat_commande($_GET['num_commande'], "annule");
-    }
+    // if(isset($_POST['annule'])) {
+    //     echo "ANNULE";
+    //     update_etat_commande($_GET['num_commande'], "annule");
+    // }
    
+    // if(isset($_POST['en_cours'])) {
+    //     echo "EN COURS";
+    //     update_etat_commande($_GET['num_commande'], "en cours");
+    // }
 
-    if(isset($_POST['en_cours'])) {
-        echo "EN COURS";
-        update_etat_commande($_GET['num_commande'], "en cours");
-    }
+    // if(isset($_POST['en_attente'])) {
+    //     echo "ATTENTE";
+    //     update_etat_commande($_GET['num_commande'], "en attente");
+    // }
 
-    if(isset($_POST['en_attente'])) {
-        echo "ATTENTE";
-        update_etat_commande($_GET['num_commande'], "en attente");
-    }
-
-    if(isset($_POST['finie'])) {
-        echo "FINIE";
-        update_etat_commande($_GET['num_commande'], "finie");
-    }
+    // if(isset($_POST['finie'])) {
+    //     echo "FINIE";
+    //     update_etat_commande($_GET['num_commande'], "finie");
+    // }
 
     $commandes = afficher_commandes_vendeur();
     
@@ -127,72 +127,84 @@ if(isset($_GET["finalisation"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vendeur</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <link rel='stylesheet' type='text/css' href='../css/style.css'>
+    <link rel='stylesheet' type='text/css' href='../css/header.css'>
+    <link rel='stylesheet' type='text/css' href='../css/catalogue.css'>
+    <link rel='stylesheet' type='text/css' href='../css/compte_client.css'>
+    <link rel='stylesheet' type='text/css' href='../css/cookies.css'>
+    <link rel='stylesheet' type='text/css' href='../css/footer.css'>
+    <link rel='stylesheet' type='text/css' href='../css/home.css'>
+    <link rel='stylesheet' type='text/css' href='../css/gestion_comptes.css'>
+    <link rel='stylesheet' type='text/css' href='../css/import_catalogue.css'>
+    <link rel='stylesheet' type='text/css' href='../css/login.css'>
+    <link rel='stylesheet' type='text/css' href='../css/paiement.css'>
+    <link rel='stylesheet' type='text/css' href='../css/panier.css'>
+    <link rel='stylesheet' type='text/css' href='../css/produit.css'>
+    <link rel='stylesheet' type='text/css' href='../css/vendeur.css'>
+
 </head>
 <body>
-<header class="header-vendeur">
-            <!-- TITRE alizon -->
-            <a href="index.php" title="Accueil" class="logo">
-                <img src="../img/logo2.0.png" alt="Logo alizon" title="Logo alizon" width='200' class="img_logo">
-            </a>
+    <header class="header-vendeur">
+        <a href="index.php" title="Accueil" class="logo">
+            <img src="../img/logo2.0.png" alt="Logo alizon" title="Logo alizon" width='200' class="img_logo">
+        </a>
 
-            <nav class="nav-vendeur">
-                <div class="dashboard-vendeur">
-                    <i class="fa-solid fa-table-columns fa-xl"></i>
-                    <p>Dashboard</p>
-                </div>
-                <hr>
-                <div class="commandes-vendeur active">
-                    <i class="fa-solid fa-bag-shopping fa-xl"></i>
-                    <p>Commandes</p>
-                </div>
+        <nav class="nav-vendeur">
+            <div class="dashboard-vendeur">
+                <i class="fa-solid fa-table-columns fa-xl"></i>
+                <p>Dashboard</p>
+            </div>
+            <hr>
+            <div class="commandes-vendeur active">
+                <i class="fa-solid fa-bag-shopping fa-xl"></i>
+                <p>Commandes</p>
+            </div>
 
-                <div class="catalogue-vendeur">
-                <i class="fa-solid fa-folder-open fa-xl"></i>
-                    <p>Catalogue</p>
-                </div>
+            <div class="catalogue-vendeur">
+            <i class="fa-solid fa-folder-open fa-xl"></i>
+                <p>Catalogue</p>
+            </div>
 
-                <div class="compte-vendeur">
-                    <i class="fa-solid fa-user fa-xl"></i>
-                    <p>Mon compte</p>
-                </div>
+            <div class="compte-vendeur">
+                <i class="fa-solid fa-user fa-xl"></i>
+                <p>Mon compte</p>
+            </div>
+<!-- 
+            <div class="ajout-produit">
+                <i class="fa-sharp fa-solid fa-file-circle-plus fa-xl"></i>
+                <p>Ajout Produit</p>
+            </div>
 
-                <div class="ajout-produit">
-                    <i class="fa-sharp fa-solid fa-file-circle-plus fa-xl"></i>
-                    <p>Ajout Produit</p>
+            <div class="exporter-catalogue">
+                <i class="fa-solid fa-file-export fa-xl"></i>
+                <p>Exporter catalogue</p>
+            </div> -->
+            
+            <form action="vendeur.php" method="post">
+                <div class="deconnexion-vendeur">
+                    <i class="fa-solid fa-right-from-bracket fa-xl"></i>
+                    <input type="submit" value="Se déconnecter" name="deco_vendeur">
+                    
                 </div>
-
-                <div class="exporter-catalogue">
-                    <i class="fa-solid fa-file-export fa-xl"></i>
-                    <p>Exporter catalogue</p>
-                </div>
+            </form>
+            <?php
+            
+        ?>
+        </nav>
+        <div class="row_vendeur">
+        <?php
                 
-                <form action="vendeur.php" method="post">
-                    <div class="deconnexion-vendeur">
-                        <i class="fa-solid fa-right-from-bracket fa-xl"></i>
-                        <input type="submit" value="Se déconnecter" name="deco_vendeur">
-                        
-                    </div>
-                </form>
-                <?php
+                echo "<img class='lien_vendeur' src='../img/vendeur/".$donneesVendeur[0]['ID_Vendeur']."/img1.webp' alt='logo vendeur'>";
+                echo "<h4 class='nom_vendeur'>" .$donneesVendeur[0]['Nom_vendeur']. "</h4>";
                 
             ?>
-            </nav>
-            <div class="row_vendeur">
-            <?php
-                    
-                    echo "<img class='lien_vendeur' src='../img/vendeur/".$donneesVendeur[0]['ID_Vendeur']."/img1.webp' alt='logo vendeur'>";
-                    echo "<h4 class='nom_vendeur'>" .$donneesVendeur[0]['Nom_vendeur']. "</h4>";
-                    
-                ?>
-            </div>
-          
+        </div>
+        
 
     </header> 
 
     <main class="main-vendeur">
-    
+
         <!--<section>
             <h1>Aperçu Général</h1>
             <p>Nombre de ventes</p>
@@ -239,7 +251,7 @@ if(isset($_GET["finalisation"])){
                             echo "<td class='prixtab sort'>" . "<p>" . $commande["prix_total"] . "</p>" . "\n€" . "</th>";
                             echo "</tr>";
                     }
-         ?>
+            ?>
                 
             </table>
             <table id="tableauP">
@@ -435,14 +447,14 @@ if(isset($_GET["finalisation"])){
                         {
                             echo "<td>" . $index . "</td>";
                         }
-                        echo "<td>" . "<a href =produit.php?idProduit=" . $produit['ID_Produit']. ">" . $produit["Nom_produit"] ."</a> </td>";
+                        echo "<td>" . "<a href =produit.php?idProduit=" . $produit['ID_produit']. ">" . $produit["Nom_produit"] ."</a> </td>";
                         echo "<td>" . "<p>" . $produit["Prix_vente_HT"] . "</p>" . " €" . "</td>";
                         echo "<td>" . "<p>" . $produit["Prix_vente_TTC"] . "</p>" ." €" . "</td>";
                         echo "<td>" . "<p>" . $produit["Quantite_disponnible"] . "</p>" . "</td>";
-                        if ($produit["Moyenne_Note_Produit"] == ''){
+                        if ($produit["Moyenne_Note_produit"] == ''){
                             echo "<td> Aucun Avis </td>";
                         }else{
-                            echo "<td>" . $produit["Moyenne_Note_Produit"] . "</td>";
+                            echo "<td>" . $produit["Moyenne_Note_produit"] . "</td>";
                         }
 
                         echo "</tr>";
@@ -648,7 +660,7 @@ if(isset($_GET["finalisation"])){
                             
                             echo "<tr>";
 
-                            echo "<td class='check'><input type='checkbox'   class='checkbox' name=" . $produit['ID_Produit'] . "></td>";
+                            echo "<td class='check'><input type='checkbox'   class='checkbox' name=" . $produit['ID_produit'] . "></td>";
                             if ($index< 10){
                                 echo "<td>0" . $index . "</td>";
                             }
@@ -656,14 +668,14 @@ if(isset($_GET["finalisation"])){
                             {
                                 echo "<td>" . $index . "</td>";
                             }
-                            echo "<td>" . "<a href =produit.php?idProduit=" . $produit['ID_Produit']. ">" . $produit["Nom_produit"] ."</a> </td>";
+                            echo "<td>" . "<a href =produit.php?idProduit=" . $produit['ID_produit']. ">" . $produit["Nom_produit"] ."</a> </td>";
                             echo "<td>" . "<p>" . $produit["Prix_vente_HT"] . "</p>" . " €" . "</td>";
                             echo "<td>" . "<p>" . $produit["Prix_vente_TTC"] . "</p>" ." €" . "</td>";
                             echo "<td>" . "<p>" . $produit["Quantite_disponnible"] . "</p>" . "</td>";
-                            if ($produit["Moyenne_Note_Produit"] == ''){
+                            if ($produit["Moyenne_Note_produit"] == ''){
                                 echo "<td> Aucun Avis </td>";
                             }else{
-                                echo "<td>" . $produit["Moyenne_Note_Produit"] . "</td>";
+                                echo "<td>" . $produit["Moyenne_Note_produit"] . "</td>";
                             }
 
                             echo "</tr>";
@@ -690,7 +702,7 @@ if(isset($_GET["finalisation"])){
 
                                 if($produit["ID_Produit"] == $idP){
 
-                                    $produits =  array("Nom_produit" => $produit["Nom_produit"], "Prix_vente_HT" => $produit["Prix_vente_HT"], "Prix_vente_TTC" => $produit["Prix_vente_TTC"], "Description_produit" => $produit["Description_produit"], "lien_image" => "img/catalogue/Produits/".$produit['ID_Produit']."/img1.jpg");
+                                    $produits =  array("Nom_produit" => $produit["Nom_produit"], "Prix_vente_HT" => $produit["Prix_vente_HT"], "Prix_vente_TTC" => $produit["Prix_vente_TTC"], "Description_produit" => $produit["Description_produit"], "lien_image" => "img/catalogue/Produits/".$produit['ID_produit']."/img1.jpg");
                                     array_push($produits_exportes, $produits);
                                 }
                             }
@@ -711,71 +723,70 @@ if(isset($_GET["finalisation"])){
             ?>
         </section>
         <?php
-         if(isset($_POST["nomProduit"])) {
+            if(isset($_POST["nomProduit"])) {
             inserer_produit(array($_POST["nomProduit"],$_POST["prixCT"] ,$_POST["prixHT"], $_POST["quantite"], $_POST["description"],null,null,null, getID_Souscategorie($_POST["souscategorie"]),$_SESSION["vendeur"][1]));
-         }
-         unset($_POST);
-           ?>
-         <section class="creeProduit cache">
+            }
+            unset($_POST);
+            ?>
+            <!-- <section class="creeProduit cache">
             <h1>Ajout d'un nouveau produit</h1>
             <hr>
             <form action="vendeur.php" method="POST">
-               <article class="nomenclatureProduit">
-                  <h2>Donnée produit -</h2>
-                  <input type="text" id="nomProduit" name="nomProduit" placeholder="Nom du Produit">
-               </article>
-               <hr>
-               <section class="debcritionProduit">
-                  <textarea id="myTextarea" name="description" placeholder="Description..."></textarea>
-               </section>
-               <section class="Categorie">
-                  <input type="text" id="categorie" name="categorie" placeholder="Categorie">
-                  <datalist id="categorie-list">     
-                     <?php
+                <article class="nomenclatureProduit">
+                    <h2>Donnée produit -</h2>
+                    <input type="text" id="nomProduit" name="nomProduit" placeholder="Nom du Produit">
+                </article>
+                <hr>
+                <section class="debcritionProduit">
+                    <textarea id="myTextarea" name="description" placeholder="Description..."></textarea>
+                </section>
+                <section class="Categorie">
+                    <input type="text" id="categorie" name="categorie" placeholder="Categorie">
+                    <datalist id="categorie-list">     
+                        <?php
                         foreach ($Nos_Categorie as $Categorie){
-                           echo "<option value='".str_replace(" ","_",$Categorie)."'>";
+                            echo "<option value='".str_replace(" ","_",$Categorie)."'>";
                         }
                         ?>
-                  </datalist>
-                  <?php
-                     ?>
-                  <input type="text" id="souscategorie" name="souscategorie" placeholder="Sous-Categorie">
-                  <datalist id="souscategorie-list" data-parent="categorie" autocomplete = "off">
-                     <?php
+                    </datalist>
+                    <?php
+                        ?>
+                    <input type="text" id="souscategorie" name="souscategorie" placeholder="Sous-Categorie">
+                    <datalist id="souscategorie-list" data-parent="categorie" autocomplete = "off">
+                        <?php
                         foreach ($Nos_SousCategories as $key => $SousCategorie){
-                           echo "<option class='".str_replace(" ","_",$SousCategorie)."' value='".$key."'>";
+                            echo "<option class='".str_replace(" ","_",$SousCategorie)."' value='".$key."'>";
                         }
                         ?>  
-                  </datalist>
-               </section>
-               <section class="recette">
-                  <input type="number" name="quantite" min="1" max="999" placeholder="Quantiter">
-                  <input type="number" name="prixHT" min="0.01" max="999999.99" step=0.01 placeholder="Prix HT" id="prixHTInput">
-                  <input type="number" name="prixCT" min="0.1" max="999999.99" step=0.01 placeholder="Prix Coutant">
-               </section>
-               <hr>
-               <section class="imageProduit">
-                  <label for="file-input" id="drop-zone" class="drop-zone">
-                     <input type="file" id="file-input" multiple accept="image/*">
-                     <div id="drop-label">Cliquez ici pour ajouter des images ou faites-les glisser dans cette zone.</div>
-                     <div id="image-preview"></div>
-                  </label>
-               </section>
-               <button type="submit" name="submit">Envoyer</button>
+                    </datalist>
+                </section>
+                <section class="recette">
+                    <input type="number" name="quantite" min="1" max="999" placeholder="Quantiter">
+                    <input type="number" name="prixHT" min="0.01" max="999999.99" step=0.01 placeholder="Prix HT" id="prixHTInput">
+                    <input type="number" name="prixCT" min="0.1" max="999999.99" step=0.01 placeholder="Prix Coutant">
+                </section>
+                <hr>
+                <section class="imageProduit">
+                    <label for="file-input" id="drop-zone" class="drop-zone">
+                        <input type="file" id="file-input" multiple accept="image/*">
+                        <div id="drop-label">Cliquez ici pour ajouter des images ou faites-les glisser dans cette zone.</div>
+                        <div id="image-preview"></div>
+                    </label>
+                </section>
+                <button type="submit" name="submit">Envoyer</button>
             </form>
-         </section>  
+            </section>   -->
     </main>
 </body>
 <script>
-      // Initialiser TinyMCE pour l'élément textarea
-      tinymce.init({
-        selector: "#myTextarea",
-        plugins: "lists",
-        toolbar: "bold italic  bullist numlist",
-        branding: false,
-        menubar: false,
-        elementpath:false
-      });
+    //   tinymce.init({
+    //     selector: "#myTextarea",
+    //     plugins: "lists",
+    //     toolbar: "bold italic  bullist numlist",
+    //     branding: false,
+    //     menubar: false,
+    //     elementpath:false
+    //   });
 </script>
 <script src="../js/filtrerCommandes.js"></script>
 

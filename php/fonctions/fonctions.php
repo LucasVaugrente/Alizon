@@ -170,10 +170,6 @@
             $listeproduits[$i]['Souscategorie'] = str_replace(' ', "_", $listeproduits[$i]['Souscategorie']);
             $listeproduits[$i]['nom_produit'] = str_replace(' ', "_", $listeproduits[$i]['nom_produit']);
         }
-
-        /*echo '<pre>';
-        print_r($listeCategories);
-        echo '</pre>';*/
         
         // le chemin du dossier à créer
         $url = "../img/catalogue/";
@@ -696,10 +692,6 @@
             array_push($commandesToute, $com);
         }
 
-        // echo "<pre>";
-        // print_r($commandes);
-        // echo "</pre>";
-
         // $commande = $sth->fetchall()[0];
 
         #$sth = $dbh->prepare("SELECT COUNT(*) from $schema._commande natural join $schema._contient_produit_c where ID_Client = ?");
@@ -863,6 +855,8 @@
             $sth2->execute();
             $sth3 = $dbh -> prepare("SELECT active FROM alizon._client WHERE email = '$email' and mdp = '$mdp'");
             $sth3->execute();
+
+            echo $sth2 -> fetchAll()[0];
 
             $id_client = $sth2 -> fetchAll()[0]['ID_Client'];
             $statut_active = $sth3 -> fetchAll()[0]['active'];
