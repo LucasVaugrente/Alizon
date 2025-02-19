@@ -1,19 +1,19 @@
--- Active: 1738686534022@@127.0.0.1@3333
+-- Active: 1739961145764@@127.0.0.1@3333@alizon
 /*
 
 #####################Table#####################
-_Categorie:60
-_Sous_Categorie:67
+_categorie:60
+_sous_categorie:67
 _produit:78
-_QuestionSecrete:98
-_Client:106
-_Panier:123
-_Commande:135
+_questionSecrete:98
+_client:106
+_panier:123
+_commande:135
 _contient_produit_p:149
 _contient_produit_c:163
 _avis:177
 _paiement:192
-_Vendeur:207
+_vendeur:207
 _signaler:216
 
 

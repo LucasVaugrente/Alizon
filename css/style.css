@@ -1,42 +1,10 @@
-/*
-CSS version 2.0
-date de derniere modif : 20/01/2023
-par: Lucas Vaugrente
-detail: Organisation 
-*/
-
-/* SOMMAIRE
-Ligne 40 : Polices de caractère
-Ligne 74 : Header
-Ligne 989 : Pop Up Cookies
-Ligne 1076 : Page Catalogue
-Ligne 1602 : Page Import Catalogue
-Ligne 1702 : Page Panier
-Ligne 2308 : Page Paiement
-Ligne 2614 : Page Inscription et Connexion
-Ligne 2802 : Page Compte Client
-Ligne 3018 : Page Gestion Compte Client Admin
-Ligne 3182 : Page Produit
-Ligne 3862 : Page d'accueil
-Ligne 4187 : Page Commandes en cours
-Ligne 4486 : Page Récupérer Mot de passe
-Ligne 4577 : Page Confirmation Paiement
-Ligne 4610 : Dashborad Vendeur
-Ligne 4903 : Footer
-Ligne 4955 : Mentions légales
-*/
-
-:root{
+:root {
     --jaune : #FFB703;
     --bleu : #023064;
     --rouge : #CB333B;
     --gris : #615757;
     --vert : rgb(0, 150, 0);
 }
-
-/*///////////////////////////////////////////////////////////////////////////////
-Police de caractère:
-///////////////////////////////////////////////////////////////////////////////*/
 
 /*Police de logo*/
 @font-face {
@@ -118,16 +86,11 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 
-/*////////////////////////////////////////////////////////////////////
-Main:
-///////////////////////////////////////////////////////////////////*/
-
-/* Style d'écriture des titres h1 et h2 */
-h1, h2{
+h1, h2 {
     font-family: 'carter', Arial, Helvetica, sans-serif;
 }
 
-input, a, label ,div{
+input, a, label, div {
     font-family: 'sniglet';
     text-decoration: none;
     font-weight: lighter;

@@ -466,7 +466,7 @@
         global $schema;
         global $dbh;
 
-        $sth = $dbh->prepare("SELECT * FROM $schema.panier WHERE id_panier = ?");
+        $sth = $dbh->prepare("SELECT * FROM $schema._panier WHERE id_panier = ?");
         $sth->execute(array($id_panier));
         $listeArticles = $sth->fetchAll(); //tableau de '$nbproduit' produits contenus dans le panier
         
