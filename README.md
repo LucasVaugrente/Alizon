@@ -30,12 +30,13 @@ Avant de commencer, assurez-vous d’avoir installé :
 
 Crée un fichier **.env** à la racine du projet :
 
-    MYSQL_ROOT_PASSWORD=root
-    MYSQL_DATABASE=alizon
+    cp .env.example .env
+
+Remplacer ces 2 varaibles par vos informations :
+
     MYSQL_USER=votre_nom
     MYSQL_PASSWORD=votre_mot_de_passe
-    MYSQL_HOST=alizon_mysql
-    MYSQL_PORT=3306
+
 
 ## 🚀 3. Lancer les conteneurs
 
