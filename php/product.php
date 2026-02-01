@@ -234,7 +234,7 @@ if (isset($_POST['SupprCommentaireId'])) {
                     <?php endif; ?>
                     <?php if (!isset($_SESSION["vendeur"]) == true): ?>
                         <?php $vendeur = infos_vendeur($produit["id_produit"])[0]; ?>
-                        <a href="fiche_vendeur.php?id_vendeur=<?php echo $vendeur['ID_Vendeur'] ?>"
+                        <a href="vendor_profile.php?id_vendeur=<?php echo $vendeur['ID_Vendeur'] ?>"
                             class='expediteur produit'> Vendu et Expédié par <?php echo $vendeur['Nom_vendeur'] ?></a>
 
                     <?php endif; ?>

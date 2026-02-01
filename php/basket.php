@@ -79,7 +79,7 @@ if (isset($_POST['commandeID'])) {
     </header>
 
     <!-- Pop-up : Produit retiré -->
-    <?php if (isset($_GET["produitretiré"])) {
+    <?php if (isset($_GET["product_removed"])) {
         echo "<div class='alert retirerpanier'>";
         echo "<i class='fa-regular fa-circle-check fa-2x'></i>";
         echo "<p>Produit retiré</p>";
@@ -133,11 +133,11 @@ if (isset($_POST['commandeID'])) {
                                         <!-- Nom du Produit -->
                                         <h3 class="Titre-Produit_Panier cursor"
                                             onclick='location.href="product.php?idProduit=<?php echo $listeArticle[$numArt]; ?>";'>
-                                            <?php echo "{$listeArticle[$numArt]['nom_produit']}"; ?></h3>
+                                            <?php echo "{$listeArticle[$numArt]['Nom_produit']}"; ?></h3>
 
                                         <!-- Catégorie Produit -->
                                         <h5 class="Categorie-Produit_Panier">
-                                            <?php echo "{$listeArticle[$numArt]['nom_categorie']}"; ?></h5>
+                                            <?php echo "{$listeArticle[$numArt]['Nom_Categorie']}"; ?></h5>
 
                                         <!-- Logo Disponible Produit -->
                                         <div class="stockage-panier">

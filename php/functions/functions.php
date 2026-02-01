@@ -465,7 +465,7 @@ function supprimerProduit($id_produit)
 
     $supprimerProduit = $dbh->prepare("DELETE FROM $schema._contient_produit_p WHERE ID_Panier = ? and ID_Produit  = ?");
     $supprimerProduit->execute(array($_COOKIE['id_panier'], $id_produit));
-    header("Location: ./basket.php?produitretiré");
+    header("Location: ./basket.php?product_removed");
     exit();
 }
 
@@ -494,34 +494,24 @@ function infos_panier($id_panier)
     global $schema;
     global $dbh;
 
-    $sth = $dbh->prepare("SELECT * FROM $schema._panier WHERE id_panier = ?");
+    $sth = $dbh->prepare("SELECT *, _produit.ID_Produit as id_produit, _contient_produit_p.Quantite as quantite, (Prix_vente_TTC * Quantite) as prix_produit_commande_ttc FROM $schema._contient_produit_p INNER JOIN $schema._produit ON _contient_produit_p.ID_Produit = _produit.ID_Produit INNER JOIN $schema._sous_categorie ON _produit.Id_Sous_Categorie = _sous_categorie.Id_Sous_Categorie INNER JOIN $schema._categorie ON _sous_categorie.id_categorie_sup = _categorie.id_categorie WHERE id_panier = ?");
     $sth->execute(array($id_panier));
     $listeArticles = $sth->fetchAll(); //tableau de '$nbproduit' produits contenus dans le panier
 
     $nbproduit = sizeof($listeArticles);
 
-    $sth = $dbh->prepare("SELECT * FROM $schema._panier WHERE id_panier =  ?");
-    $sth->execute(array($id_panier));
-
-    $sth2 = $dbh->prepare("SELECT * FROM $schema._panier WHERE id_panier =  ?");
+    $sth2 = $dbh->prepare("SELECT * FROM $schema._panier WHERE id_panier = ?");
     $sth2->execute(array($id_panier));
-    $listeArticles2 = $sth2->fetchAll(); //tableau de '$nbproduit' produits contenus dans le panier
+    $RecapPanier = $sth2->fetch();
 
-    $prix_ht = null;
-    if ($nbproduit != 0) {
-        $prix_ht = $listeArticles2[0]['Prix_total_HT'];
-    } else {
-        $prix_ht = 0;
+    $prix_ht = 0;
+    $prixTotal = 0;
+
+    if ($RecapPanier) {
+        $prix_ht = $RecapPanier['Prix_total_HT'];
+        $prixTotal = $RecapPanier['Prix_total_TTC'];
     }
-
-
-    if ($nbproduit > 0) {
-        $RecapPanier = $sth->fetchAll()[0];
-        $prixTotal = $RecapPanier['Prix_total_TTC']; // prix total déjà dans recapPanier
-        return array("listeArticles" => $listeArticles, "nbproduit" => $nbproduit, "prixTotal" => $prixTotal, "prix_ht" => $prix_ht);
-    } else {
-        return array("listeArticles" => $listeArticles, "nbproduit" => $nbproduit, "prixTotal" => 0, "prix_ht" => $prix_ht);
-    }
+    return array("listeArticles" => $listeArticles, "nbproduit" => $nbproduit, "prixTotal" => $prixTotal, "prix_ht" => $prix_ht);
 }
 
 function ajoutPanier($id_produit, $nbProduits)
