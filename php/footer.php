@@ -3,9 +3,10 @@
         <h4>À propos</h4>
         <ul>
             <li><a class="lien_cgv" href="../download/cgv.pdf" target="_blank">Conditions générales de ventes</a></li>
-            <li><a class="lien_cgu" href="../download/cgu.pdf" target="_blank">Conditions générales d'utilisation du compte</a></li>
-            <li><a class="lien_mentionL" href="mentionlegales.php">Mentions légales</a></li>
-        <ul>
+            <li><a class="lien_cgu" href="../download/cgu.pdf" target="_blank">Conditions générales d'utilisation du
+                    compte</a></li>
+            <li><a class="lien_mentionL" href="legal_notices.php">Mentions légales</a></li>
+            <ul>
     </div>
 
     <div>

@@ -7,9 +7,9 @@ header {
 .haut_de_page {
   background-color: var(--bleu);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 15px 170px;
   gap: 60px;
 }
 

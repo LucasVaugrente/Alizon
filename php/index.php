@@ -1,9 +1,9 @@
-<?php 
-    include("fonctions/Session.php");
-    include("fonctions/fonctions.php");
-    
-    include("fonctions/carte_categorie.php");
-    include("fonctions/carte_produit.php");
+<?php
+include("functions/session.php");
+include("functions/functions.php");
+
+include("functions/category_card.php");
+include("functions/product_card.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,45 +20,43 @@
 <body>
     <header>
         <?php
-            if(isset($_SESSION['no_admin'])) {
-                include('header_admin.php');
-            }
-            else { 
-                include('header.php');
-                $_SESSION['no_admin'] = null;
-            }
-            // suppression variable de session vendeur quand redirection sur index
-            unset($_SESSION["vendeur"]);
+        if (isset($_SESSION['no_admin'])) {
+            include('header_admin.php');
+        } else {
+            include('header.php');
+            $_SESSION['no_admin'] = null;
+        }
+        // suppression variable de session vendeur quand redirection sur index
+        unset($_SESSION["vendeur"]);
         ?>
     </header>
     <?php
-    
-        if(!isset($_SESSION["deco"])){
 
-            if(isset($_GET["connected"])){
-                echo "<div class='alert'>";
-                echo "<i class='fa-regular fa-circle-check fa-2x'></i>";
-                echo "<p>Vous êtes connecté !</p>";
-                echo "</div>";
-            }
-               
-            if(isset($_SESSION['admin_deconnecte'])){
-                echo "<div class='alert deco no_bootstrap'>";
-                echo "<i class='fa-regular fa-circle-check fa-2x'></i>";
-                echo "<p>Vous êtes déconnecté </p>";
-                echo "</div>";
-                $_SESSION['admin_deconnecte'] = null;
-            }
+    if (!isset($_SESSION["deco"])) {
+
+        if (isset($_GET["connected"])) {
+            echo "<div class='alert'>";
+            echo "<i class='fa-regular fa-circle-check fa-2x'></i>";
+            echo "<p>Vous êtes connecté !</p>";
+            echo "</div>";
         }
-        if(isset($_SESSION['vendeur_deconnecte'])){
+
+        if (isset($_SESSION['admin_deconnecte'])) {
             echo "<div class='alert deco no_bootstrap'>";
             echo "<i class='fa-regular fa-circle-check fa-2x'></i>";
             echo "<p>Vous êtes déconnecté </p>";
             echo "</div>";
-            $_SESSION['vendeur_deconnecte'] = null;
-            
+            $_SESSION['admin_deconnecte'] = null;
         }
-        
+    }
+    if (isset($_SESSION['vendeur_deconnecte'])) {
+        echo "<div class='alert deco no_bootstrap'>";
+        echo "<i class='fa-regular fa-circle-check fa-2x'></i>";
+        echo "<p>Vous êtes déconnecté </p>";
+        echo "</div>";
+        $_SESSION['vendeur_deconnecte'] = null;
+    }
+
 
     ?>
     <main class="main-index">
@@ -111,22 +109,22 @@
         </div>
 
         <div class="selec_categories">
-            <?php 
-                $listeCategories = liste_Categories();
-                /** Tableau $listeCategories
-                 * [Gateaux]
-                 * [Déjeuner]
-                 * [Pull]
-                 * [Pantalons]
-                 * [Vêtements de pluie]
-                 * [Poster]
-                 * . . .
-                 */
-                
-                foreach($listeCategories[0] as $SousCategorie => $categorie){
-                    //affichage de la catégorie sous la forme d'une carte
-                    carte_categorie(array($categorie,$SousCategorie));
-                }
+            <?php
+            $listeCategories = liste_Categories();
+            /** Tableau $listeCategories
+             * [Gateaux]
+             * [Déjeuner]
+             * [Pull]
+             * [Pantalons]
+             * [Vêtements de pluie]
+             * [Poster]
+             * . . .
+             */
+
+            foreach ($listeCategories[0] as $SousCategorie => $categorie) {
+                //affichage de la catégorie sous la forme d'une carte
+                carte_categorie(array($categorie, $SousCategorie));
+            }
             ?>
         </div>
 
@@ -162,34 +160,34 @@
         <div class="plus_recherchees">
 
             <?php
-                $listeProduits_plus_recherchees = listeProduits_plus_recherchees();
-                /** Tableau $listeProduits_plus_recherchees, pour chaque produit :
-                * ['id_produit']      
-                * ['nom_produit']          
-                * ['prix_vente_ht']      
-                * ['prix_vente_ttc']      
-                * ['quantite_disponnible']
-                * ['description_produit']
-                * ['images1']
-                * ['images2']
-                * ['images3']
-                * ['nom_souscategorie']
-                * ['nom_categorie']
-                * ['moyenne_note_produit']
-                */
-                foreach($listeProduits_plus_recherchees as $produit){
-                    carte_produit($produit);
-                }
+            $listeProduits_plus_recherchees = listeProduits_plus_recherchees();
+            /** Tableau $listeProduits_plus_recherchees, pour chaque produit :
+             * ['id_produit']      
+             * ['nom_produit']          
+             * ['prix_vente_ht']      
+             * ['prix_vente_ttc']      
+             * ['quantite_disponnible']
+             * ['description_produit']
+             * ['images1']
+             * ['images2']
+             * ['images3']
+             * ['nom_souscategorie']
+             * ['nom_categorie']
+             * ['moyenne_note_produit']
+             */
+            foreach ($listeProduits_plus_recherchees as $produit) {
+                carte_produit($produit);
+            }
             ?>
         </div>
 
     </main>
 
     <!-- Si le cookie de panier n'existe pas, cela affiche la pop-up d'acceptation des cookies -->
-    <?php 
-        if(!isset($_COOKIE['id_panier'])) {
-            bloc_cookies();
-        }
+    <?php
+    if (!isset($_COOKIE['id_panier'])) {
+        bloc_cookies();
+    }
     ?>
 
     <footer>

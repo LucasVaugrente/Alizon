@@ -1,7 +1,7 @@
 <?php
-include("fonctions/databaseConnexion.php");
-include("fonctions/page_cookies.php");
-require_once("fonctions/fonctions.php");
+include("functions/database_connexion.php");
+include("functions/page_cookies.php");
+require_once("functions/functions.php");
 
 /*############### MENU DE CATEGORIES DYNAMIQUES ###############*/
 $sth = $dbh->prepare("SELECT nom_categorie, nom as nom_Souscategorie FROM $schema._categorie INNER JOIN $schema._sous_categorie ON id_categorie_sup = id_categorie");
@@ -25,42 +25,42 @@ foreach ($res as $categorie) {
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 
-<link rel='stylesheet' type='text/css' href='../css/style.css'>
+<link rel='stylesheet' type='text/css' href='../css/main.css'>
 <link rel='stylesheet' type='text/css' href='../css/header.css'>
-<link rel='stylesheet' type='text/css' href='../css/catalogue.css'>
-<link rel='stylesheet' type='text/css' href='../css/compte_client.css'>
+<link rel='stylesheet' type='text/css' href='../css/catalog.css'>
+<link rel='stylesheet' type='text/css' href='../css/user_account.css'>
 <link rel='stylesheet' type='text/css' href='../css/cookies.css'>
 <link rel='stylesheet' type='text/css' href='../css/footer.css'>
 <link rel='stylesheet' type='text/css' href='../css/home.css'>
-<link rel='stylesheet' type='text/css' href='../css/gestion_comptes.css'>
-<link rel='stylesheet' type='text/css' href='../css/import_catalogue.css'>
+<link rel='stylesheet' type='text/css' href='../css/accounts_management.css'>
+<link rel='stylesheet' type='text/css' href='../css/import_catalog.css'>
 <link rel='stylesheet' type='text/css' href='../css/login.css'>
-<link rel='stylesheet' type='text/css' href='../css/paiement.css'>
-<link rel='stylesheet' type='text/css' href='../css/panier.css'>
-<link rel='stylesheet' type='text/css' href='../css/produit.css'>
-<link rel='stylesheet' type='text/css' href='../css/vendeur.css'>
+<link rel='stylesheet' type='text/css' href='../css/payment.css'>
+<link rel='stylesheet' type='text/css' href='../css/basket.css'>
+<link rel='stylesheet' type='text/css' href='../css/product.css'>
+<link rel='stylesheet' type='text/css' href='../css/vendor.css'>
 
 <div class='sticky-header'>
-  <div class="haut_de_page">
+    <div class="haut_de_page">
 
-    <a href="index.php" title="Accueil" class="logo">
-      <img src="../img/logo2.0.png" alt="Logo alizon" title="Logo alizon" width='200' class="img_logo">
-    </a>
+        <a href="index.php" title="Accueil" class="logo">
+            <img src="../img/logo2.0.png" alt="Logo alizon" title="Logo alizon" width='200' class="img_logo">
+        </a>
 
-    <form action="catalogue.php" method="GET" class="search-box">
-      <input type="search" name="terme" class="search-txt" placeholder="Rechercher..." required>
-      <button class="search-btn" type="submit">
-        <i class="fas fa-search"></i>
-      </button>
-    </form>
+        <form action="catalog.php" method="GET" class="search-box">
+            <input type="search" name="terme" class="search-txt" placeholder="Rechercher..." required>
+            <button class="search-btn" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
 
-    <div class="logos">
-      <div class="search-btn-tel" type="submit">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <p class="texte_img_search">Chercher</p>
-      </div>
+        <div class="logos">
+            <div class="search-btn-tel" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <p class="texte_img_search">Chercher</p>
+            </div>
 
-      <?php
+            <?php
       // Si le client se déconnecte
       if (isset($_POST['deco'])) {
 
@@ -83,8 +83,8 @@ foreach ($res as $categorie) {
       }
       ?>
 
-      <!-- VERIFICATION SI L'INTERNAUTE EST CONNECTE OU NON -->
-      <?php
+            <!-- VERIFICATION SI L'INTERNAUTE EST CONNECTE OU NON -->
+            <?php
 
       // SI LE CLIENT EST CONNECTE
       if (isset($_SESSION['id_client'])) {
@@ -107,24 +107,23 @@ foreach ($res as $categorie) {
                   </form>
                 </div>
               </div>";
-      } 
-      else {
+      } else {
         echo "<div class='logo_compte' id='logo_c'>
                 <i class='fa-solid fa-user'></i>
                 <p class='texte_img_compte'>Compte</p>
                 <div class='bloc-compte nonco'>
-                  <a href='inscription.php'><i class='fa-solid fa-address-card'></i>S'inscrire</a>
-                  <a href='connexion.php'><i class='fa-solid fa-right-to-bracket'></i>Se Connecter</a>
+                  <a href='registration.php'><i class='fa-solid fa-address-card'></i>S'inscrire</a>
+                  <a href='login.php'><i class='fa-solid fa-right-to-bracket'></i>Se Connecter</a>
                 </div>
               </div>";
       }
       ?>
 
-      <a href="panier.php" class="logo_panier" id="logo_p">
-        <i class="fa-solid fa-bag-shopping"></i>
-        <p class="texte_img_panier">Panier</p>
-        
-        <?php
+            <a href="basket.php" class="logo_panier" id="logo_p">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <p class="texte_img_panier">Panier</p>
+
+                <?php
         if (isset($_COOKIE["id_panier"])) {
           $nb_articles = nb_articles_panier($_COOKIE["id_panier"]);
           if ($nb_articles > 0) {
@@ -134,132 +133,138 @@ foreach ($res as $categorie) {
           }
         }
         ?>
-      </a>
+            </a>
+        </div>
     </div>
-  </div>
 
-  <div class="navbar">
-    <div class="topnav">
-      <ul class="topnav--left">
-        <li class="header tel">
-          <div class="menu-btn">
-            <div class="menu-btn__lines"></div>
-          </div>
-          <ul class="menu-items">
-            <li class="dropdown">
-              <a href="#" class="menu-item expand-btn">Catégories</a>
-              <ul class="dropdown-menu expandable">
-                <?php foreach ($liste_Categories as $categorie): ?>
-                  <li class="dropdown dropdown-right">
-                    <a href="#" class="menu-item expand-btn">
-                      <?php echo $categorie; ?>
-                      <i class="fas fa-angle-right"></i>
-                    </a>
-                    <ul class="menu-right expandable">
-                      <?php foreach ($liste_SousCategories as $SousCategorie => $SupCategorie): ?>
-                        <?php if ($SupCategorie == $categorie): ?>
-                          <li><a href="catalogue.php?terme=<?php echo str_replace(' ', "_", $SousCategorie); ?>"><?php echo $SousCategorie; ?></a></li>
-                        <?php endif; ?>
-                      <?php endforeach; ?>
+    <div class="navbar">
+        <div class="topnav">
+            <ul class="topnav--left">
+                <li class="header tel">
+                    <div class="menu-btn">
+                        <div class="menu-btn__lines"></div>
+                    </div>
+                    <ul class="menu-items">
+                        <li class="dropdown">
+                            <a href="#" class="menu-item expand-btn">Catégories</a>
+                            <ul class="dropdown-menu expandable">
+                                <?php foreach ($liste_Categories as $categorie): ?>
+                                <li class="dropdown dropdown-right">
+                                    <a href="#" class="menu-item expand-btn">
+                                        <?php echo $categorie; ?>
+                                        <i class="fas fa-angle-right"></i>
+                                    </a>
+                                    <ul class="menu-right expandable">
+                                        <?php foreach ($liste_SousCategories as $SousCategorie => $SupCategorie): ?>
+                                        <?php if ($SupCategorie == $categorie): ?>
+                                        <li><a
+                                                href="catalog.php?terme=<?php echo str_replace(' ', "_", $SousCategorie); ?>"><?php echo $SousCategorie; ?></a>
+                                        </li>
+                                        <?php endif; ?>
+                                        <?php endforeach; ?>
 
+                                    </ul>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </li>
                     </ul>
-                  </li>
-                <?php endforeach; ?>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="header">
-          <div class="menu-btn">
-            <div class="menu-btn__lines"></div>
-          </div>
-          <ul class="menu-items">
-            <li class="mega-menu2">
-              <a href="#" class="menu-item expand-btn">Catégories</a>
-              <div class="mega-menu expandable">
-                <div class="content">
-                  <div class="col">
+                </li>
+                <li class="header">
+                    <div class="menu-btn">
+                        <div class="menu-btn__lines"></div>
+                    </div>
+                    <ul class="menu-items">
+                        <li class="mega-menu2">
+                            <a href="#" class="menu-item expand-btn">Catégories</a>
+                            <div class="mega-menu expandable">
+                                <div class="content">
+                                    <div class="col">
 
-                    <section class="section-links1">
-                      <h2><?php echo $liste_Categories[0]; ?></h2>
-                      <ul class="mega-links">
-                        <?php foreach ($liste_SousCategories as $SousCategorie => $SupCategorie): ?>
-                          <?php if ($SupCategorie == $liste_Categories[0]): ?>
-                            <li><a href="catalogue.php?categorie=<?php echo str_replace(' ', "_", $SupCategorie); ?>&Scategorie=<?php echo str_replace(' ', "_", $SousCategorie); ?>"><?php echo $SousCategorie; ?></a></li>
-                          <?php endif; ?>
-                        <?php endforeach; ?>
-                      </ul>
-                    </section>
+                                        <section class="section-links1">
+                                            <h2><?php echo $liste_Categories[0]; ?></h2>
+                                            <ul class="mega-links">
+                                                <?php foreach ($liste_SousCategories as $SousCategorie => $SupCategorie): ?>
+                                                <?php if ($SupCategorie == $liste_Categories[0]): ?>
+                                                <li><a
+                                                        href="catalog.php?categorie=<?php echo str_replace(' ', "_", $SupCategorie); ?>&Scategorie=<?php echo str_replace(' ', "_", $SousCategorie); ?>"><?php echo $SousCategorie; ?></a>
+                                                </li>
+                                                <?php endif; ?>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </section>
 
-                  </div>
-                  <?php foreach ($liste_Categories as $categorie): ?>
-                    <?php if ($categorie != $liste_Categories[0]): ?>
-                      <div class="col">
-                        <section>
-                          <h2><?php echo $categorie; ?></h2>
-                          <ul class="mega-links">
-                            <?php foreach ($liste_SousCategories as $SousCategorie => $SupCategorie): ?>
-                              <?php if ($SupCategorie == $categorie): ?>
-                                <li><a href="catalogue.php?categorie=<?php echo str_replace(' ', "_", $SupCategorie); ?>&Scategorie=<?php echo str_replace(' ', "_", $SousCategorie); ?>"><?php echo $SousCategorie; ?></a></li>
-                              <?php endif; ?>
-                            <?php endforeach; ?>
-                          </ul>
-                        </section>
-                      </div>
-                    <?php endif; ?>
-                  <?php endforeach; ?>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </li>
-        <li class="v-line"></li>
-        <li><a href="">Meilleures Ventes</a></li>
-        <li><a href="">Promotions</a></li>
-      </ul>
+                                    </div>
+                                    <?php foreach ($liste_Categories as $categorie): ?>
+                                    <?php if ($categorie != $liste_Categories[0]): ?>
+                                    <div class="col">
+                                        <section>
+                                            <h2><?php echo $categorie; ?></h2>
+                                            <ul class="mega-links">
+                                                <?php foreach ($liste_SousCategories as $SousCategorie => $SupCategorie): ?>
+                                                <?php if ($SupCategorie == $categorie): ?>
+                                                <li><a
+                                                        href="catalog.php?categorie=<?php echo str_replace(' ', "_", $SupCategorie); ?>&Scategorie=<?php echo str_replace(' ', "_", $SousCategorie); ?>"><?php echo $SousCategorie; ?></a>
+                                                </li>
+                                                <?php endif; ?>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </section>
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="v-line"></li>
+                <li><a href="">Meilleures Ventes</a></li>
+                <li><a href="">Promotions</a></li>
+            </ul>
 
-      <div class="topnav--right">
-        <a href="">Le Club</a>
-        <a href="">Bons Plans</a>
-      </div>
+            <div class="topnav--right">
+                <a href="">Le Club</a>
+                <a href="">Bons Plans</a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <script>
-  const menuBtn = document.querySelector(".menu-btn");
-  const menuItems = document.querySelector(".menu-items");
-  const expandBtn = document.querySelectorAll(".expand-btn");
-  const dropdownMenu = document.querySelector(".dropdown-menu");
+const menuBtn = document.querySelector(".menu-btn");
+const menuItems = document.querySelector(".menu-items");
+const expandBtn = document.querySelectorAll(".expand-btn");
+const dropdownMenu = document.querySelector(".dropdown-menu");
 
-  menuBtn.addEventListener("click", () => {
+menuBtn.addEventListener("click", () => {
     menuBtn.classList.toggle("open");
     menuItems.classList.toggle("open");
-    
-    if(!menuBtn.classList.contains("open")) {
-      dropdownMenu.classList.remove("expandable");
+
+    if (!menuBtn.classList.contains("open")) {
+        dropdownMenu.classList.remove("expandable");
     }
-  });
+});
 
-  expandBtn.forEach((btn) => {
-    btn.addEventListener("click", () => {      
-      btn.classList.toggle("open");
+expandBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        btn.classList.toggle("open");
     });
-  });
+});
 
-  const btn_compte = document.querySelector(".logo_compte");
-  const bloc_compte = document.querySelector(".bloc-compte");
+const btn_compte = document.querySelector(".logo_compte");
+const bloc_compte = document.querySelector(".bloc-compte");
 
-  btn_compte.addEventListener("click", function(event) {
+btn_compte.addEventListener("click", function(event) {
     bloc_compte.classList.toggle("actif");
     bloc_compte.classList.remove("nonactif");
     event.stopPropagation();
-  });
+});
 
-  document.addEventListener("click", function(event) {
+document.addEventListener("click", function(event) {
     if (!btn_compte.contains(event.target)) {
-      bloc_compte.classList.remove("actif");
-      bloc_compte.classList.add("nonactif");
+        bloc_compte.classList.remove("actif");
+        bloc_compte.classList.add("nonactif");
     }
-  })
+})
 </script>
